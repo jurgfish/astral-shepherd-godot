@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="astral shepherd"
+config/features=PackedStringArray("4.7", "Forward Plus")
+config/icon="res://misc/ui/icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "orange",
+"res://materials/": "yellow",
+"res://meshes/": "green",
+"res://misc/": "blue",
+"res://scenes/": "purple",
+"res://scripts/": "pink"
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
