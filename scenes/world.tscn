@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://g4srku481050"]
+
+[ext_resource type="Script" uid="uid://bgty8iyva1fe8" path="res://scripts/world.gd" id="1_nnsk1"]
+
+[node name="World" type="Node3D" unique_id=1665150136]
+script = ExtResource("1_nnsk1")
+
+[node name="Alka" type="Marker3D" parent="." unique_id=351517499]
+
+[node name="Camera" type="Camera3D" parent="Alka" unique_id=1202595097]

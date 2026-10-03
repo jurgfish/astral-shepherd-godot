@@ -17,7 +17,25 @@ first:
 
 next:
 - sketch models
+- look-at interactions
 - test gameplay loop
+
+important:
+- monster models are within astronaut suits
+  - tie to "from the stars" theme and overarching Alka & Allias lore
+- collectible models are various symbols, not just stars
+  - color coded, but distinguished shapes (color-blind friendly)
+  - tie to "strange signs" community prompt
+- monsters warn the player through body language and sound design
+  - not actually dangerous to the player
+  - give the player direction of objective
+  - tie to "ignoring the warnings" community prompt
+	- expected that players chase collectibles and ignore monster cues on first playthrough
+- focus on ambient design to trigger a sense of horror
+  - heavy focus on audio
+  - subdued emphasis on unnerving monster model design
+	- let animation shine through; do not outdo audio
+	- monster models will only be illuminated by player's headlamps
 
 submission:
 - 10/17/26 deadline
@@ -45,10 +63,27 @@ game jam goals:
 - moral:
   - no generative ai
   - credit any pre-made/asset packs
-  - original and generated during
+  - original and created during event OK
 - system:
   - must be downloadable from itch
   - 2GB limit
+
+game structure:
+- input is only wasd/left-joystick to move and mouse/right-joystick to look
+  - no jumping: no need to calculate gravity
+- entire game takes place in one scene
+- set number of monsters and collectibles spawn dynamically and randomly, once at start
+- monsters can wander, collectibles remain in place
+
+game story:
+- see log
+
+potential stretch goals:
+- monsters evolve as game progresses? (time dependent)
+  - speed, models
+  - potential unique animation
+  - target the "rapidly evolving" community prompt
+  - potentially time-based instead of goal-progress based?
 
 ##################################################################################################
 
