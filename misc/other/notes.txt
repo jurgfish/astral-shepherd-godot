@@ -4,16 +4,56 @@ Copyright © 2026, jurgfish. All rights reserved.
 ASTRAL SHEPHERD by jurgfish <3
 ------------------------------
 
-core game notes (current/postponed tasks, game organization, project timeline, troublesome fixes).
+core game notes (current/postponed tasks, game organization, etc.)
 
 ##################################################################################################
 
 TASK QUEUE >>>
 
 first:
+- test basic first person controls
+- pause/menu system
+- epigraph logic
+
+next:
+- sketch models
+- test gameplay loop
+
+submission:
+- 10/17/26 deadline
+- tagged #chicaghoul2026
+- fill out google form
+  - link to itch page
+- requires 10/25/26 live presence
 
 ##################################################################################################
 
-TROUBLESOME FIXES
+GAME ORGANIZATION
+
+personal goals:
+- high-poly, animated 3D models
+- dynamic (simple) soundtrack
+- highest possible lighting fidelity
+
+game jam goals:
+- theme: from the stars (must be horror themed)
+- community prompts:
+  - ignoring the warnings
+  - rapidly evolving
+  - abandon ship
+  - strange signs
+- moral:
+  - no generative ai
+  - credit any pre-made/asset packs
+  - original and generated during
+- system:
+  - must be downloadable from itch
+  - 2GB limit
+
+##################################################################################################
+
+NOTABLE CHALLENGES
+
+- this is my first first person game (previously have only made third person 3D, 2D games)
 
 ##################################################################################################
