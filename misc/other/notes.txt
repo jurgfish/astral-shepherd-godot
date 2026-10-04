@@ -11,8 +11,12 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- test basic first person controls
+- cleanup input handling
+  - wasd/joypad input binds
+  - enable physics interpolation
+  - head bob
 - pause/menu system
+  - sensitivity, invert controls
 - epigraph logic
 
 next:
@@ -43,6 +47,9 @@ submission:
 - fill out google form
   - link to itch page
 - requires 10/25/26 live presence
+
+completed:
+- test basic first person controls OK
 
 ##################################################################################################
 
@@ -84,6 +91,13 @@ potential stretch goals:
   - potential unique animation
   - target the "rapidly evolving" community prompt
   - potentially time-based instead of goal-progress based?
+
+##################################################################################################
+
+SOURCES
+
+https://www.youtube.com/watch?v=A3HLeyaBCq4 (legiongames fps camera basics)
+https://www.youtube.com/watch?v=zfIuaRzNti4 (dylan bennett fps camera processing)
 
 ##################################################################################################
 

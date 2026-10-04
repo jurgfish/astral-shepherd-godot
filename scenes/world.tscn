@@ -1,10 +1,38 @@
 [gd_scene format=3 uid="uid://g4srku481050"]
 
 [ext_resource type="Script" uid="uid://bgty8iyva1fe8" path="res://scripts/world.gd" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://dj65g22gg1wot" path="res://scenes/alka.gd" id="2_rwgxs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xw2wu"]
 
 [node name="World" type="Node3D" unique_id=1665150136]
 script = ExtResource("1_nnsk1")
 
-[node name="Alka" type="Marker3D" parent="." unique_id=351517499]
+[node name="Alka" type="CharacterBody3D" parent="." unique_id=823906677 node_paths=PackedStringArray("_head")]
+script = ExtResource("2_rwgxs")
+_head = NodePath("Head")
 
-[node name="Camera" type="Camera3D" parent="Alka" unique_id=1202595097]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alka" unique_id=837350494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xw2wu")
+
+[node name="Head" type="Marker3D" parent="Alka" unique_id=2127933850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera" type="Camera3D" parent="Alka/Head" unique_id=1202595097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0018345118, 0)
+
+[node name="City" type="StaticBody3D" parent="." unique_id=1593888735]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="City" unique_id=908059986]
+shape = SubResource("WorldBoundaryShape3D_xw2wu")
+
+[node name="TempTarget" type="CSGSphere3D" parent="." unique_id=88239392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.6)
+
+[node name="TempLight" type="SpotLight3D" parent="." unique_id=1578017990]
+transform = Transform3D(0.5834952, -0.14832301, 0.7984571, -0.0041703884, 0.9826201, 0.18558115, -0.8121059, -0.111615576, 0.5727356, 3.3946953, 1.6437378, -2.3471901)
+light_energy = 2.0
+spot_range = 24.721277
