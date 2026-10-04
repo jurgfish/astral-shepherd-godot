@@ -12,7 +12,6 @@ TASK QUEUE >>>
 
 first:
 - cleanup input handling
-  - wasd/joypad input binds
   - enable physics interpolation
   - head bob
 - pause/menu system
