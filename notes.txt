@@ -12,9 +12,7 @@ TASK QUEUE >>>
 
 first:
 - state system
-  - versioning
   - debug
-	- automatic disable in export
 - pause/menu system
   - sensitivity, invert controls
 - epigraph logic
