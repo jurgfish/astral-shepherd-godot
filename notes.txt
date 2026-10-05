@@ -13,6 +13,9 @@ TASK QUEUE >>>
 first:
 - cleanup input handling
   - head bob
+- state system
+  - versioning
+  - debug
 - pause/menu system
   - sensitivity, invert controls
 - epigraph logic
