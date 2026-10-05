@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_in_dir = Input.get_vector("MOVE_L", "MOVE_R", "MOVE_F", "MOVE_B")
+
 	_dir = (transform.basis * Vector3(_in_dir.x, 0.0, _in_dir.y)).normalized()
 	_dir = _dir.rotated(Vector3(0, 1, 0), _in_look.x)
 

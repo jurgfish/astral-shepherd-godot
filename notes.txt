@@ -14,6 +14,7 @@ first:
 - state system
   - versioning
   - debug
+	- automatic disable in export
 - pause/menu system
   - sensitivity, invert controls
 - epigraph logic
@@ -52,6 +53,10 @@ submission:
 
 completed:
 - test basic first person controls OK
+
+ignored features:
+- save data
+- localization
 
 ##################################################################################################
 
