@@ -12,11 +12,13 @@ TASK QUEUE >>>
 
 first:
 - cleanup input handling
-  - enable physics interpolation
   - head bob
 - pause/menu system
   - sensitivity, invert controls
 - epigraph logic
+
+issues:
+- character doesn't rotate, only head does (potential headlamp issue)
 
 next:
 - sketch models
@@ -96,12 +98,15 @@ potential stretch goals:
 SOURCES
 
 https://www.youtube.com/watch?v=A3HLeyaBCq4 (legiongames fps camera basics)
-https://www.youtube.com/watch?v=zfIuaRzNti4 (dylan bennett fps camera processing)
+https://www.youtube.com/watch?v=zfIuaRzNti4 (dylan bennett fps camera processing) (was incorrect)
+https://github.com/kk49/godot-demo-projects-fix001/blob/master/3d/physics_interpolation/player.gd
+(^actually correct camera processing)
 
 ##################################################################################################
 
 NOTABLE CHALLENGES
 
-- this is my first first person game (previously have only made third person 3D, 2D games)
+- this is my first first person game (previously have only made third person 3D, 2D games), setup
+  of camera was simple, getting it to work *correctly* with physics interpolation was not
 
 ##################################################################################################
