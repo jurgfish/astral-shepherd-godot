@@ -11,7 +11,7 @@ const MAX_LOOK_Y: float = PI
 const MOUSE_MULT: float = 0.1
 var _in_look: Vector2 = Vector2.ZERO
 var _look: Vector2 = Vector2.ZERO
-var _look_sy: float = 0.005
+var _look_sy: float = 0.008
 
 @export var _head: Marker3D
 
