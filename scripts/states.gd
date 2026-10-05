@@ -6,7 +6,6 @@ extends Node
 
 ##################################################################################################
 
-enum STATUS { STARTUP, READY, INTRO, RUNNING, SHUTDOWN, QUIT }
 enum DEBUG { DISABLED = 1, ENABLED = 2, USER = 4 }
 
 var DEBUG_MODE: int = (

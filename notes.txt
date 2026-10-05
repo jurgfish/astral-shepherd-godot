@@ -65,6 +65,9 @@ personal goals:
 - dynamic (simple) soundtrack
 - highest possible lighting fidelity
 
+developer goals:
+- prevent hard links between systems (use signal patterns)
+
 game jam goals:
 - theme: from the stars (must be horror themed)
 - community prompts:

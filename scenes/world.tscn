@@ -1,12 +1,25 @@
 [gd_scene format=3 uid="uid://g4srku481050"]
 
 [ext_resource type="Script" uid="uid://bgty8iyva1fe8" path="res://scripts/world.gd" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="2_71j4m"]
+[ext_resource type="Script" uid="uid://b0gdqjb557llp" path="res://scripts/user.gd" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
 
 [node name="world" type="Node3D" unique_id=1665150136]
 physics_interpolation_mode = 1
 script = ExtResource("1_nnsk1")
+
+[node name="pause_hud" type="Control" parent="." unique_id=143006545]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_71j4m")
+
+[node name="user" type="Node3D" parent="." unique_id=1858575239]
+process_mode = 3
+script = ExtResource("2_k0juu")
 
 [node name="alka" parent="." unique_id=1628352519 instance=ExtResource("2_rwgxs")]
 
@@ -19,3 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.6)
 transform = Transform3D(0.5834952, -0.14832301, 0.7984571, -0.0041703884, 0.9826201, 0.18558115, -0.8121059, -0.111615576, 0.5727356, 3.3946953, 1.6437378, -2.3471901)
 light_energy = 2.0
 spot_range = 24.721277
+
+[connection signal="pause_requested" from="user" to="." method="_on_pause_requested"]
+[connection signal="quit_requested" from="user" to="." method="_on_quit_requested"]
