@@ -11,8 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- cleanup input handling
-  - head bob
 - state system
   - versioning
   - debug
