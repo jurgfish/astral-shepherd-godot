@@ -38,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="main" type="VBoxContainer" parent="settings" unique_id=1234824036]
+visible = false
 layout_mode = 2
 
 [node name="resume" type="Button" parent="settings/main" unique_id=397101921]
@@ -54,6 +55,73 @@ text = "options"
 layout_mode = 2
 theme = ExtResource("2_3q0sb")
 text = "abandon"
+
+[node name="options" type="VBoxContainer" parent="settings" unique_id=366746890]
+layout_mode = 2
+
+[node name="toggles" type="HBoxContainer" parent="settings/options" unique_id=828499134]
+layout_mode = 2
+alignment = 1
+
+[node name="labels" type="VBoxContainer" parent="settings/options/toggles" unique_id=1324938893]
+layout_mode = 2
+
+[node name="invert_cam_v" type="Label" parent="settings/options/toggles/labels" unique_id=1473936096]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "invert camera vertical"
+
+[node name="invert_cam_h" type="Label" parent="settings/options/toggles/labels" unique_id=853163097]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "invert camera horizontal"
+
+[node name="space" type="Control" parent="settings/options/toggles" unique_id=1037488439]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="controls" type="VBoxContainer" parent="settings/options/toggles" unique_id=1981078596]
+layout_mode = 2
+
+[node name="invert_cam_v" type="Button" parent="settings/options/toggles/controls" unique_id=1689723276]
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "off"
+
+[node name="invert_cam_h" type="Button" parent="settings/options/toggles/controls" unique_id=368107023]
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "off"
+
+[node name="space" type="Control" parent="settings/options" unique_id=1698619040]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="bottom" type="HBoxContainer" parent="settings/options" unique_id=457613793]
+layout_mode = 2
+alignment = 1
+
+[node name="info" type="Button" parent="settings/options/bottom" unique_id=498871276]
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "info"
+
+[node name="space" type="Control" parent="settings/options/bottom" unique_id=801700030]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="return" type="Button" parent="settings/options/bottom" unique_id=1993216787]
+layout_mode = 2
+theme = ExtResource("2_3q0sb")
+theme_override_font_sizes/font_size = 50
+text = "return"
 
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]
