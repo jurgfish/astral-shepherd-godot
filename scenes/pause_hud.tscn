@@ -73,14 +73,14 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme = ExtResource("2_3q0sb")
 theme_override_font_sizes/font_size = 50
-text = "invert camera vertical"
+text = "invert look vertical"
 
 [node name="invert_cam_h" type="Label" parent="settings/options/toggles/labels" unique_id=853163097]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme = ExtResource("2_3q0sb")
 theme_override_font_sizes/font_size = 50
-text = "invert camera horizontal"
+text = "invert look horizontal"
 
 [node name="space" type="Control" parent="settings/options/toggles" unique_id=1037488439]
 custom_minimum_size = Vector2(15, 0)

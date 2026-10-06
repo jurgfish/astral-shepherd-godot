@@ -5,48 +5,51 @@ extends CharacterBody3D
 # look
 const MIN_PITCH: float = -PI
 const MAX_PITCH: float = PI
-const MOUSE_MULT: float = 0.0005
-var _in_look: Vector2 = Vector2.ZERO
-var _look_sy: float = 1.8
+var _look_dir: Vector2 = Vector2.ZERO
 
 const HEAD_HEIGHT: float = 1.8
-const BOB_FRQ: float = 2.0
-const BOB_AMP: float = 0.05
+const BOB_FRQ: float = 8.0
+const BOB_AMP_MAX: float = 0.5
 var _bob_builder: float = 0.0
+var _bob_amp: float = 0.0
+var _bob_weight: float = 0.0
 
 # move
 const MAX_SPEED: float = 5.0
-const LERP_V: float = 8.0
-var _in_dir: Vector2 = Vector2.ZERO
-var _dir: Vector3 = Vector3.ZERO
+const LERP_V: float = 18.0
+var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 
 @export var _head: Marker3D
 
 ##################################################################################################
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		_in_look.x -= event.screen_relative.x * _look_sy * MOUSE_MULT
-		_in_look.y -= event.screen_relative.y * _look_sy * MOUSE_MULT
+func set_inputs(in_look: Vector2, in_move: Vector2) -> void:
+	_look_dir = in_look
+	_look_dir.y = clampf(_look_dir.y, MIN_PITCH, MAX_PITCH)
+
+	_speed = MAX_SPEED * in_move.length()
+	_move_dir = (transform.basis * Vector3(in_move.x, 0.0, in_move.y)).normalized()
+	_move_dir = _move_dir.rotated(Vector3(0, 1, 0), _look_dir.x)
+
+##################################################################################################
 
 func _process(delta: float) -> void:
-	_in_look -= Input.get_vector("LOOK_L", "LOOK_R", "LOOK_U", "LOOK_D") * _look_sy * delta
+	_head.rotation.x = _look_dir.y # pitch
+	_head.rotation.y = _look_dir.x # yaw
 
-	_head.rotation.x = clampf(_in_look.y, MIN_PITCH, MAX_PITCH) # pitch
-	_head.rotation.y = _in_look.x # yaw
-
-	_bob_builder += delta * velocity.length()
-	_head.transform.origin.y = sin(_bob_builder * BOB_FRQ) * BOB_AMP + HEAD_HEIGHT
+	# TODO: fix bob
+	#print(velocity.length() / MAX_SPEED)
+	_bob_weight = velocity.length() / MAX_SPEED
+	_bob_builder += _bob_weight * delta
+	#_bob_amp = BOB_AMP_MAX * _bob_weight
+	#if is_equal_approx(_bob_weight, 0.0):
+		#_bob_builder = 0.0
+	#prints(_bob_weight, _bob_builder, _bob_amp)
+	_head.transform.origin.y = sin(_bob_builder * BOB_FRQ) * _bob_amp + HEAD_HEIGHT
 
 func _physics_process(delta: float) -> void:
-	_in_dir = Input.get_vector("MOVE_L", "MOVE_R", "MOVE_F", "MOVE_B")
-
-	_dir = (transform.basis * Vector3(_in_dir.x, 0.0, _in_dir.y)).normalized()
-	_dir = _dir.rotated(Vector3(0, 1, 0), _in_look.x)
-
-	_speed = MAX_SPEED * _in_dir.length()
-	velocity = lerp(velocity, _dir * _speed, LERP_V * delta)
+	velocity = lerp(velocity, _move_dir * _speed, LERP_V * delta)
 	move_and_slide()
 
 ##################################################################################################

@@ -15,11 +15,12 @@ _user = NodePath("user")
 [node name="pause_hud" parent="." unique_id=1635939161 node_paths=PackedStringArray("_user") instance=ExtResource("2_71j4m")]
 _user = NodePath("../user")
 
-[node name="user" type="Node3D" parent="." unique_id=1858575239]
+[node name="user" type="Node3D" parent="." unique_id=1858575239 node_paths=PackedStringArray("_alka")]
 process_mode = 3
 script = ExtResource("2_k0juu")
+_alka = NodePath("alka")
 
-[node name="alka" parent="." unique_id=1628352519 instance=ExtResource("2_rwgxs")]
+[node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
 
 [node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
 
