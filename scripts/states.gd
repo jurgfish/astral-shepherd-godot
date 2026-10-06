@@ -12,7 +12,7 @@ enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
 enum DEBUG { DISABLED = 1, ENABLED = 2, USER = 4, SERVICE = 8 }
 
 var DEBUG_MODE: int = (
-	DEBUG.ENABLED ^ DEBUG.SERVICE
+	DEBUG.ENABLED #^ DEBUG.SERVICE
 )
 
 ##################################################################################################

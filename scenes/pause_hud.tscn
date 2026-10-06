@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyd77v6ecdovk"]
 
 [ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
+[ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="2_3q0sb"]
 
 [node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button")]
 process_mode = 3
@@ -41,15 +42,18 @@ layout_mode = 2
 
 [node name="resume" type="Button" parent="settings/main" unique_id=397101921]
 layout_mode = 2
+theme = ExtResource("2_3q0sb")
 text = "resume"
 
 [node name="options" type="Button" parent="settings/main" unique_id=893434569]
 layout_mode = 2
+theme = ExtResource("2_3q0sb")
 text = "options"
 
-[node name="abandon ship" type="Button" parent="settings/main" unique_id=698160410]
+[node name="abandon" type="Button" parent="settings/main" unique_id=698160410]
 layout_mode = 2
-text = "abandon ship"
+theme = ExtResource("2_3q0sb")
+text = "abandon"
 
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="settings/main/abandon ship" to="." method="_on_abandon_ship_pressed"]
+[connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]

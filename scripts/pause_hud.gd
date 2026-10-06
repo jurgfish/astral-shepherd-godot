@@ -26,7 +26,7 @@ func _ready() -> void:
 func _on_resume_pressed() -> void:
 	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.PAUSE, false)
 
-func _on_abandon_ship_pressed() -> void:
+func _on_abandon_pressed() -> void:
 	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.QUIT)
 
 ##################################################################################################
