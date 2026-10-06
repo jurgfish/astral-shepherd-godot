@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="2_3q0sb"]
 
-[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button")]
+[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button", "_invert_cam_v", "_invert_cam_h")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dljab")
 _resume_button = NodePath("settings/main/resume")
+_invert_cam_v = NodePath("settings/options/toggles/controls/invert_cam_v")
+_invert_cam_h = NodePath("settings/options/toggles/controls/invert_cam_h")
 
 [node name="curtain" type="ColorRect" parent="." unique_id=480528974]
 layout_mode = 1
@@ -85,6 +87,7 @@ custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="controls" type="VBoxContainer" parent="settings/options/toggles" unique_id=1981078596]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
 [node name="invert_cam_v" type="Button" parent="settings/options/toggles/controls" unique_id=1689723276]
@@ -125,3 +128,5 @@ text = "return"
 
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]
+[connection signal="pressed" from="settings/options/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
+[connection signal="pressed" from="settings/options/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]

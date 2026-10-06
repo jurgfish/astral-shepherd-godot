@@ -12,7 +12,8 @@ script = ExtResource("1_nnsk1")
 _pause_hud = NodePath("pause_hud")
 _user = NodePath("user")
 
-[node name="pause_hud" parent="." unique_id=1635939161 instance=ExtResource("2_71j4m")]
+[node name="pause_hud" parent="." unique_id=1635939161 node_paths=PackedStringArray("_user") instance=ExtResource("2_71j4m")]
+_user = NodePath("../user")
 
 [node name="user" type="Node3D" parent="." unique_id=1858575239]
 process_mode = 3
