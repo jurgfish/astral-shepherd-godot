@@ -12,7 +12,7 @@ TASK QUEUE >>>
 
 first:
 - pause/menu system
-  - sensitivity, invert controls
+  - sensitivity
 - load logo, epigraph logic
 
 issues:

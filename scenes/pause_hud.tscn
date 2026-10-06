@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dyd77v6ecdovk"]
 
 [ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
-[ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="2_3q0sb"]
+[ext_resource type="Theme" uid="uid://bu722xccgeloo" path="res://misc/ui/ui_large.tres" id="2_3q0sb"]
+[ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="3_v22qg"]
 
 [node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button", "_invert_cam_v", "_invert_cam_h")]
 process_mode = 3
@@ -13,8 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dljab")
 _resume_button = NodePath("settings/main/resume")
-_invert_cam_v = NodePath("settings/options/toggles/controls/invert_cam_v")
-_invert_cam_h = NodePath("settings/options/toggles/controls/invert_cam_h")
+_invert_cam_v = NodePath("settings/controls/toggles/controls/invert_cam_v")
+_invert_cam_h = NodePath("settings/controls/toggles/controls/invert_cam_h")
 
 [node name="curtain" type="ColorRect" parent="." unique_id=480528974]
 layout_mode = 1
@@ -45,88 +46,258 @@ layout_mode = 2
 
 [node name="resume" type="Button" parent="settings/main" unique_id=397101921]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_3q0sb")
 text = "resume"
 
+[node name="controls" type="Button" parent="settings/main" unique_id=1940942495]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_3q0sb")
+text = "controls"
+
 [node name="options" type="Button" parent="settings/main" unique_id=893434569]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_3q0sb")
 text = "options"
 
 [node name="abandon" type="Button" parent="settings/main" unique_id=698160410]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_3q0sb")
 text = "abandon"
 
-[node name="options" type="VBoxContainer" parent="settings" unique_id=366746890]
+[node name="controls" type="VBoxContainer" parent="settings" unique_id=366746890]
 layout_mode = 2
 
-[node name="toggles" type="HBoxContainer" parent="settings/options" unique_id=828499134]
+[node name="sliders" type="HBoxContainer" parent="settings/controls" unique_id=694125867]
 layout_mode = 2
 alignment = 1
 
-[node name="labels" type="VBoxContainer" parent="settings/options/toggles" unique_id=1324938893]
+[node name="labels" type="VBoxContainer" parent="settings/controls/sliders" unique_id=88720763]
 layout_mode = 2
 
-[node name="invert_cam_v" type="Label" parent="settings/options/toggles/labels" unique_id=1473936096]
-custom_minimum_size = Vector2(0, 80)
+[node name="sensitivity" type="Label" parent="settings/controls/sliders/labels" unique_id=1502267010]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_v22qg")
+text = "sensitivity"
+
+[node name="values" type="VBoxContainer" parent="settings/controls/sliders" unique_id=905276647]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="sensitivity_value" type="Label" parent="settings/controls/sliders/values" unique_id=321456648]
+layout_mode = 2
+theme = ExtResource("3_v22qg")
+theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
+text = "100"
+horizontal_alignment = 1
+
+[node name="controls" type="VBoxContainer" parent="settings/controls/sliders" unique_id=467287274]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="sensitivity_slider" type="HSlider" parent="settings/controls/sliders/controls" unique_id=735280932]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_v22qg")
+max_value = 200.0
+value = 100.0
+rounded = true
+
+[node name="space_2" type="Control" parent="settings/controls" unique_id=662566864]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="toggles" type="HBoxContainer" parent="settings/controls" unique_id=828499134]
+layout_mode = 2
+alignment = 1
+
+[node name="labels" type="VBoxContainer" parent="settings/controls/toggles" unique_id=1324938893]
+layout_mode = 2
+
+[node name="invert_cam_v" type="Label" parent="settings/controls/toggles/labels" unique_id=1473936096]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
 text = "invert look vertical"
 
-[node name="invert_cam_h" type="Label" parent="settings/options/toggles/labels" unique_id=853163097]
-custom_minimum_size = Vector2(0, 75)
+[node name="invert_cam_h" type="Label" parent="settings/controls/toggles/labels" unique_id=853163097]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
 text = "invert look horizontal"
 
-[node name="space" type="Control" parent="settings/options/toggles" unique_id=1037488439]
+[node name="space" type="Control" parent="settings/controls/toggles" unique_id=1625784707]
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="controls" type="VBoxContainer" parent="settings/options/toggles" unique_id=1981078596]
-custom_minimum_size = Vector2(120, 0)
+[node name="controls" type="VBoxContainer" parent="settings/controls/toggles" unique_id=1981078596]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 
-[node name="invert_cam_v" type="Button" parent="settings/options/toggles/controls" unique_id=1689723276]
+[node name="invert_cam_v" type="Button" parent="settings/controls/toggles/controls" unique_id=1689723276]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
 text = "off"
 
-[node name="invert_cam_h" type="Button" parent="settings/options/toggles/controls" unique_id=368107023]
+[node name="invert_cam_h" type="Button" parent="settings/controls/toggles/controls" unique_id=368107023]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
 text = "off"
 
-[node name="space" type="Control" parent="settings/options" unique_id=1698619040]
+[node name="space" type="Control" parent="settings/controls" unique_id=1698619040]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="bottom" type="HBoxContainer" parent="settings/options" unique_id=457613793]
+[node name="return" type="Button" parent="settings/controls" unique_id=1993216787]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
+text = "return"
+
+[node name="options" type="VBoxContainer" parent="settings" unique_id=1641591264]
+visible = false
+layout_mode = 2
+
+[node name="sliders" type="HBoxContainer" parent="settings/options" unique_id=1157294655]
 layout_mode = 2
 alignment = 1
 
-[node name="info" type="Button" parent="settings/options/bottom" unique_id=498871276]
+[node name="labels" type="VBoxContainer" parent="settings/options/sliders" unique_id=589529800]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+
+[node name="volume" type="Label" parent="settings/options/sliders/labels" unique_id=1322511686]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "volume"
+
+[node name="frame_rate" type="Label" parent="settings/options/sliders/labels" unique_id=1616484729]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "frame rate"
+
+[node name="values" type="VBoxContainer" parent="settings/options/sliders" unique_id=1865904813]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="volume_value" type="Label" parent="settings/options/sliders/values" unique_id=19696000]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
+text = "100"
+horizontal_alignment = 1
+
+[node name="frame_rate_value" type="Label" parent="settings/options/sliders/values" unique_id=1300292773]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
+text = "60"
+horizontal_alignment = 1
+
+[node name="controls" type="VBoxContainer" parent="settings/options/sliders" unique_id=251771087]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="volume_slider" type="HSlider" parent="settings/options/sliders/controls" unique_id=376446363]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+value = 100.0
+rounded = true
+
+[node name="frame_rate_slider" type="HSlider" parent="settings/options/sliders/controls" unique_id=472034082]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+min_value = 30.0
+max_value = 205.0
+step = 5.0
+value = 60.0
+rounded = true
+
+[node name="space_2" type="Control" parent="settings/options" unique_id=1385226596]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="toggles" type="HBoxContainer" parent="settings/options" unique_id=1923199365]
+layout_mode = 2
+alignment = 1
+
+[node name="labels" type="VBoxContainer" parent="settings/options/toggles" unique_id=1619708106]
+layout_mode = 2
+
+[node name="fullscreen" type="Label" parent="settings/options/toggles/labels" unique_id=1933668952]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "fullscreen"
+
+[node name="vsync" type="Label" parent="settings/options/toggles/labels" unique_id=293007152]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "vsync"
+
+[node name="space" type="Control" parent="settings/options/toggles" unique_id=1059771549]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="controls" type="VBoxContainer" parent="settings/options/toggles" unique_id=536100080]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="fullscreen" type="Button" parent="settings/options/toggles/controls" unique_id=253517596]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "off"
+
+[node name="vsync" type="Button" parent="settings/options/toggles/controls" unique_id=519601298]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "off"
+
+[node name="space" type="Control" parent="settings/options" unique_id=878536763]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="bottom" type="HBoxContainer" parent="settings/options" unique_id=1165046922]
+layout_mode = 2
+alignment = 1
+
+[node name="info" type="Button" parent="settings/options/bottom" unique_id=506514579]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
 text = "info"
 
-[node name="space" type="Control" parent="settings/options/bottom" unique_id=801700030]
+[node name="space" type="Control" parent="settings/options/bottom" unique_id=1448695590]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="return" type="Button" parent="settings/options/bottom" unique_id=1993216787]
+[node name="return" type="Button" parent="settings/options/bottom" unique_id=1715327184]
 layout_mode = 2
-theme = ExtResource("2_3q0sb")
-theme_override_font_sizes/font_size = 50
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
 text = "return"
 
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]
-[connection signal="pressed" from="settings/options/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
-[connection signal="pressed" from="settings/options/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]
+[connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
+[connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]
