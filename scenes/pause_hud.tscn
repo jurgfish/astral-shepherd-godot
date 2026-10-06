@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dyd77v6ecdovk"]
+
+[ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
+
+[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dljab")
+_resume_button = NodePath("settings/main/resume")
+
+[node name="curtain" type="ColorRect" parent="." unique_id=480528974]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.87058824)
+
+[node name="settings" type="MarginContainer" parent="." unique_id=279064498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main" type="VBoxContainer" parent="settings" unique_id=1234824036]
+layout_mode = 2
+
+[node name="resume" type="Button" parent="settings/main" unique_id=397101921]
+layout_mode = 2
+text = "resume"
+
+[node name="options" type="Button" parent="settings/main" unique_id=893434569]
+layout_mode = 2
+text = "options"
+
+[node name="abandon ship" type="Button" parent="settings/main" unique_id=698160410]
+layout_mode = 2
+text = "abandon ship"
+
+[connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="settings/main/abandon ship" to="." method="_on_abandon_ship_pressed"]

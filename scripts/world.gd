@@ -2,47 +2,37 @@
 
 extends Node3D
 
-##################################################################################################
-
-func _debug_initialize() -> void:
-	if OS.is_debug_build():
-		if States.DEBUG_MODE & States.DEBUG.DISABLED:
-			States.DEBUG_MODE = States.DEBUG.DISABLED
-
-		print("--------------------------------------------------------------------------------")
-		print_rich("[b]%s[/b] by [b]%s <3[/b] v%s d%s" % [
-				States.GAME_NAME, States.GAME_AUTHOR, States.GAME_VERSION, States.DEBUG_MODE])
-		print("--------------------------------------------------------------------------------")
-
-	else:
-		States.DEBUG_MODE = States.DEBUG.DISABLED
+@export var _pause_hud: Control
+@export var _user: Node3D
 
 ##################################################################################################
 
-func _initialize_game() -> void:
+func _initialize() -> void:
 	get_tree().set_auto_accept_quit(false)
 	get_tree().paused = false # for game reload
 
-	_debug_initialize()
+	Service.initialize()
 
-func _start_game() -> void:
+func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
 		print("\nHELLO WORLD")
 
 ##################################################################################################
 
-func _on_pause_requested(flag: bool) -> void:
+func pause(flag: bool) -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
 		print("PAUSED: %s" % flag)
 
+	_pause_hud.pause(flag)
+	_user.pause(flag)
 	get_tree().paused = flag
 
-func _on_quit_requested() -> void:
+func quit() -> void:
 	get_tree().quit()
 
 ##################################################################################################
 
 func _ready() -> void:
-	_initialize_game()
+	_initialize()
 
 ##################################################################################################

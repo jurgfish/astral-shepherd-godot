@@ -11,11 +11,9 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- state system
-  - debug
 - pause/menu system
   - sensitivity, invert controls
-- epigraph logic
+- load logo, epigraph logic
 
 issues:
 - character doesn't rotate, only head does (potential headlamp issue)

@@ -1,4 +1,4 @@
-# Copyright © 2021-2026, jurgfish. All rights reserved.
+# Copyright © 2026, jurgfish. All rights reserved.
 
 # holds all game states (core state machine)
 
@@ -6,10 +6,13 @@ extends Node
 
 ##################################################################################################
 
-enum DEBUG { DISABLED = 1, ENABLED = 2, USER = 4 }
+enum REQUEST { WORLD }
+enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
+
+enum DEBUG { DISABLED = 1, ENABLED = 2, USER = 4, SERVICE = 8 }
 
 var DEBUG_MODE: int = (
-	DEBUG.ENABLED #^ DEBUG.USER
+	DEBUG.ENABLED ^ DEBUG.SERVICE
 )
 
 ##################################################################################################
