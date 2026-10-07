@@ -8,6 +8,7 @@ var _curr_page: String = ""
 
 @export var _invert_cam_v: Button
 @export var _invert_cam_h: Button
+@export var _game_info: Label
 
 @export var _resume_button: Button
 @export var _sensitivity_slider: HSlider
@@ -17,6 +18,7 @@ var _curr_page: String = ""
 @export var _settings: MarginContainer
 
 @export var _user: Node3D
+@onready var _legal_scroll: VScrollBar = $settings/legal/legal_text.get_v_scroll_bar()
 
 ##################################################################################################
 
@@ -28,6 +30,13 @@ func _set_invert_cam_v(flag: bool) -> void:
 
 func _set_invert_cam_h(flag: bool) -> void:
 	_invert_cam_h.text = _format_bool(flag)
+
+func _update_info() -> void:
+	var year: String = str(States.VERSION_DATE.year).substr(2)
+	var date: String = "%s.%s.%s" % [States.VERSION_DATE.month, States.VERSION_DATE.day, year]
+
+	var history: String = "version %s: %s\n" % [States.GAME_VERSION, date]
+	_game_info.text = history + _game_info.text
 
 ##################################################################################################
 
@@ -50,6 +59,7 @@ func _switch_page(page_id: String) -> void:
 		_legal_button.grab_focus()
 	elif _curr_page == "legal":
 		_info_button.grab_focus()
+		_legal_scroll.value = 0.0
 
 	if _curr_page.is_empty():
 		push_warning("PAUSE_HUD PAGE INVALID: %s" % page_id)
@@ -72,6 +82,7 @@ func _ready() -> void:
 
 	_set_invert_cam_v(States.user.invert_cam_v)
 	_set_invert_cam_h(States.user.invert_cam_h)
+	_update_info()
 
 ##################################################################################################
 

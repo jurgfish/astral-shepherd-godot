@@ -19,8 +19,8 @@ var DEBUG_MODE: int = (
 
 const GAME_NAME: String = "astral shepherd"
 const GAME_AUTHOR: String = "jurgfish"
-const GAME_VERSION: String = "0.0.1"
-const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 5 }
+const GAME_VERSION: String = "0.0.2"
+const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 6 }
 
 ##################################################################################################
 
