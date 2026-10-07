@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0g74w3gbsi0u"
-path="res://.godot/imported/icon.svg-f853d3d5b5867eac2553a51ea9957f2a.ctex"
+uid="uid://c6ausgd8m0ilr"
+path="res://.godot/imported/jurgfish_txt_splash.png-34a2f89fd975637231f7f0233c8629de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://misc/ui/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-f853d3d5b5867eac2553a51ea9957f2a.ctex"]
+source_file="res://misc/app_images/jurgfish_txt_splash.png"
+dest_files=["res://.godot/imported/jurgfish_txt_splash.png-34a2f89fd975637231f7f0233c8629de.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
