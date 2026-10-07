@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://bjwlbwsddvie" path="res://misc/ui/ui_small.tres" id="4_vodl4"]
 [ext_resource type="Script" uid="uid://d2hidlwttum2o" path="res://scripts/legal_text.gd" id="5_v31rm"]
 
-[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v_button", "_invert_cam_h_button", "_vsync_button", "_fullscreen_button", "_game_info", "_resume_button", "_sensitivity_slider", "_volume_slider", "_legal_button", "_info_button", "_settings")]
+[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v_button", "_invert_cam_h_button", "_frame_rate_slider", "_frame_rate_value", "_vsync_button", "_fullscreen_button", "_game_info", "_resume_button", "_sensitivity_slider", "_volume_slider", "_legal_button", "_info_button", "_settings")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +17,8 @@ grow_vertical = 2
 script = ExtResource("1_dljab")
 _invert_cam_v_button = NodePath("settings/controls/toggles/controls/invert_cam_v")
 _invert_cam_h_button = NodePath("settings/controls/toggles/controls/invert_cam_h")
+_frame_rate_slider = NodePath("settings/options/sliders/controls/frame_rate_slider")
+_frame_rate_value = NodePath("settings/options/sliders/values/frame_rate_value")
 _vsync_button = NodePath("settings/options/toggles/controls/vsync")
 _fullscreen_button = NodePath("settings/options/toggles/controls/fullscreen")
 _game_info = NodePath("settings/info/game_info")
@@ -396,6 +398,7 @@ text = "return"
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]
 [connection signal="pressed" from="settings/controls/main" to="." method="_on_main_pressed"]
+[connection signal="value_changed" from="settings/options/sliders/controls/frame_rate_slider" to="." method="_on_frame_rate_slider_value_changed"]
 [connection signal="pressed" from="settings/options/toggles/controls/fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="pressed" from="settings/options/toggles/controls/vsync" to="." method="_on_vsync_pressed"]
 [connection signal="pressed" from="settings/options/bottom/info" to="." method="_on_info_pressed"]

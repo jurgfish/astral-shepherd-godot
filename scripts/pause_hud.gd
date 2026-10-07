@@ -5,11 +5,15 @@ extends Control
 signal request(id, status, data)
 
 const FULLSCREEN_STATES: Array = ["on", "off", "maximized", "borderless"]
+const FPS_INF: int = 205
 
 var _curr_page: String = ""
+var _setup_only: bool = true
 
 @export var _invert_cam_v_button: Button
 @export var _invert_cam_h_button: Button
+@export var _frame_rate_slider: HSlider
+@export var _frame_rate_value: Label
 @export var _vsync_button: Button
 @export var _fullscreen_button: Button
 @export var _game_info: Label
@@ -29,23 +33,14 @@ var _curr_page: String = ""
 func _format_bool(flag: bool) -> String:
 	return "on" if flag else "off"
 
-func _set_invert_cam_v(flag: bool) -> void:
-	_invert_cam_v_button.text = _format_bool(flag)
-
-func _set_invert_cam_h(flag: bool) -> void:
-	_invert_cam_h_button.text = _format_bool(flag)
-
-func _calculate_vsync() -> bool:
-	return !States.user.vsync
+func _format_fps(value: int) -> String:
+	return "∞" if value == 0 else ("%s" % value)
 
 func _calculate_fullscreen() -> int:
 	return wrapi(States.user.fullscreen + 1, 0, FULLSCREEN_STATES.size())
 
-func set_fullscreen(status: int) -> void:
-	_fullscreen_button.text = FULLSCREEN_STATES[status]
-
-func _set_vsync(enabled: bool) -> void:
-	_vsync_button.text = _format_bool(enabled)
+func _calculate_vsync() -> bool:
+	return !States.user.vsync
 
 func _update_info() -> void:
 	var year: String = str(States.VERSION_DATE.year).substr(2)
@@ -53,6 +48,24 @@ func _update_info() -> void:
 
 	var history: String = "version %s: %s\n" % [States.GAME_VERSION, date]
 	_game_info.text = history + _game_info.text
+
+##################################################################################################
+
+func _set_invert_cam_v(flag: bool) -> void:
+	_invert_cam_v_button.text = _format_bool(flag)
+
+func _set_invert_cam_h(flag: bool) -> void:
+	_invert_cam_h_button.text = _format_bool(flag)
+
+func _set_frame_rate(value: int) -> void:
+	_frame_rate_slider.value = FPS_INF if value == 0 else value
+	_frame_rate_value.text = _format_fps(value)
+
+func set_fullscreen(status: int) -> void:
+	_fullscreen_button.text = FULLSCREEN_STATES[status]
+
+func _set_vsync(enabled: bool) -> void:
+	_vsync_button.text = _format_bool(enabled)
 
 ##################################################################################################
 
@@ -102,6 +115,8 @@ func _ready() -> void:
 	_set_vsync(States.user.vsync)
 	_update_info()
 
+	_setup_only = false
+
 ##################################################################################################
 
 func _on_resume_pressed() -> void:
@@ -128,25 +143,39 @@ func _on_legal_pressed() -> void:
 ##################################################################################################
 
 func _on_invert_cam_v_pressed() -> void:
-	_set_invert_cam_v(!States.user.invert_cam_v)
-	_user.set_invert_cam_v(!States.user.invert_cam_v)
-	_invert_cam_v_button.grab_focus()
+	if !_setup_only:
+		_set_invert_cam_v(!States.user.invert_cam_v)
+		_user.set_invert_cam_v(!States.user.invert_cam_v)
+		_invert_cam_v_button.grab_focus()
 
 func _on_invert_cam_h_pressed() -> void:
-	_set_invert_cam_h(!States.user.invert_cam_h)
-	_user.set_invert_cam_h(!States.user.invert_cam_h)
-	_invert_cam_h_button.grab_focus()
+	if !_setup_only:
+		_set_invert_cam_h(!States.user.invert_cam_h)
+		_user.set_invert_cam_h(!States.user.invert_cam_h)
+		_invert_cam_h_button.grab_focus()
 
 func _on_fullscreen_pressed() -> void:
-	var fullscreen_status = _calculate_fullscreen()
-	set_fullscreen(fullscreen_status)
-	_user.set_fullscreen(fullscreen_status)
-	_fullscreen_button.grab_focus()
+	if !_setup_only:
+		var fullscreen_status = _calculate_fullscreen()
+		set_fullscreen(fullscreen_status)
+		_user.set_fullscreen(fullscreen_status)
+		_fullscreen_button.grab_focus()
 
 func _on_vsync_pressed() -> void:
-	var vsync_status = _calculate_vsync()
-	_set_vsync(vsync_status)
-	_user.set_vsync(vsync_status)
-	_vsync_button.grab_focus()
+	if !_setup_only:
+		var vsync_status = _calculate_vsync()
+		_set_vsync(vsync_status)
+		_user.set_vsync(vsync_status)
+		_vsync_button.grab_focus()
+
+##################################################################################################
+
+func _on_frame_rate_slider_value_changed(value: int) -> void:
+	if !_setup_only:
+		if value == FPS_INF:
+			value = 0
+		_set_frame_rate(value)
+		_user.set_frame_rate(value)
+		_frame_rate_slider.grab_focus()
 
 ##################################################################################################

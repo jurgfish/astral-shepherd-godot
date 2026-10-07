@@ -36,6 +36,13 @@ func set_invert_cam_h(flag: bool, set_state: bool = true) -> void:
 	_invert_look.x = -1.0 if flag else 1.0
 	_in_look.x *= -1.0 if prev_state != flag else 1.0
 
+func set_frame_rate(rate: int, states_flag: bool = true) -> void:
+	if states_flag:
+		States.user.frame_rate = rate
+		if States.DEBUG_MODE & States.DEBUG.USER:
+			print("FRAME RATE SET: %s" % rate)
+	Engine.max_fps = rate
+
 func _calculate_fullscreen() -> int:
 	return wrapi(States.user.fullscreen + 1, 0, 2)
 

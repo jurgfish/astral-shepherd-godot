@@ -56,8 +56,9 @@ ignored features:
 - localization
 - pause_hud animations
 
-ignore issues:
+ignored issues:
 - no joypad scroll support on pause_hud legal page
+- fullscreen keybind doesn't work when pause_hud open
 
 ##################################################################################################
 
