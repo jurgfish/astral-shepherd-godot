@@ -30,8 +30,8 @@ const INIT_INVERT_CAM_H: bool = false
 #const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)
 #const INIT_VOLUME: float = 1.0 # 0.0 to 1.0
 #const INIT_FRAME_RATE: int = 60 # 30 to 200, inf (increments 5)
-#const INIT_VSYNC: bool = true
-#const INIT_FULLSCREEN: int = 0
+const INIT_FULLSCREEN: int = 0
+const INIT_VSYNC: bool = true
 
 # USER SETTINGS
 var user: Dictionary = {
@@ -40,8 +40,8 @@ var user: Dictionary = {
 	#"sensitivity": INIT_SENSITIVITY,
 	#"volume": INIT_VOLUME,
 	#"frame_rate": INIT_FRAME_RATE,
-	#"vsync": INIT_VSYNC,
-	#"fullscreen": INIT_FULLSCREEN
+	"fullscreen": INIT_FULLSCREEN,
+	"vsync": INIT_VSYNC
 }
 
 ##################################################################################################

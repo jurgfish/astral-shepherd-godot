@@ -4,10 +4,14 @@ extends Control
 
 signal request(id, status, data)
 
+const FULLSCREEN_STATES: Array = ["on", "off", "maximized", "borderless"]
+
 var _curr_page: String = ""
 
-@export var _invert_cam_v: Button
-@export var _invert_cam_h: Button
+@export var _invert_cam_v_button: Button
+@export var _invert_cam_h_button: Button
+@export var _vsync_button: Button
+@export var _fullscreen_button: Button
 @export var _game_info: Label
 
 @export var _resume_button: Button
@@ -26,10 +30,22 @@ func _format_bool(flag: bool) -> String:
 	return "on" if flag else "off"
 
 func _set_invert_cam_v(flag: bool) -> void:
-	_invert_cam_v.text = _format_bool(flag)
+	_invert_cam_v_button.text = _format_bool(flag)
 
 func _set_invert_cam_h(flag: bool) -> void:
-	_invert_cam_h.text = _format_bool(flag)
+	_invert_cam_h_button.text = _format_bool(flag)
+
+func _calculate_vsync() -> bool:
+	return !States.user.vsync
+
+func _calculate_fullscreen() -> int:
+	return wrapi(States.user.fullscreen + 1, 0, FULLSCREEN_STATES.size())
+
+func set_fullscreen(status: int) -> void:
+	_fullscreen_button.text = FULLSCREEN_STATES[status]
+
+func _set_vsync(enabled: bool) -> void:
+	_vsync_button.text = _format_bool(enabled)
 
 func _update_info() -> void:
 	var year: String = str(States.VERSION_DATE.year).substr(2)
@@ -82,6 +98,8 @@ func _ready() -> void:
 
 	_set_invert_cam_v(States.user.invert_cam_v)
 	_set_invert_cam_h(States.user.invert_cam_h)
+	set_fullscreen(States.user.fullscreen)
+	_set_vsync(States.user.vsync)
 	_update_info()
 
 ##################################################################################################
@@ -112,11 +130,23 @@ func _on_legal_pressed() -> void:
 func _on_invert_cam_v_pressed() -> void:
 	_set_invert_cam_v(!States.user.invert_cam_v)
 	_user.set_invert_cam_v(!States.user.invert_cam_v)
-	_invert_cam_v.grab_focus()
+	_invert_cam_v_button.grab_focus()
 
 func _on_invert_cam_h_pressed() -> void:
 	_set_invert_cam_h(!States.user.invert_cam_h)
 	_user.set_invert_cam_h(!States.user.invert_cam_h)
-	_invert_cam_h.grab_focus()
+	_invert_cam_h_button.grab_focus()
+
+func _on_fullscreen_pressed() -> void:
+	var fullscreen_status = _calculate_fullscreen()
+	set_fullscreen(fullscreen_status)
+	_user.set_fullscreen(fullscreen_status)
+	_fullscreen_button.grab_focus()
+
+func _on_vsync_pressed() -> void:
+	var vsync_status = _calculate_vsync()
+	_set_vsync(vsync_status)
+	_user.set_vsync(vsync_status)
+	_vsync_button.grab_focus()
 
 ##################################################################################################

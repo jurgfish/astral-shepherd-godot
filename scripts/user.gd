@@ -12,6 +12,7 @@ var _in_move: Vector2 = Vector2.ZERO
 var _accepting_input: bool = true
 
 @export var _alka: CharacterBody3D
+@export var _pause_hud: Control
 
 ##################################################################################################
 
@@ -35,6 +36,33 @@ func set_invert_cam_h(flag: bool, set_state: bool = true) -> void:
 	_invert_look.x = -1.0 if flag else 1.0
 	_in_look.x *= -1.0 if prev_state != flag else 1.0
 
+func _calculate_fullscreen() -> int:
+	return wrapi(States.user.fullscreen + 1, 0, 2)
+
+func set_fullscreen(status: int, states_flag: bool = true) -> void:
+	if states_flag:
+		States.user.fullscreen = status
+		if States.DEBUG_MODE & States.DEBUG.USER:
+			print("FULLSCREEN SET: %s" % status)
+
+	if status == 0: # fullscreen on (exclusive)
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+	elif status == 1: # fullscreen off
+		get_window().mode = Window.MODE_WINDOWED
+	elif status == 2: # off: maximized
+		get_window().mode = Window.MODE_MAXIMIZED
+	elif status == 3: # on: non-exclusive
+		get_window().mode = Window.MODE_FULLSCREEN
+
+func set_vsync(enabled: bool, states_flag: bool = true) -> void:
+	if states_flag:
+		States.user.vsync = enabled
+		if States.DEBUG_MODE & States.DEBUG.USER:
+			print("VSYNC SET: %s" % enabled)
+	# TODO: replace with VSYNC_ADAPTIVE when POP_OS updates
+	var vsync_mode := DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED
+	DisplayServer.window_set_vsync_mode(vsync_mode)
+
 ##################################################################################################
 
 func pause(flag: bool) -> void:
@@ -52,17 +80,24 @@ func _ready() -> void:
 
 	set_invert_cam_v(States.user.invert_cam_v, false)
 	set_invert_cam_h(States.user.invert_cam_h, false)
+	set_fullscreen(States.user.fullscreen, false)
+	set_vsync(States.user.fullscreen, false)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.QUIT)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("PAUSE"):
 		emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.PAUSE, !get_tree().paused)
 		get_viewport().set_input_as_handled()
 
-	if _accepting_input:
+	elif event.is_action_pressed("FULLSCREEN_TOGGLE"):
+		var fullscreen_status = _calculate_fullscreen()
+		set_fullscreen(fullscreen_status)
+		_pause_hud.set_fullscreen(fullscreen_status)
+
+	elif _accepting_input:
 		if event is InputEventMouseMotion:
 			_in_look.x -= event.screen_relative.x * MOUSE_MULT
 			_in_look.y -= event.screen_relative.y * MOUSE_MULT
