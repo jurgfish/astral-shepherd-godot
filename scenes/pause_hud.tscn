@@ -4,8 +4,9 @@
 [ext_resource type="Theme" uid="uid://bu722xccgeloo" path="res://misc/ui/ui_large.tres" id="2_3q0sb"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="3_v22qg"]
 [ext_resource type="Theme" uid="uid://bjwlbwsddvie" path="res://misc/ui/ui_small.tres" id="4_vodl4"]
+[ext_resource type="Script" uid="uid://d2hidlwttum2o" path="res://scripts/legal_text.gd" id="5_v31rm"]
 
-[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v", "_invert_cam_h", "_resume_button", "_sensitivity_slider", "_volume_slider", "_settings")]
+[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v", "_invert_cam_h", "_resume_button", "_sensitivity_slider", "_volume_slider", "_legal_button", "_info_button", "_settings")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -19,6 +20,8 @@ _invert_cam_h = NodePath("settings/controls/toggles/controls/invert_cam_h")
 _resume_button = NodePath("settings/main/resume")
 _sensitivity_slider = NodePath("settings/controls/sliders/controls/sensitivity_slider")
 _volume_slider = NodePath("settings/options/sliders/controls/volume_slider")
+_legal_button = NodePath("settings/info/legal")
+_info_button = NodePath("settings/legal/info")
 _settings = NodePath("settings")
 
 [node name="curtain" type="ColorRect" parent="." unique_id=480528974]
@@ -140,7 +143,7 @@ custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="controls" type="VBoxContainer" parent="settings/controls/toggles" unique_id=1981078596]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
 [node name="invert_cam_v" type="Button" parent="settings/controls/toggles/controls" unique_id=1689723276]
@@ -260,7 +263,7 @@ custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="controls" type="VBoxContainer" parent="settings/options/toggles" unique_id=536100080]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
 [node name="fullscreen" type="Button" parent="settings/options/toggles/controls" unique_id=253517596]
@@ -359,6 +362,31 @@ size_flags_horizontal = 4
 theme = ExtResource("3_v22qg")
 text = "return"
 
+[node name="legal" type="VBoxContainer" parent="settings" unique_id=125837412]
+layout_mode = 2
+
+[node name="space" type="Control" parent="settings/legal" unique_id=1472811260]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="legal_text" type="RichTextLabel" parent="settings/legal" unique_id=1039863294]
+custom_minimum_size = Vector2(1100, 500)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vodl4")
+text = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start."
+script = ExtResource("5_v31rm")
+
+[node name="space_2" type="Control" parent="settings/legal" unique_id=433399042]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="info" type="Button" parent="settings/legal" unique_id=888064307]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
+text = "return"
+
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="settings/main/options" to="." method="_on_options_pressed"]
@@ -368,4 +396,6 @@ text = "return"
 [connection signal="pressed" from="settings/controls/main" to="." method="_on_main_pressed"]
 [connection signal="pressed" from="settings/options/bottom/info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="settings/options/bottom/main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="settings/info/legal" to="." method="_on_legal_pressed"]
 [connection signal="pressed" from="settings/info/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="settings/legal/info" to="." method="_on_info_pressed"]

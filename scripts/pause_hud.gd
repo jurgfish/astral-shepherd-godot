@@ -12,12 +12,9 @@ var _curr_page: String = ""
 @export var _resume_button: Button
 @export var _sensitivity_slider: HSlider
 @export var _volume_slider: HSlider
-#@export var _legal_button: Button
-#@export var _info_button: Button
-#@export var _background: ColorRect
-
+@export var _legal_button: Button
+@export var _info_button: Button
 @export var _settings: MarginContainer
-#@export var _anim: AnimationPlayer
 
 @export var _user: Node3D
 
@@ -34,7 +31,7 @@ func _set_invert_cam_h(flag: bool) -> void:
 
 ##################################################################################################
 
-func _switch_page(page_id: String, play_anim: bool = true) -> void:
+func _switch_page(page_id: String) -> void:
 	_curr_page = ""
 	set_physics_process(false)
 
@@ -49,18 +46,10 @@ func _switch_page(page_id: String, play_anim: bool = true) -> void:
 		_sensitivity_slider.grab_focus()
 	elif _curr_page == "options":
 		_volume_slider.grab_focus()
-	#elif _curr_page == "info":
-		#_legal_button.grab_focus()
-	#elif _curr_page == "legal":
-		#_updated_scroll = 0.0
-		#_curr_scroll = _updated_scroll
-		#_legal_scroll.value = _updated_scroll
-		#set_physics_process(true)
-		#_info_button.grab_focus()
-
-	if play_anim:
-		pass
-		#_show_page()
+	elif _curr_page == "info":
+		_legal_button.grab_focus()
+	elif _curr_page == "legal":
+		_info_button.grab_focus()
 
 	if _curr_page.is_empty():
 		push_warning("PAUSE_HUD PAGE INVALID: %s" % page_id)
@@ -69,8 +58,7 @@ func _switch_page(page_id: String, play_anim: bool = true) -> void:
 
 func pause(flag) -> void:
 	if flag:
-		_settings.show()
-		_switch_page("main", false)
+		_switch_page("main")
 		visible = true
 		_resume_button.grab_focus()
 	else:
@@ -104,6 +92,9 @@ func _on_main_pressed() -> void:
 
 func _on_info_pressed() -> void:
 	_switch_page("info")
+
+func _on_legal_pressed() -> void:
+	_switch_page("legal")
 
 ##################################################################################################
 
