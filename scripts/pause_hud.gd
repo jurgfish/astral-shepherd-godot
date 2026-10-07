@@ -4,9 +4,20 @@ extends Control
 
 signal request(id, status, data)
 
-@export var _resume_button: Button
+var _curr_page: String = ""
+
 @export var _invert_cam_v: Button
 @export var _invert_cam_h: Button
+
+@export var _resume_button: Button
+@export var _sensitivity_slider: HSlider
+@export var _volume_slider: HSlider
+#@export var _legal_button: Button
+#@export var _info_button: Button
+#@export var _background: ColorRect
+
+@export var _settings: MarginContainer
+#@export var _anim: AnimationPlayer
 
 @export var _user: Node3D
 
@@ -23,8 +34,43 @@ func _set_invert_cam_h(flag: bool) -> void:
 
 ##################################################################################################
 
+func _switch_page(page_id: String, play_anim: bool = true) -> void:
+	_curr_page = ""
+	set_physics_process(false)
+
+	for page in _settings.get_children():
+		page.visible = (page.name == page_id)
+		if page.name == page_id:
+			_curr_page = page_id
+
+	if _curr_page == "main":
+		_resume_button.grab_focus()
+	elif _curr_page == "controls":
+		_sensitivity_slider.grab_focus()
+	elif _curr_page == "options":
+		_volume_slider.grab_focus()
+	#elif _curr_page == "info":
+		#_legal_button.grab_focus()
+	#elif _curr_page == "legal":
+		#_updated_scroll = 0.0
+		#_curr_scroll = _updated_scroll
+		#_legal_scroll.value = _updated_scroll
+		#set_physics_process(true)
+		#_info_button.grab_focus()
+
+	if play_anim:
+		pass
+		#_show_page()
+
+	if _curr_page.is_empty():
+		push_warning("PAUSE_HUD PAGE INVALID: %s" % page_id)
+
+##################################################################################################
+
 func pause(flag) -> void:
 	if flag:
+		_settings.show()
+		_switch_page("main", false)
 		visible = true
 		_resume_button.grab_focus()
 	else:
@@ -44,8 +90,17 @@ func _ready() -> void:
 func _on_resume_pressed() -> void:
 	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.PAUSE, false)
 
+func _on_controls_pressed() -> void:
+	_switch_page("controls")
+
+func _on_options_pressed():
+	_switch_page("options")
+
 func _on_abandon_pressed() -> void:
 	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.QUIT)
+
+func _on_main_pressed() -> void:
+	_switch_page("main")
 
 ##################################################################################################
 

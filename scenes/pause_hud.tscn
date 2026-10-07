@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://bu722xccgeloo" path="res://misc/ui/ui_large.tres" id="2_3q0sb"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="3_v22qg"]
 
-[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_resume_button", "_invert_cam_v", "_invert_cam_h")]
+[node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v", "_invert_cam_h", "_resume_button", "_sensitivity_slider", "_volume_slider", "_settings")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,9 +13,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dljab")
-_resume_button = NodePath("settings/main/resume")
 _invert_cam_v = NodePath("settings/controls/toggles/controls/invert_cam_v")
 _invert_cam_h = NodePath("settings/controls/toggles/controls/invert_cam_h")
+_resume_button = NodePath("settings/main/resume")
+_sensitivity_slider = NodePath("settings/controls/sliders/controls/sensitivity_slider")
+_volume_slider = NodePath("settings/options/sliders/controls/volume_slider")
+_settings = NodePath("settings")
 
 [node name="curtain" type="ColorRect" parent="." unique_id=480528974]
 layout_mode = 1
@@ -33,10 +36,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -399.0
+offset_top = -209.5
+offset_right = 399.0
+offset_bottom = 209.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -156,7 +159,7 @@ text = "off"
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="return" type="Button" parent="settings/controls" unique_id=1993216787]
+[node name="main" type="Button" parent="settings/controls" unique_id=1993216787]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_v22qg")
@@ -291,13 +294,17 @@ text = "info"
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="return" type="Button" parent="settings/options/bottom" unique_id=1715327184]
+[node name="main" type="Button" parent="settings/options/bottom" unique_id=1715327184]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_v22qg")
 text = "return"
 
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="settings/main/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="settings/main/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]
+[connection signal="pressed" from="settings/controls/main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="settings/options/bottom/main" to="." method="_on_main_pressed"]
