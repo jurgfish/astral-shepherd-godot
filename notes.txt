@@ -16,6 +16,7 @@ first:
 - load logo, epigraph logic
 
 issues:
+- high sensitivities are broken?
 - character doesn't rotate, only head does (potential headlamp issue)
 
 next:

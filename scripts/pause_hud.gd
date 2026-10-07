@@ -6,12 +6,15 @@ signal request(id, status, data)
 
 const FULLSCREEN_STATES: Array = ["on", "off", "maximized", "borderless"]
 const FPS_INF: int = 205
+const FORMAT_MULT: float = 100.0
 
 var _curr_page: String = ""
 var _setup_only: bool = true
 
+@export var _sensitivity_value: Label
 @export var _invert_cam_v_button: Button
 @export var _invert_cam_h_button: Button
+@export var _volume_value: Label
 @export var _frame_rate_slider: HSlider
 @export var _frame_rate_value: Label
 @export var _vsync_button: Button
@@ -29,6 +32,9 @@ var _setup_only: bool = true
 @onready var _legal_scroll: VScrollBar = $settings/legal/legal_text.get_v_scroll_bar()
 
 ##################################################################################################
+
+func _format_range(value: float) -> String:
+	return "%s%%" % int(value)
 
 func _format_bool(flag: bool) -> String:
 	return "on" if flag else "off"
@@ -51,11 +57,21 @@ func _update_info() -> void:
 
 ##################################################################################################
 
+func _set_sensitivity(value: float) -> void:
+	_sensitivity_slider.value = value
+	_sensitivity_value.text = _format_range(value)
+
 func _set_invert_cam_v(flag: bool) -> void:
 	_invert_cam_v_button.text = _format_bool(flag)
 
 func _set_invert_cam_h(flag: bool) -> void:
 	_invert_cam_h_button.text = _format_bool(flag)
+
+##################################################################################################
+
+func _set_volume(value: float) -> void:
+	_volume_slider.value = value
+	_volume_value.text = _format_range(value)
 
 func _set_frame_rate(value: int) -> void:
 	_frame_rate_slider.value = FPS_INF if value == 0 else value
@@ -109,8 +125,11 @@ func _ready() -> void:
 	pause(false)
 	connect("request", Callable(Service, "_on_service_request"))
 
+	_set_sensitivity(States.user.sensitivity * FORMAT_MULT)
 	_set_invert_cam_v(States.user.invert_cam_v)
 	_set_invert_cam_h(States.user.invert_cam_h)
+	_set_volume(States.user.volume * FORMAT_MULT)
+	_set_frame_rate(States.user.frame_rate)
 	set_fullscreen(States.user.fullscreen)
 	_set_vsync(States.user.vsync)
 	_update_info()
@@ -169,6 +188,18 @@ func _on_vsync_pressed() -> void:
 		_vsync_button.grab_focus()
 
 ##################################################################################################
+
+func _on_sensitivity_slider_value_changed(value: float) -> void:
+	if !_setup_only:
+		_set_sensitivity(value)
+		_user.set_sensitivity(value / FORMAT_MULT)
+		_sensitivity_slider.grab_focus()
+
+func _on_volume_slider_value_changed(value: float) -> void:
+	if !_setup_only:
+		_set_volume(value)
+		_user.set_volume(value / FORMAT_MULT)
+		_volume_slider.grab_focus()
 
 func _on_frame_rate_slider_value_changed(value: int) -> void:
 	if !_setup_only:
