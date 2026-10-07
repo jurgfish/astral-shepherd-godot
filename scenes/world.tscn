@@ -3,14 +3,18 @@
 [ext_resource type="Script" uid="uid://bgty8iyva1fe8" path="res://scripts/world.gd" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://dyd77v6ecdovk" path="res://scenes/pause_hud.tscn" id="2_71j4m"]
 [ext_resource type="Script" uid="uid://b0gdqjb557llp" path="res://scripts/user.gd" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://uvj24qf6rh4n" path="res://scenes/load_hud.tscn" id="2_qfnet"]
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
 
-[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_pause_hud", "_user")]
+[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user")]
 physics_interpolation_mode = 1
 script = ExtResource("1_nnsk1")
+_load_hud = NodePath("load_hud")
 _pause_hud = NodePath("pause_hud")
 _user = NodePath("user")
+
+[node name="load_hud" parent="." unique_id=652777255 instance=ExtResource("2_qfnet")]
 
 [node name="pause_hud" parent="." unique_id=1635939161 node_paths=PackedStringArray("_user") instance=ExtResource("2_71j4m")]
 visible = false

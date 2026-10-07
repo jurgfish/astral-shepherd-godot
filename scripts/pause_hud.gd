@@ -116,13 +116,15 @@ func pause(flag) -> void:
 		_switch_page("main")
 		visible = true
 		_resume_button.grab_focus()
+		set_process_input(true)
 	else:
+		set_process_input(false)
 		visible = false
 
 ##################################################################################################
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("PAUSE") and visible:
+	if event.is_action_pressed("PAUSE"):
 		emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.PAUSE, !get_tree().paused)
 		get_viewport().set_input_as_handled()
 

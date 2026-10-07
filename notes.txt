@@ -11,11 +11,10 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- pause/menu system
-  - sensitivity, volume, graphics settings
-- load logo, epigraph logic
+- epigraph logic
 
 issues:
+- fix broken head bob
 - high sensitivities are broken?
 - character doesn't rotate, only head does (potential headlamp issue)
 
@@ -23,6 +22,8 @@ next:
 - sketch models
 - look-at interactions
 - test gameplay loop
+- test high-fidelity lighting
+- high-res models, anims
 
 important:
 - monster models are within astronaut suits
@@ -50,7 +51,7 @@ submission:
 
 completed:
 - test basic first person controls OK
-- pause/menu system OK
+- pause/menu/settings system OK
 
 ignored features:
 - save data

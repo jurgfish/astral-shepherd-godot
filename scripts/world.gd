@@ -2,6 +2,7 @@
 
 extends Node3D
 
+@export var _load_hud: Control
 @export var _pause_hud: Control
 @export var _user: Node3D
 
@@ -12,6 +13,7 @@ func _initialize() -> void:
 	get_tree().paused = false # for game reload
 
 	Service.initialize()
+	await _load_hud.reveal_logo()
 
 func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
@@ -33,6 +35,7 @@ func quit() -> void:
 ##################################################################################################
 
 func _ready() -> void:
-	_initialize()
+	await _initialize()
+	_start()
 
 ##################################################################################################

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d2hidlwttum2o" path="res://scripts/legal_text.gd" id="5_v31rm"]
 
 [node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_sensitivity_value", "_invert_cam_v_button", "_invert_cam_h_button", "_volume_value", "_frame_rate_slider", "_frame_rate_value", "_vsync_button", "_fullscreen_button", "_game_info", "_resume_button", "_sensitivity_slider", "_volume_slider", "_legal_button", "_info_button", "_settings")]
-process_mode = 3
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
