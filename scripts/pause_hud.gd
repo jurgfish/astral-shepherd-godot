@@ -102,6 +102,9 @@ func _on_abandon_pressed() -> void:
 func _on_main_pressed() -> void:
 	_switch_page("main")
 
+func _on_info_pressed() -> void:
+	_switch_page("info")
+
 ##################################################################################################
 
 func _on_invert_cam_v_pressed() -> void:

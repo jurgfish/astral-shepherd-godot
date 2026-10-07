@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
 [ext_resource type="Theme" uid="uid://bu722xccgeloo" path="res://misc/ui/ui_large.tres" id="2_3q0sb"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="3_v22qg"]
+[ext_resource type="Theme" uid="uid://bjwlbwsddvie" path="res://misc/ui/ui_small.tres" id="4_vodl4"]
 
 [node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_invert_cam_v", "_invert_cam_h", "_resume_button", "_sensitivity_slider", "_volume_slider", "_settings")]
 process_mode = 3
@@ -72,6 +73,7 @@ theme = ExtResource("2_3q0sb")
 text = "abandon"
 
 [node name="controls" type="VBoxContainer" parent="settings" unique_id=366746890]
+visible = false
 layout_mode = 2
 
 [node name="sliders" type="HBoxContainer" parent="settings/controls" unique_id=694125867]
@@ -300,6 +302,63 @@ size_flags_horizontal = 4
 theme = ExtResource("3_v22qg")
 text = "return"
 
+[node name="info" type="VBoxContainer" parent="settings" unique_id=1414356273]
+visible = false
+layout_mode = 2
+
+[node name="title" type="Label" parent="settings/info" unique_id=1424590620]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_v22qg")
+text = "astral shepherd"
+horizontal_alignment = 1
+
+[node name="hbox" type="HBoxContainer" parent="settings/info" unique_id=84345142]
+layout_mode = 2
+alignment = 1
+
+[node name="by" type="Label" parent="settings/info/hbox" unique_id=653363223]
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vodl4")
+text = "by"
+
+[node name="jurgfish" type="LinkButton" parent="settings/info/hbox" unique_id=877482144]
+layout_mode = 2
+theme = ExtResource("4_vodl4")
+text = "jurgfish"
+uri = "https://jurg.fish"
+
+[node name="space" type="Control" parent="settings/info" unique_id=1276382659]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="game_info" type="Label" parent="settings/info" unique_id=1359524502]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_vodl4")
+theme_override_colors/font_color = Color(0.4392157, 0.36078432, 0.28627452, 1)
+text = "made using Godot Engine
+and Blender"
+horizontal_alignment = 1
+
+[node name="space_2" type="Control" parent="settings/info" unique_id=319715851]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="legal" type="Button" parent="settings/info" unique_id=958100736]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
+text = "legal"
+
+[node name="options" type="Button" parent="settings/info" unique_id=2047541350]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_v22qg")
+text = "return"
+
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="settings/main/options" to="." method="_on_options_pressed"]
@@ -307,4 +366,6 @@ text = "return"
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_h" to="." method="_on_invert_cam_h_pressed"]
 [connection signal="pressed" from="settings/controls/main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="settings/options/bottom/info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="settings/options/bottom/main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="settings/info/options" to="." method="_on_options_pressed"]
