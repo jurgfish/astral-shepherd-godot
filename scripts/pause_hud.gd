@@ -121,6 +121,11 @@ func pause(flag) -> void:
 
 ##################################################################################################
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("PAUSE") and visible:
+		emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.PAUSE, !get_tree().paused)
+		get_viewport().set_input_as_handled()
+
 func _ready() -> void:
 	pause(false)
 	connect("request", Callable(Service, "_on_service_request"))

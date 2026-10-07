@@ -60,24 +60,34 @@ layout_mode = 2
 [node name="resume" type="Button" parent="settings/main" unique_id=397101921]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../abandon")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("2_3q0sb")
 text = "resume"
 
 [node name="controls" type="Button" parent="settings/main" unique_id=1940942495]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("2_3q0sb")
 text = "controls"
 
 [node name="options" type="Button" parent="settings/main" unique_id=893434569]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("2_3q0sb")
 text = "options"
 
 [node name="abandon" type="Button" parent="settings/main" unique_id=698160410]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../resume")
 theme = ExtResource("2_3q0sb")
 text = "abandon"
 
@@ -116,6 +126,7 @@ layout_mode = 2
 [node name="sensitivity_slider" type="HSlider" parent="settings/controls/sliders/controls" unique_id=735280932]
 layout_mode = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../../../main")
 theme = ExtResource("3_v22qg")
 max_value = 200.0
 value = 100.0
@@ -156,6 +167,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_v22qg")
 text = "off"
 
@@ -163,6 +176,8 @@ text = "off"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_v22qg")
 text = "off"
 
@@ -173,6 +188,9 @@ layout_mode = 2
 [node name="main" type="Button" parent="settings/controls" unique_id=1993216787]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../sliders/controls/sensitivity_slider")
 theme = ExtResource("3_v22qg")
 text = "return"
 
@@ -227,6 +245,7 @@ layout_mode = 2
 [node name="volume_slider" type="HSlider" parent="settings/options/sliders/controls" unique_id=376446363]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../../bottom/main")
 theme = ExtResource("3_v22qg")
 value = 100.0
 rounded = true
@@ -277,6 +296,8 @@ custom_minimum_size = Vector2(0, 88)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_v22qg")
 text = "off"
 
@@ -284,6 +305,8 @@ text = "off"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_v22qg")
 text = "off"
 
@@ -298,6 +321,9 @@ alignment = 1
 [node name="info" type="Button" parent="settings/options/bottom" unique_id=506514579]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../main")
+focus_neighbor_right = NodePath("../main")
+focus_neighbor_bottom = NodePath("../../sliders/controls/volume_slider")
 theme = ExtResource("3_v22qg")
 text = "info"
 
@@ -308,6 +334,9 @@ layout_mode = 2
 [node name="main" type="Button" parent="settings/options/bottom" unique_id=1715327184]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../info")
+focus_neighbor_right = NodePath("../info")
+focus_neighbor_bottom = NodePath("../../sliders/controls/volume_slider")
 theme = ExtResource("3_v22qg")
 text = "return"
 
@@ -359,12 +388,18 @@ layout_mode = 2
 [node name="legal" type="Button" parent="settings/info" unique_id=958100736]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../options")
+focus_neighbor_right = NodePath(".")
 theme = ExtResource("3_v22qg")
 text = "legal"
 
 [node name="options" type="Button" parent="settings/info" unique_id=2047541350]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../legal")
 theme = ExtResource("3_v22qg")
 text = "return"
 
