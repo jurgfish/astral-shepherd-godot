@@ -111,6 +111,8 @@ https://www.youtube.com/watch?v=A3HLeyaBCq4 (legiongames fps camera basics)
 https://www.youtube.com/watch?v=zfIuaRzNti4 (dylan bennett fps camera processing) (was incorrect)
 https://github.com/kk49/godot-demo-projects-fix001/blob/master/3d/physics_interpolation/player.gd
 (^actually correct camera processing)
+island of mind (current main project; game sequence/debug systems, menu systems) (rewritten from
+scratch)
 
 ##################################################################################################
 
