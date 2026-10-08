@@ -37,9 +37,10 @@ environment = SubResource("Environment_xw2wu")
 script = ExtResource("8_4mrxx")
 
 [node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
+metadata/_edit_lock_ = true
 
 [node name="allias" parent="." unique_id=351245521 instance=ExtResource("7_i7141")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.0198073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.727833)
 
 [node name="allias_2" parent="." unique_id=1487942560 instance=ExtResource("7_i7141")]
-transform = Transform3D(0.86204845, 0, 0.50682586, 0, 1, 0, -0.50682586, 0, 0.86204845, -0.81756806, 0, -3.2243323)
+transform = Transform3D(0.86204845, 0, 0.50682586, 0, 1, 0, -0.50682586, 0, 0.86204845, -0.81756806, 0, -8.932358)

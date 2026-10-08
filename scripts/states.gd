@@ -16,15 +16,15 @@ enum DEBUG {
 
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.USER
-	^ DEBUG.SKIP_LOAD_SPLASH #^ DEBUG.LIGHTS_ON
+	#^ DEBUG.SKIP_LOAD_SPLASH #^ DEBUG.LIGHTS_ON
 )
 
 ##################################################################################################
 
 const GAME_NAME: String = "astral shepherd"
 const GAME_AUTHOR: String = "jurgfish"
-const GAME_VERSION: String = "0.0.2"
-const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 6 }
+const GAME_VERSION: String = "0.0.3"
+const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 8 }
 
 ##################################################################################################
 
