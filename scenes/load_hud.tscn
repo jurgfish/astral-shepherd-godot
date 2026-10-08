@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("logo_hold/logo_align/jurgfish_logo:modulate")
+tracks/0/path = NodePath("display/logo_hold/logo_align/jurgfish_logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("logo_hold/logo_align/jurgfish_text:modulate")
+tracks/1/path = NodePath("display/logo_hold/logo_align/jurgfish_text:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -59,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("logo_hold:visible")
+tracks/4/path = NodePath("display/logo_hold:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -71,7 +71,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("epigraph_hold:visible")
+tracks/5/path = NodePath("display/epigraph_hold:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -83,7 +83,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("epigraph_hold/poem/line_0:modulate")
+tracks/6/path = NodePath("display/epigraph_hold/poem/line_0:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -95,7 +95,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("epigraph_hold/poem/line_1:modulate")
+tracks/7/path = NodePath("display/epigraph_hold/poem/line_1:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -107,7 +107,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("epigraph_hold/poem/line_2:modulate")
+tracks/8/path = NodePath("display/epigraph_hold/poem/line_2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -119,7 +119,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("epigraph_hold/poem/line_3:modulate")
+tracks/9/path = NodePath("display/epigraph_hold/poem/line_3:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -131,7 +131,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("epigraph_hold/poem/author:modulate")
+tracks/10/path = NodePath("display/epigraph_hold/poem/author:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -143,7 +143,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("epigraph_hold/continue/continue:modulate")
+tracks/11/path = NodePath("display/epigraph_hold/continue/continue:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -196,7 +196,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("epigraph_hold:visible")
+tracks/2/path = NodePath("display/epigraph_hold:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -208,7 +208,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("epigraph_hold/poem/line_0:modulate")
+tracks/3/path = NodePath("display/epigraph_hold/poem/line_0:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -220,7 +220,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("epigraph_hold/poem/line_1:modulate")
+tracks/4/path = NodePath("display/epigraph_hold/poem/line_1:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -232,7 +232,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("epigraph_hold/poem/line_2:modulate")
+tracks/5/path = NodePath("display/epigraph_hold/poem/line_2:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -244,7 +244,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("epigraph_hold/poem/line_3:modulate")
+tracks/6/path = NodePath("display/epigraph_hold/poem/line_3:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -256,7 +256,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("epigraph_hold/poem/author:modulate")
+tracks/7/path = NodePath("display/epigraph_hold/poem/author:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -268,7 +268,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("epigraph_hold/continue/continue:modulate")
+tracks/8/path = NodePath("display/epigraph_hold/continue/continue:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -280,7 +280,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("logo_hold:visible")
+tracks/9/path = NodePath("display/logo_hold:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -333,7 +333,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("epigraph_hold:visible")
+tracks/2/path = NodePath("display/epigraph_hold:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -345,7 +345,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("epigraph_hold/poem/line_0:modulate")
+tracks/3/path = NodePath("display/epigraph_hold/poem/line_0:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -357,7 +357,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("epigraph_hold/poem/line_1:modulate")
+tracks/4/path = NodePath("display/epigraph_hold/poem/line_1:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -369,7 +369,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("epigraph_hold/poem/line_2:modulate")
+tracks/5/path = NodePath("display/epigraph_hold/poem/line_2:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -381,7 +381,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("epigraph_hold/poem/line_3:modulate")
+tracks/6/path = NodePath("display/epigraph_hold/poem/line_3:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -393,7 +393,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("epigraph_hold/poem/author:modulate")
+tracks/7/path = NodePath("display/epigraph_hold/poem/author:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -405,7 +405,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("epigraph_hold/continue/continue:modulate")
+tracks/8/path = NodePath("display/epigraph_hold/continue/continue:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -434,7 +434,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("logo_hold:visible")
+tracks/10/path = NodePath("display/logo_hold:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -475,7 +475,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("epigraph_hold:visible")
+tracks/2/path = NodePath("display/epigraph_hold:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -487,7 +487,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("epigraph_hold/poem/line_0:modulate")
+tracks/3/path = NodePath("display/epigraph_hold/poem/line_0:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -499,7 +499,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("epigraph_hold/poem/line_1:modulate")
+tracks/4/path = NodePath("display/epigraph_hold/poem/line_1:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -511,7 +511,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("epigraph_hold/poem/line_2:modulate")
+tracks/5/path = NodePath("display/epigraph_hold/poem/line_2:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -523,7 +523,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("epigraph_hold/poem/line_3:modulate")
+tracks/6/path = NodePath("display/epigraph_hold/poem/line_3:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -535,7 +535,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("epigraph_hold/poem/author:modulate")
+tracks/7/path = NodePath("display/epigraph_hold/poem/author:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -547,7 +547,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("epigraph_hold/continue/continue:modulate")
+tracks/8/path = NodePath("display/epigraph_hold/continue/continue:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -559,7 +559,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("logo_hold:visible")
+tracks/9/path = NodePath("display/logo_hold:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -588,7 +588,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("logo_hold/logo_align/jurgfish_logo:modulate")
+tracks/0/path = NodePath("display/logo_hold/logo_align/jurgfish_logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -600,7 +600,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("logo_hold/logo_align/jurgfish_text:modulate")
+tracks/1/path = NodePath("display/logo_hold/logo_align/jurgfish_text:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -636,7 +636,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("logo_hold:visible")
+tracks/4/path = NodePath("display/logo_hold:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -648,7 +648,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("epigraph_hold:visible")
+tracks/5/path = NodePath("display/epigraph_hold:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -658,16 +658,82 @@ tracks/5/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_glimb"]
+resource_name = "quit"
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtain:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("display/logo_hold:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("display/epigraph_hold:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("curtain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bctsy"]
 _data = {
 &"RESET": SubResource("Animation_lku5e"),
 &"epigraph_hide": SubResource("Animation_7wju7"),
 &"epigraph_reveal": SubResource("Animation_bctsy"),
 &"epigraph_tip_hide": SubResource("Animation_tr62e"),
-&"logo_reveal": SubResource("Animation_r8vf1")
+&"logo_reveal": SubResource("Animation_r8vf1"),
+&"quit": SubResource("Animation_glimb")
 }
 
-[node name="load_hud" type="Control" unique_id=652777255 node_paths=PackedStringArray("_anim")]
+[node name="load_hud" type="Control" unique_id=652777255 node_paths=PackedStringArray("_display", "_anim")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -675,6 +741,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yf4pc")
+_display = NodePath("display")
 _anim = NodePath("animation_player")
 
 [node name="curtain" type="ColorRect" parent="." unique_id=692385701]
@@ -686,7 +753,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="logo_hold" type="CenterContainer" parent="." unique_id=847340676]
+[node name="display" type="Control" parent="." unique_id=1765395394]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="logo_hold" type="CenterContainer" parent="display" unique_id=847340676]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -694,32 +766,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 755.0
+offset_top = 328.5
+offset_right = 1125.0
+offset_bottom = 711.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="logo_align" type="VBoxContainer" parent="logo_hold" unique_id=655050125]
+[node name="logo_align" type="VBoxContainer" parent="display/logo_hold" unique_id=655050125]
 layout_mode = 2
 
-[node name="jurgfish_logo" type="TextureRect" parent="logo_hold/logo_align" unique_id=254349865]
+[node name="jurgfish_logo" type="TextureRect" parent="display/logo_hold/logo_align" unique_id=254349865]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("1_0fc4w")
 stretch_mode = 5
 
-[node name="space" type="Control" parent="logo_hold/logo_align" unique_id=1984816598]
+[node name="space" type="Control" parent="display/logo_hold/logo_align" unique_id=1984816598]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 
-[node name="jurgfish_text" type="TextureRect" parent="logo_hold/logo_align" unique_id=198626400]
+[node name="jurgfish_text" type="TextureRect" parent="display/logo_hold/logo_align" unique_id=198626400]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("2_yf4pc")
 
-[node name="epigraph_hold" type="CenterContainer" parent="." unique_id=562960610]
+[node name="epigraph_hold" type="CenterContainer" parent="display" unique_id=562960610]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -727,49 +799,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -155.5
-offset_top = -20.0
-offset_right = 155.5
-offset_bottom = 20.0
+offset_left = 497.0
+offset_top = 68.0
+offset_right = 1383.0
+offset_bottom = 972.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="poem" type="VBoxContainer" parent="epigraph_hold" unique_id=1371422683]
+[node name="poem" type="VBoxContainer" parent="display/epigraph_hold" unique_id=1371422683]
 layout_mode = 2
 
-[node name="line_0" type="Label" parent="epigraph_hold/poem" unique_id=575043174]
+[node name="line_0" type="Label" parent="display/epigraph_hold/poem" unique_id=575043174]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
 text = "How should we like it were stars to burn"
 
-[node name="line_1" type="Label" parent="epigraph_hold/poem" unique_id=1965757278]
+[node name="line_1" type="Label" parent="display/epigraph_hold/poem" unique_id=1965757278]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
 text = "With a passion for us we could not return?"
 
-[node name="line_2" type="Label" parent="epigraph_hold/poem" unique_id=1900818070]
+[node name="line_2" type="Label" parent="display/epigraph_hold/poem" unique_id=1900818070]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
 text = "If equal affection cannot be,"
 
-[node name="line_3" type="Label" parent="epigraph_hold/poem" unique_id=1773520935]
+[node name="line_3" type="Label" parent="display/epigraph_hold/poem" unique_id=1773520935]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
 text = "Let the more loving one be me."
 
-[node name="space" type="Control" parent="epigraph_hold/poem" unique_id=972746456]
+[node name="space" type="Control" parent="display/epigraph_hold/poem" unique_id=972746456]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="author" type="Label" parent="epigraph_hold/poem" unique_id=18730412]
+[node name="author" type="Label" parent="display/epigraph_hold/poem" unique_id=18730412]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_r8vf1")
@@ -777,14 +849,14 @@ theme_override_colors/font_color = Color(0.4392157, 0.36078432, 0.28627452, 1)
 text = "- W. H. Auden, “The More Loving One”"
 horizontal_alignment = 2
 
-[node name="continue" type="VBoxContainer" parent="epigraph_hold" unique_id=824371106]
+[node name="continue" type="VBoxContainer" parent="display/epigraph_hold" unique_id=824371106]
 layout_mode = 2
 
-[node name="space" type="Control" parent="epigraph_hold/continue" unique_id=1259990123]
+[node name="space" type="Control" parent="display/epigraph_hold/continue" unique_id=1259990123]
 custom_minimum_size = Vector2(0, 850)
 layout_mode = 2
 
-[node name="continue" type="Label" parent="epigraph_hold/continue" unique_id=1775463824]
+[node name="continue" type="Label" parent="display/epigraph_hold/continue" unique_id=1775463824]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_r8vf1")

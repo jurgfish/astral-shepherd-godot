@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- epigraph logic
 
 issues:
 - fix broken head bob
@@ -51,7 +50,7 @@ submission:
 
 completed:
 - test basic first person controls OK
-- pause/menu/settings system OK
+- load/pause/menu/settings system OK
 
 ignored features:
 - save data

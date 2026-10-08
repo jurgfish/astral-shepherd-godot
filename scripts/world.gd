@@ -13,7 +13,8 @@ func _initialize() -> void:
 	get_tree().paused = false # for game reload
 
 	Service.initialize()
-	await _load_hud.reveal_logo()
+	if not States.DEBUG_MODE & States.DEBUG.SKIP_LOAD_SPLASH:
+		await _load_hud.play_load()
 
 func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
@@ -26,13 +27,21 @@ func pause(flag: bool) -> void:
 		print("PAUSED: %s" % flag)
 
 	_pause_hud.pause(flag)
+	_load_hud.pause(flag)
 	_user.pause(flag)
 	get_tree().paused = flag
 
 func quit() -> void:
+	if States.DEBUG_MODE & States.DEBUG.ENABLED:
+		print("GOODBYE WORLD\n")
+
+	_pause_hud.quit()
+	_load_hud.quit()
 	get_tree().quit()
 
 ##################################################################################################
+
+# GAME STARUP SEQUENCE
 
 func _ready() -> void:
 	await _initialize()

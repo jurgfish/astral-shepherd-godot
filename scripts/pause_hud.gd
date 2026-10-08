@@ -121,6 +121,9 @@ func pause(flag) -> void:
 		set_process_input(false)
 		visible = false
 
+func quit() -> void:
+	visible = false
+
 ##################################################################################################
 
 func _input(event: InputEvent) -> void:
