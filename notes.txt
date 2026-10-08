@@ -11,23 +11,22 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- environment lighting
-  - and debug environment lighting
-- alka head bob too strong
+- city floor
 - look-at interactions
-
-issues:
-
-next:
 - allias
   - allias spawning
 	- 11 scattered evenly on map
   - allias navigation
 	- to random points
 	- to alka
+
+issues:
+
+next:
 - scoring system
 - test gameplay loop
 - test high-fidelity lighting
+  - set env tonemap
 - high-res models, anims
 
 important:

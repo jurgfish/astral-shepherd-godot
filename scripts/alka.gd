@@ -10,13 +10,13 @@ var _look_dir: Vector2 = Vector2.ZERO
 # head bob
 const HEAD_HEIGHT: float = 1.8
 const BOB_FRQ: float = 12.0
-const BOB_AMP_MAX: float = 0.05
+const BOB_AMP_MAX: float = 0.012
 var _bob_builder: float = 0.0
 var _bob_amp: float = 0.0
 var _bob_weight: float = 0.0
 
 # move
-const MAX_SPEED: float = 5.0
+const MAX_SPEED: float = 2.0
 const LERP_V: float = 18.0
 var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0

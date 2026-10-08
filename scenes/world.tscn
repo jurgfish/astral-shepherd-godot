@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://cbmg7ps1h673y" path="res://scenes/allias.tscn" id="7_i7141"]
+[ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/world_environment.gd" id="8_4mrxx"]
+
+[sub_resource type="Environment" id="Environment_xw2wu"]
+background_mode = 1
 
 [node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user")]
 physics_interpolation_mode = 1
@@ -27,6 +31,10 @@ _alka = NodePath("alka")
 _pause_hud = NodePath("../pause_hud")
 
 [node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
+
+[node name="env" type="WorldEnvironment" parent="." unique_id=1363825567]
+environment = SubResource("Environment_xw2wu")
+script = ExtResource("8_4mrxx")
 
 [node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
 
