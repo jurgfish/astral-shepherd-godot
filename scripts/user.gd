@@ -12,7 +12,6 @@ const MAX_SY: float = 5.0
 var _invert_look: Vector2 = Vector2.ONE
 var _in_look: Vector2 = Vector2.ZERO
 var _look_sy: float = 1.8
-var _in_move: Vector2 = Vector2.ZERO
 var _accepting_input: bool = true
 
 @export var _alka: CharacterBody3D
@@ -139,13 +138,14 @@ func _input(event: InputEvent) -> void:
 
 	elif _accepting_input:
 		if event is InputEventMouseMotion:
-			_in_look.x -= event.screen_relative.x * MOUSE_MULT
-			_in_look.y -= event.screen_relative.y * MOUSE_MULT
+			_in_look.x = -event.screen_relative.x * MOUSE_MULT
+			_in_look.y = -event.screen_relative.y * MOUSE_MULT
+			_alka.update_look(_in_look * _look_sy * _invert_look)
 
 func _process(delta: float) -> void:
 	if _accepting_input:
-		_in_look -= Input.get_vector("LOOK_L", "LOOK_R", "LOOK_U", "LOOK_D") * delta
-		_in_move = Input.get_vector("MOVE_L", "MOVE_R", "MOVE_F", "MOVE_B")
-		_alka.set_inputs(_in_look * _look_sy * _invert_look, _in_move)
+		_in_look = Input.get_vector("LOOK_L", "LOOK_R", "LOOK_U", "LOOK_D") * delta
+		_alka.update_look(_in_look * _look_sy * _invert_look)
+		_alka.update_move(Input.get_vector("MOVE_L", "MOVE_R", "MOVE_F", "MOVE_B"))
 
 ##################################################################################################

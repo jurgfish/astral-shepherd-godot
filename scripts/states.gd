@@ -13,7 +13,7 @@ enum DEBUG { DISABLED = 1, ENABLED = 2, USER = 4, SERVICE = 8, SKIP_LOAD_SPLASH 
 
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.USER
-	#^ DEBUG.SKIP_LOAD_SPLASH
+	^ DEBUG.SKIP_LOAD_SPLASH
 )
 
 ##################################################################################################
