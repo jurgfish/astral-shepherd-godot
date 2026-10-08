@@ -11,12 +11,21 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- character doesn't rotate, only head does (headlamp issue)
+- environment lighting
+  - and debug environment lighting
+- alka head bob too strong
 - look-at interactions
 
 issues:
 
 next:
+- allias
+  - allias spawning
+	- 11 scattered evenly on map
+  - allias navigation
+	- to random points
+	- to alka
+- scoring system
 - test gameplay loop
 - test high-fidelity lighting
 - high-res models, anims

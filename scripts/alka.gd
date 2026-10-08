@@ -22,6 +22,7 @@ var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 
 @export var _head: Marker3D
+@export var _body: Marker3D
 
 ##################################################################################################
 
@@ -46,6 +47,7 @@ func _process(delta: float) -> void:
 	_head.transform.origin.y = sin(_bob_builder * BOB_FRQ) * _bob_amp + HEAD_HEIGHT
 
 func _physics_process(delta: float) -> void:
+	_body.rotation.y = _look_dir.x
 	velocity = lerp(velocity, _move_dir * _speed, LERP_V * delta)
 	move_and_slide()
 
