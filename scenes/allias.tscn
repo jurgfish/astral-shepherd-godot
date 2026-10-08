@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cbmg7ps1h673y"]
+
+[ext_resource type="ArrayMesh" uid="uid://crqw0sql0x17e" path="res://meshes/allias_suit.tres" id="1_oyysy"]
+[ext_resource type="ArrayMesh" uid="uid://o7aag8ie16eq" path="res://meshes/allias_head_tri.tres" id="2_nim83"]
+[ext_resource type="ArrayMesh" uid="uid://bfi2ikppd3w0x" path="res://meshes/allias_helmet.tres" id="3_6gwu1"]
+[ext_resource type="ArrayMesh" uid="uid://h7m4y0gs0fi2" path="res://meshes/allias_helmet_visor.tres" id="4_uxde5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
+radius = 0.2529297
+height = 2.114502
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fkov"]
+size = Vector3(0.50201416, 0.802124, 0.24951172)
+
+[node name="allias" type="CharacterBody3D" unique_id=351245521]
+
+[node name="allias_suit" type="MeshInstance3D" parent="." unique_id=412840481]
+mesh = ExtResource("1_oyysy")
+
+[node name="allias_head" type="MeshInstance3D" parent="." unique_id=2010060218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+mesh = ExtResource("2_nim83")
+
+[node name="allias_helmet" type="MeshInstance3D" parent="." unique_id=1739736708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+mesh = ExtResource("3_6gwu1")
+
+[node name="allias_helmet_visor" type="MeshInstance3D" parent="." unique_id=1731323957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+mesh = ExtResource("4_uxde5")
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1163996762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0545654, 0)
+shape = SubResource("CapsuleShape3D_xw2wu")
+
+[node name="collision_shape_3d_2" type="CollisionShape3D" parent="." unique_id=617447447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 1.203186, -0.37524414)
+shape = SubResource("BoxShape3D_1fkov")

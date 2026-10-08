@@ -11,15 +11,10 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- sketch models
-  - capsule body with backpack
-  - head with symbol
-  - helmet over head
-	- helmet visor
+- character doesn't rotate, only head does (headlamp issue)
 - look-at interactions
 
 issues:
-- character doesn't rotate, only head does (potential headlamp issue)
 
 next:
 - test gameplay loop
