@@ -4,10 +4,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 
-[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body")]
+[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps")]
 script = ExtResource("1_rrvil")
 _head = NodePath("head")
 _body = NodePath("body")
+_headlamps = NodePath("body/headlamps")
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1047630779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -22,14 +23,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0018345118, 0)
 
 [node name="body" type="Marker3D" parent="." unique_id=2103811105]
 
-[node name="spot_light_3d" type="SpotLight3D" parent="body" unique_id=681786555]
-transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, 0.4954701, 1.8, 0)
+[node name="headlamps" type="Marker3D" parent="body" unique_id=1593011468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="spot_light_3d_r" type="SpotLight3D" parent="body/headlamps" unique_id=681786555]
+transform = Transform3D(0.9848078, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848078, 0.495, 0, 0)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 10.0
 
-[node name="spot_light_3d_2" type="SpotLight3D" parent="body" unique_id=453983647]
-transform = Transform3D(0.9848077, 0, -0.17364818, 0, 1, 0, 0.17364818, 0, 0.9848077, -0.495, 1.8, 0)
+[node name="spot_light_3d_l" type="SpotLight3D" parent="body/headlamps" unique_id=453983647]
+transform = Transform3D(0.9848078, 0, -0.1736482, 0, 1, 0, 0.1736482, 0, 0.9848078, -0.495, 0, 0)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 10.0

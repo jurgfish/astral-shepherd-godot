@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- city floor
 - look-at interactions
 - allias
   - allias spawning

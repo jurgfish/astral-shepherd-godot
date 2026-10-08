@@ -3,8 +3,8 @@
 extends CharacterBody3D
 
 # look
-const MIN_PITCH: float = -PI
-const MAX_PITCH: float = PI
+const MIN_PITCH: float = -1.2
+const MAX_PITCH: float = 1.2
 var _look_dir: Vector2 = Vector2.ZERO
 
 # head bob
@@ -23,6 +23,7 @@ var _speed: float = 0.0
 
 @export var _head: Marker3D
 @export var _body: Marker3D
+@export var _headlamps: Marker3D
 
 ##################################################################################################
 
@@ -48,6 +49,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_body.rotation.y = _look_dir.x
+	_headlamps.rotation.x = _look_dir.y
 	velocity = lerp(velocity, _move_dir * _speed, LERP_V * delta)
 	move_and_slide()
 
