@@ -4,7 +4,7 @@ extends Node3D
 
 const IDLE_SPEED: float = 0.8
 const COLLECT_SPEED: float = 8.8
-const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, -1.0)
+const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, 1.0)
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target: Node3D = null
@@ -28,11 +28,14 @@ func get_symbol() -> States.SYMBOL:
 func set_location(pos: Vector3) -> void:
 	global_transform.origin = pos
 
+func get_target() -> Vector3:
+	return get_global_transform_interpolated().origin
+
 ##################################################################################################
 
 func _physics_process(delta: float) -> void:
 	if _target != null:
-		look_at(_target.get_head(), Vector3.UP)
+		look_at(_target.get_target(), Vector3.UP, true)
 		if _player_collecting:
 			_symbol_gimbal.rotate_object_local(Vector3.FORWARD, COLLECT_SPEED * delta)
 			translate_object_local(APPROACH_SPEED * delta)

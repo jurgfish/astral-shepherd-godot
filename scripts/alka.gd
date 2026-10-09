@@ -37,8 +37,8 @@ func update_move(in_move: Vector2) -> void:
 	_move_dir = (transform.basis * Vector3(in_move.x, 0.0, in_move.y)).normalized()
 	_move_dir = _move_dir.rotated(Vector3(0, 1, 0), _look_dir.x)
 
-func get_head() -> Vector3:
-	return _head.global_transform.origin
+func get_target() -> Vector3:
+	return _headlamps.get_global_transform_interpolated().origin
 
 ##################################################################################################
 

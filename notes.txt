@@ -15,10 +15,8 @@ first:
 - look-at interactions
   - allias
 	- look mode:
-	  - head looks (within limit, body turns rest of way) to face alka
-		- helmet rotates to match head direction
+	  - head looks (within limit, body turns rest of way) to face target
 - allias
-  - create Played class
   - allias spawning
 	- 11 scattered evenly on map
   - allias navigation

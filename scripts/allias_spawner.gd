@@ -2,14 +2,18 @@
 
 extends Node3D
 
-const SYMBOL = preload("uid://b8qqhyewwc2jk")
+const ALLIAS = preload("uid://cbmg7ps1h673y")
 
 ##################################################################################################
 
+func set_target(body: Node3D) -> void:
+	for child in get_children():
+		child.set_target(body)
+
 func spawn() -> void:
-	var symbol := SYMBOL.instantiate()
-	add_child(symbol)
-	symbol.set_symbol(States.SYMBOL.STAR)
-	symbol.set_location(Vector3(0.0, 3.0, 0.0))
+	var allias := ALLIAS.instantiate()
+	add_child(allias)
+	allias.set_symbol(States.SYMBOL.TRI)
+	allias.set_location(Vector3(0.0, 0.0, -3.0))
 
 ##################################################################################################
