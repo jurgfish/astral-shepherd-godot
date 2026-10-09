@@ -7,8 +7,8 @@ extends Node3D
 @export var _user: Node3D
 @export var _alka: CharacterBody3D
 
-@export var _symbol_spawner: Node3D
-@export var _allias_spawner: Node3D
+@export var _spawner_symbol: Node3D
+@export var _spawner_allias: Node3D
 
 ##################################################################################################
 
@@ -24,10 +24,10 @@ func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
 		print("\nHELLO WORLD")
 
-	_symbol_spawner.spawn()
-	_allias_spawner.spawn()
+	_spawner_symbol.spawn()
+	_spawner_allias.spawn()
 
-	_allias_spawner.set_target(_alka)
+	_spawner_allias.set_target(_alka)
 
 ##################################################################################################
 

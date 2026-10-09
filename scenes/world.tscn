@@ -7,21 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/world_environment.gd" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/symbol_spawner.tscn" id="9_7r4gi"]
-[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/allias_spawner.tscn" id="9_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/spawner_symbol.tscn" id="9_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/spawner_allias.tscn" id="9_w7kh3"]
 
 [sub_resource type="Environment" id="Environment_xw2wu"]
 background_mode = 1
 
-[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_alka", "_symbol_spawner", "_allias_spawner")]
+[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_alka", "_spawner_symbol", "_spawner_allias")]
 physics_interpolation_mode = 1
 script = ExtResource("1_nnsk1")
 _load_hud = NodePath("load_hud")
 _pause_hud = NodePath("pause_hud")
 _user = NodePath("user")
 _alka = NodePath("user/alka")
-_symbol_spawner = NodePath("symbol_spawner")
-_allias_spawner = NodePath("allias_spawner")
+_spawner_symbol = NodePath("city/spawner_symbol")
+_spawner_allias = NodePath("city/spawner_allias")
 
 [node name="load_hud" parent="." unique_id=652777255 instance=ExtResource("2_qfnet")]
 
@@ -37,13 +37,13 @@ _pause_hud = NodePath("../pause_hud")
 [node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.6207304)
 
-[node name="env" type="WorldEnvironment" parent="." unique_id=1363825567]
-environment = SubResource("Environment_xw2wu")
-script = ExtResource("8_4mrxx")
-
 [node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
 metadata/_edit_lock_ = true
 
-[node name="symbol_spawner" parent="." unique_id=911735598 instance=ExtResource("9_7r4gi")]
+[node name="env" type="WorldEnvironment" parent="city" unique_id=1363825567]
+environment = SubResource("Environment_xw2wu")
+script = ExtResource("8_4mrxx")
 
-[node name="allias_spawner" parent="." unique_id=1161042528 instance=ExtResource("9_w7kh3")]
+[node name="spawner_symbol" parent="city" unique_id=911735598 instance=ExtResource("9_7r4gi")]
+
+[node name="spawner_allias" parent="city" unique_id=1161042528 instance=ExtResource("9_w7kh3")]

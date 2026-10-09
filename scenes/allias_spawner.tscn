@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cmfasptb04smw"]
-
-[ext_resource type="Script" uid="uid://cmm6l3gfwg18p" path="res://scripts/allias_spawner.gd" id="1_kd82x"]
-
-[node name="allias_spawner" type="Node3D" unique_id=1161042528]
-script = ExtResource("1_kd82x")

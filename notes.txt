@@ -15,7 +15,6 @@ first:
 - look-at interactions
   - symbol only approach if alka looking at
 - allias
-  - lerp lookat rotations
   - allias spawning
 	- 11 scattered evenly on map
   - allias navigation
@@ -23,7 +22,6 @@ first:
 	- to alka
 
 issues:
-- allias's head can snap to the other side via rotating an inhumane way?
 
 next:
 - scoring system

@@ -16,4 +16,14 @@ func spawn() -> void:
 	allias.set_symbol(States.SYMBOL.TRI)
 	allias.set_location(Vector3(0.0, 0.0, -3.0))
 
+	allias = ALLIAS.instantiate()
+	add_child(allias)
+	allias.set_symbol(States.SYMBOL.TRI)
+	allias.set_location(Vector3(2.0, 0.0, -3.0))
+
+	allias = ALLIAS.instantiate()
+	add_child(allias)
+	allias.set_symbol(States.SYMBOL.TRI)
+	allias.set_location(Vector3(1.0, 0.0, -5.0))
+
 ##################################################################################################
