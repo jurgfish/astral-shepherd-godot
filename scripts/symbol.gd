@@ -6,16 +6,20 @@ const IDLE_SPEED: float = 0.8
 const COLLECT_SPEED: float = 8.8
 const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, 1.0)
 const FLOAT_SPEED: float = 0.2
+const SKY_HEIGHT: float = 5.0
+const SKY_MAX: float = 8.0
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target: Node3D = null
 var _player_detected: bool = false
 var _player_collecting: bool = false
 var _on_screen: bool = false
+var _sky_home: float = 0.0
 
 @export var _symbol_gimbal: Marker3D
 @export var _symbol_star: MeshInstance3D
 @export var _symbol_tri: MeshInstance3D
+@export var _awareness: Marker3D
 
 ##################################################################################################
 
@@ -28,7 +32,8 @@ func get_symbol() -> States.SYMBOL:
 	return _symbol_id
 
 func set_location(pos: Vector3) -> void:
-	global_transform.origin = pos
+	_sky_home = SKY_HEIGHT + (SKY_MAX * randf())
+	global_transform.origin = Vector3(pos.x, _sky_home, pos.z)
 
 func get_target() -> Vector3:
 	return get_global_transform_interpolated().origin
@@ -42,12 +47,19 @@ func _physics_process(delta: float) -> void:
 			_symbol_gimbal.rotate_object_local(Vector3.FORWARD, COLLECT_SPEED * delta)
 			translate_object_local(APPROACH_SPEED * delta)
 	else:
-		rotate_x(IDLE_SPEED * delta)
-		rotate_y(IDLE_SPEED * delta)
-		rotate_z(IDLE_SPEED * delta)
+		rotate_x(IDLE_SPEED * randf() * delta)
+		rotate_y(IDLE_SPEED * randf() * delta)
+		rotate_z(IDLE_SPEED * randf() * delta)
 
-		if global_transform.origin.y < States.SKY_BOUND:
+		if global_transform.origin.y < _sky_home:
 			global_transform.origin.y += FLOAT_SPEED * delta
+
+	_awareness.global_transform.origin = global_transform.origin
+
+func _ready() -> void:
+	rotation.x *= randf()
+	rotation.y *= randf()
+	rotation.z *= randf()
 
 ##################################################################################################
 

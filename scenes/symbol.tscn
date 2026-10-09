@@ -7,17 +7,20 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bed3"]
 radius = 0.1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_1fkov"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irjfk"]
 radius = 8.0
+height = 50.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_irjfk"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6bed3"]
 radius = 5.0
+height = 44.0
 
-[node name="symbol" type="Node3D" unique_id=1908704221 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri")]
+[node name="symbol" type="Node3D" unique_id=1908704221 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri", "_awareness")]
 script = ExtResource("1_irjfk")
 _symbol_gimbal = NodePath("symbol_gimbal")
 _symbol_star = NodePath("symbol_gimbal/symbol_star")
 _symbol_tri = NodePath("symbol_gimbal/symbol_tri")
+_awareness = NodePath("awareness")
 
 [node name="symbol_gimbal" type="Marker3D" parent="." unique_id=116434561]
 
@@ -28,28 +31,33 @@ mesh = ExtResource("2_irjfk")
 visible = false
 mesh = ExtResource("1_6lu6j")
 
-[node name="area_capture" type="Area3D" parent="." unique_id=949514848]
+[node name="awareness" type="Marker3D" parent="." unique_id=1311699346]
+top_level = true
 
-[node name="collision_shape_3d" type="CollisionShape3D" parent="area_capture" unique_id=1034739668]
+[node name="area_capture" type="Area3D" parent="awareness" unique_id=949514848]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="awareness/area_capture" unique_id=1034739668]
 shape = SubResource("SphereShape3D_6bed3")
 
-[node name="area_detect" type="Area3D" parent="." unique_id=612366504]
+[node name="area_detect" type="Area3D" parent="awareness" unique_id=612366504]
 
-[node name="collision_shape_3d" type="CollisionShape3D" parent="area_detect" unique_id=1238215077]
-shape = SubResource("SphereShape3D_1fkov")
+[node name="collision_shape_3d" type="CollisionShape3D" parent="awareness/area_detect" unique_id=1238215077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+shape = SubResource("CapsuleShape3D_irjfk")
 
-[node name="area_collect" type="Area3D" parent="." unique_id=2059394393]
+[node name="area_collect" type="Area3D" parent="awareness" unique_id=2059394393]
 
-[node name="collision_shape_3d" type="CollisionShape3D" parent="area_collect" unique_id=489171361]
-shape = SubResource("SphereShape3D_irjfk")
+[node name="collision_shape_3d" type="CollisionShape3D" parent="awareness/area_collect" unique_id=489171361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, 0)
+shape = SubResource("CapsuleShape3D_6bed3")
 
-[node name="screen_notifier" type="VisibleOnScreenNotifier3D" parent="." unique_id=1914897432]
+[node name="screen_notifier" type="VisibleOnScreenNotifier3D" parent="awareness" unique_id=1914897432]
 aabb = AABB(-0.05, -0.05, -0.05, 0.1, 0.1, 0.1)
 
-[connection signal="body_entered" from="area_capture" to="." method="_on_area_capture_body_entered"]
-[connection signal="body_entered" from="area_detect" to="." method="_on_area_detect_body_entered"]
-[connection signal="body_exited" from="area_detect" to="." method="_on_area_detect_body_exited"]
-[connection signal="body_entered" from="area_collect" to="." method="_on_area_collect_body_entered"]
-[connection signal="body_exited" from="area_collect" to="." method="_on_area_collect_body_exited"]
-[connection signal="screen_entered" from="screen_notifier" to="." method="_on_screen_notifier_screen_entered"]
-[connection signal="screen_exited" from="screen_notifier" to="." method="_on_screen_notifier_screen_exited"]
+[connection signal="body_entered" from="awareness/area_capture" to="." method="_on_area_capture_body_entered"]
+[connection signal="body_entered" from="awareness/area_detect" to="." method="_on_area_detect_body_entered"]
+[connection signal="body_exited" from="awareness/area_detect" to="." method="_on_area_detect_body_exited"]
+[connection signal="body_entered" from="awareness/area_collect" to="." method="_on_area_collect_body_entered"]
+[connection signal="body_exited" from="awareness/area_collect" to="." method="_on_area_collect_body_exited"]
+[connection signal="screen_entered" from="awareness/screen_notifier" to="." method="_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="awareness/screen_notifier" to="." method="_on_screen_notifier_screen_exited"]

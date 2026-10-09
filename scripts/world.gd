@@ -24,9 +24,8 @@ func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
 		print("\nHELLO WORLD")
 
-	_spawner_symbol.spawn()
+	_spawner_symbol.spawn(11)
 	_spawner_allias.spawn()
-
 	_spawner_allias.set_target(_alka)
 
 ##################################################################################################
