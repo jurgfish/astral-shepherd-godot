@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b8qqhyewwc2jk"]
+
+[ext_resource type="ArrayMesh" uid="uid://f434xf0n8s0j" path="res://meshes/symbol_tri.tres" id="1_6lu6j"]
+[ext_resource type="Script" uid="uid://cyypee7jykrcl" path="res://scripts/symbol.gd" id="1_irjfk"]
+[ext_resource type="ArrayMesh" uid="uid://pdslsetur3vr" path="res://meshes/symbol_star.tres" id="2_irjfk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
+radius = 0.15011016
+
+[node name="symbol" type="Area3D" unique_id=1041580589 node_paths=PackedStringArray("symbol_star", "symbol_tri")]
+script = ExtResource("1_irjfk")
+symbol_star = NodePath("symbol_star")
+symbol_tri = NodePath("symbol_tri")
+
+[node name="symbol_star" type="MeshInstance3D" parent="." unique_id=1690556602]
+mesh = ExtResource("2_irjfk")
+
+[node name="symbol_tri" type="MeshInstance3D" parent="." unique_id=42132734]
+visible = false
+mesh = ExtResource("1_6lu6j")
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1034739668]
+shape = SubResource("SphereShape3D_xw2wu")

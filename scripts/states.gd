@@ -8,6 +8,7 @@ extends Node
 
 enum REQUEST { WORLD }
 enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
+enum SYMBOL { STAR, TRI }
 
 enum DEBUG {
 	DISABLED = 1, ENABLED = 2, USER = 4, SERVICE = 8, SKIP_LOAD_SPLASH = 16,

@@ -12,6 +12,14 @@ TASK QUEUE >>>
 
 first:
 - look-at interactions
+  - symbols
+	- symbol looks at alka when alka within range
+	  - spins idly when not
+	- moves towards alka when closer
+  - allias
+	- look mode:
+	  - head looks (within limit, body turns rest of way) to face alka
+		- helmet rotates to match head direction
 - allias
   - allias spawning
 	- 11 scattered evenly on map
