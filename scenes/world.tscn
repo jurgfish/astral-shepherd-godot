@@ -33,7 +33,7 @@ _alka = NodePath("alka")
 _pause_hud = NodePath("../pause_hud")
 
 [node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.4045498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.6207304)
 
 [node name="env" type="WorldEnvironment" parent="." unique_id=1363825567]
 environment = SubResource("Environment_xw2wu")

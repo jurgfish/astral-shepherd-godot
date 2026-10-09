@@ -14,7 +14,7 @@ var _in_look: Vector2 = Vector2.ZERO
 var _look_sy: float = 1.8
 var _accepting_input: bool = true
 
-@export var _alka: CharacterBody3D
+@export var _alka: Player
 @export var _pause_hud: Control
 
 ##################################################################################################

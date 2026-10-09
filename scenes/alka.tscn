@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://by4fqvbkmbdhl"]
 
-[ext_resource type="Script" uid="uid://dj65g22gg1wot" path="res://scripts/alka.gd" id="1_rrvil"]
+[ext_resource type="Script" uid="uid://durc6s7k46kjh" path="res://scripts/alka.gd" id="1_rrvil"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 

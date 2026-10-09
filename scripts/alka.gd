@@ -1,5 +1,6 @@
 # Copyright © 2026, jurgfish. All rights reserved.
 
+class_name Player
 extends CharacterBody3D
 
 # look
@@ -36,6 +37,9 @@ func update_move(in_move: Vector2) -> void:
 	_move_dir = (transform.basis * Vector3(in_move.x, 0.0, in_move.y)).normalized()
 	_move_dir = _move_dir.rotated(Vector3(0, 1, 0), _look_dir.x)
 
+func get_head() -> Vector3:
+	return _head.global_transform.origin
+
 ##################################################################################################
 
 func _process(delta: float) -> void:
@@ -49,8 +53,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_body.rotation.y = _look_dir.x
-	_headlamps.rotation.x = _look_dir.y
 	velocity = lerp(velocity, _move_dir * _speed, LERP_V * delta)
+	_headlamps.rotation.x = _look_dir.y
 	move_and_slide()
 
 ##################################################################################################

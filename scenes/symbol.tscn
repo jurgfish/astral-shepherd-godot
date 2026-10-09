@@ -7,17 +7,43 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
 radius = 0.15011016
 
-[node name="symbol" type="Area3D" unique_id=1041580589 node_paths=PackedStringArray("symbol_star", "symbol_tri")]
-script = ExtResource("1_irjfk")
-symbol_star = NodePath("symbol_star")
-symbol_tri = NodePath("symbol_tri")
+[sub_resource type="SphereShape3D" id="SphereShape3D_1fkov"]
+radius = 5.0
 
-[node name="symbol_star" type="MeshInstance3D" parent="." unique_id=1690556602]
+[sub_resource type="SphereShape3D" id="SphereShape3D_irjfk"]
+radius = 2.0
+
+[node name="symbol" type="Node3D" unique_id=1908704221 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri")]
+script = ExtResource("1_irjfk")
+_symbol_gimbal = NodePath("symbol_gimbal")
+_symbol_star = NodePath("symbol_gimbal/symbol_star")
+_symbol_tri = NodePath("symbol_gimbal/symbol_tri")
+
+[node name="symbol_gimbal" type="Marker3D" parent="." unique_id=116434561]
+
+[node name="symbol_star" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1690556602]
 mesh = ExtResource("2_irjfk")
 
-[node name="symbol_tri" type="MeshInstance3D" parent="." unique_id=42132734]
+[node name="symbol_tri" type="MeshInstance3D" parent="symbol_gimbal" unique_id=42132734]
 visible = false
 mesh = ExtResource("1_6lu6j")
 
-[node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1034739668]
+[node name="area_capture" type="Area3D" parent="." unique_id=949514848]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area_capture" unique_id=1034739668]
 shape = SubResource("SphereShape3D_xw2wu")
+
+[node name="area_detect" type="Area3D" parent="." unique_id=612366504]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area_detect" unique_id=1238215077]
+shape = SubResource("SphereShape3D_1fkov")
+
+[node name="area_collect" type="Area3D" parent="." unique_id=2059394393]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area_collect" unique_id=489171361]
+shape = SubResource("SphereShape3D_irjfk")
+
+[connection signal="body_entered" from="area_detect" to="." method="_on_area_detect_body_entered"]
+[connection signal="body_exited" from="area_detect" to="." method="_on_area_detect_body_exited"]
+[connection signal="body_entered" from="area_collect" to="." method="_on_area_collect_body_entered"]
+[connection signal="body_exited" from="area_collect" to="." method="_on_area_collect_body_exited"]

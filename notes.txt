@@ -11,16 +11,16 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- delivery signals (detected, collecting, caught)
 - look-at interactions
   - symbols
-	- symbol looks at alka when alka within range
-	  - spins idly when not
 	- moves towards alka when closer
   - allias
 	- look mode:
 	  - head looks (within limit, body turns rest of way) to face alka
 		- helmet rotates to match head direction
 - allias
+  - create Played class
   - allias spawning
 	- 11 scattered evenly on map
   - allias navigation
@@ -34,6 +34,7 @@ next:
 - test gameplay loop
 - test high-fidelity lighting
   - set env tonemap
+  - glow
 - high-res models, anims
 
 important:
