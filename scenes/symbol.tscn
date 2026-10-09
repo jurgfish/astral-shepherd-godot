@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cyypee7jykrcl" path="res://scripts/symbol.gd" id="1_irjfk"]
 [ext_resource type="ArrayMesh" uid="uid://pdslsetur3vr" path="res://meshes/symbol_star.tres" id="2_irjfk"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
-radius = 0.15011016
+[sub_resource type="SphereShape3D" id="SphereShape3D_6bed3"]
+radius = 0.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1fkov"]
 radius = 5.0
@@ -31,7 +31,7 @@ mesh = ExtResource("1_6lu6j")
 [node name="area_capture" type="Area3D" parent="." unique_id=949514848]
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="area_capture" unique_id=1034739668]
-shape = SubResource("SphereShape3D_xw2wu")
+shape = SubResource("SphereShape3D_6bed3")
 
 [node name="area_detect" type="Area3D" parent="." unique_id=612366504]
 
@@ -43,6 +43,7 @@ shape = SubResource("SphereShape3D_1fkov")
 [node name="collision_shape_3d" type="CollisionShape3D" parent="area_collect" unique_id=489171361]
 shape = SubResource("SphereShape3D_irjfk")
 
+[connection signal="body_entered" from="area_capture" to="." method="_on_area_capture_body_entered"]
 [connection signal="body_entered" from="area_detect" to="." method="_on_area_detect_body_entered"]
 [connection signal="body_exited" from="area_detect" to="." method="_on_area_detect_body_exited"]
 [connection signal="body_entered" from="area_collect" to="." method="_on_area_collect_body_entered"]

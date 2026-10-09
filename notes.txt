@@ -13,8 +13,6 @@ TASK QUEUE >>>
 first:
 - delivery signals (detected, collecting, caught)
 - look-at interactions
-  - symbols
-	- moves towards alka when closer
   - allias
 	- look mode:
 	  - head looks (within limit, body turns rest of way) to face alka

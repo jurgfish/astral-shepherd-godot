@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://durc6s7k46kjh" path="res://scripts/alka.gd" id="1_rrvil"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
+radius = 0.25
 
 [node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps")]
 script = ExtResource("1_rrvil")
@@ -27,13 +28,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0018345118, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="spot_light_3d_r" type="SpotLight3D" parent="body/headlamps" unique_id=681786555]
-transform = Transform3D(0.9848078, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848078, 0.495, 0, 0)
+transform = Transform3D(0.9848078, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848078, 0.495, 0, 0.052248716)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 10.0
 
 [node name="spot_light_3d_l" type="SpotLight3D" parent="body/headlamps" unique_id=453983647]
-transform = Transform3D(0.9848078, 0, -0.1736482, 0, 1, 0, 0.1736482, 0, 0.9848078, -0.495, 0, 0)
+transform = Transform3D(0.9848078, 0, -0.1736482, 0, 1, 0, 0.1736482, 0, 0.9848078, -0.495, 0, 0.052248716)
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 10.0

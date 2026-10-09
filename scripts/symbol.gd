@@ -4,6 +4,7 @@ extends Node3D
 
 const IDLE_SPEED: float = 0.8
 const COLLECT_SPEED: float = 8.8
+const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, -1.0)
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target: Node3D = null
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		look_at(_target.get_head(), Vector3.UP)
 		if _player_collecting:
 			_symbol_gimbal.rotate_object_local(Vector3.FORWARD, COLLECT_SPEED * delta)
+			translate_object_local(APPROACH_SPEED * delta)
 	else:
 		rotate_x(IDLE_SPEED * delta)
 		rotate_y(IDLE_SPEED * delta)
@@ -59,5 +61,9 @@ func _on_area_collect_body_exited(body: Node3D) -> void:
 	if body is Player:
 		_player_collecting = false
 		_symbol_gimbal.rotation = Vector3.ZERO
+
+func _on_area_capture_body_entered(body: Node3D) -> void:
+	if body is Player:
+		queue_free()
 
 ##################################################################################################
