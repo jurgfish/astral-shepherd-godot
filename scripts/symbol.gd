@@ -5,11 +5,13 @@ extends Node3D
 const IDLE_SPEED: float = 0.8
 const COLLECT_SPEED: float = 8.8
 const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, 1.0)
+const FLOAT_SPEED: float = 0.2
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target: Node3D = null
 var _player_detected: bool = false
 var _player_collecting: bool = false
+var _on_screen: bool = false
 
 @export var _symbol_gimbal: Marker3D
 @export var _symbol_star: MeshInstance3D
@@ -36,7 +38,7 @@ func get_target() -> Vector3:
 func _physics_process(delta: float) -> void:
 	if _target != null:
 		look_at(_target.get_target(), Vector3.UP, true)
-		if _player_collecting:
+		if _player_collecting and _on_screen:
 			_symbol_gimbal.rotate_object_local(Vector3.FORWARD, COLLECT_SPEED * delta)
 			translate_object_local(APPROACH_SPEED * delta)
 	else:
@@ -44,7 +46,16 @@ func _physics_process(delta: float) -> void:
 		rotate_y(IDLE_SPEED * delta)
 		rotate_z(IDLE_SPEED * delta)
 
+		if global_transform.origin.y < States.SKY_BOUND:
+			global_transform.origin.y += FLOAT_SPEED * delta
+
 ##################################################################################################
+
+func _on_screen_notifier_screen_entered() -> void:
+	_on_screen = true
+
+func _on_screen_notifier_screen_exited() -> void:
+	_on_screen = false
 
 func _on_area_detect_body_entered(body: Node3D) -> void:
 	if body is Player:

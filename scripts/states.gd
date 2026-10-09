@@ -29,6 +29,9 @@ const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 8 }
 
 ##################################################################################################
 
+# GAME SETTINGS
+const SKY_BOUND: float = 5.0
+
 # DEFAULT SETTINGS
 const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)
 const INIT_INVERT_CAM_V: bool = false

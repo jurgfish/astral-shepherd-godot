@@ -12,12 +12,10 @@ TASK QUEUE >>>
 
 first:
 - delivery signals (detected, collecting, caught)
-- look-at interactions
-  - symbol only approach if alka looking at
 - allias
   - allias spawning
 	- 11 scattered evenly on map
-  - allias navigation
+  - allias navigations
 	- to random points
 	- to alka
 

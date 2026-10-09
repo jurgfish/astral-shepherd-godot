@@ -8,10 +8,10 @@
 radius = 0.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1fkov"]
-radius = 5.0
+radius = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_irjfk"]
-radius = 2.0
+radius = 5.0
 
 [node name="symbol" type="Node3D" unique_id=1908704221 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri")]
 script = ExtResource("1_irjfk")
@@ -43,8 +43,13 @@ shape = SubResource("SphereShape3D_1fkov")
 [node name="collision_shape_3d" type="CollisionShape3D" parent="area_collect" unique_id=489171361]
 shape = SubResource("SphereShape3D_irjfk")
 
+[node name="screen_notifier" type="VisibleOnScreenNotifier3D" parent="." unique_id=1914897432]
+aabb = AABB(-0.05, -0.05, -0.05, 0.1, 0.1, 0.1)
+
 [connection signal="body_entered" from="area_capture" to="." method="_on_area_capture_body_entered"]
 [connection signal="body_entered" from="area_detect" to="." method="_on_area_detect_body_entered"]
 [connection signal="body_exited" from="area_detect" to="." method="_on_area_detect_body_exited"]
 [connection signal="body_entered" from="area_collect" to="." method="_on_area_collect_body_entered"]
 [connection signal="body_exited" from="area_collect" to="." method="_on_area_collect_body_exited"]
+[connection signal="screen_entered" from="screen_notifier" to="." method="_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="screen_notifier" to="." method="_on_screen_notifier_screen_exited"]

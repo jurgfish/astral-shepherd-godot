@@ -10,6 +10,6 @@ func spawn() -> void:
 	var symbol := SYMBOL.instantiate()
 	add_child(symbol)
 	symbol.set_symbol(States.SYMBOL.STAR)
-	symbol.set_location(Vector3(0.0, 3.0, 0.0))
+	symbol.set_location(Vector3(0.0, States.SKY_BOUND, 0.0))
 
 ##################################################################################################
