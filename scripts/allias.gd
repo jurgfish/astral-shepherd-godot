@@ -3,13 +3,17 @@
 class_name Played
 extends CharacterBody3D
 
+const HEAD_ROT_LIMIT: float = 2.2
+const HELMET_ROT_LIMIT: float = 1.6
+
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target: Node3D = null
 
+@export var _target_tracker: Marker3D
 @export var _symbol_tri: MeshInstance3D
 @export var _head: Marker3D
 @export var _helmet: MeshInstance3D
-#@export var _helmet_visor: MeshInstance3D
+@export var _helmet_visor: MeshInstance3D
 
 ##################################################################################################
 
@@ -28,10 +32,15 @@ func get_target() -> Vector3:
 
 ##################################################################################################
 
+func _ready() -> void:
+	_helmet_visor.visible = false
+
 func _physics_process(_delta: float) -> void:
 	if _target != null:
-		_head.look_at(_target.get_target(), Vector3.UP, true)
-		_helmet.rotation.y = _head.rotation.y
+		_target_tracker.look_at(_target.get_target(), Vector3.UP, true)
+		if abs(_target_tracker.rotation.y - rotation.y) < HEAD_ROT_LIMIT:
+			_head.rotation = _target_tracker.rotation
+			_helmet.rotation.y = clamp(_head.rotation.y, -HELMET_ROT_LIMIT, HELMET_ROT_LIMIT)
 
 ##################################################################################################
 

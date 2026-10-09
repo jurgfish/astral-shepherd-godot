@@ -13,10 +13,9 @@ TASK QUEUE >>>
 first:
 - delivery signals (detected, collecting, caught)
 - look-at interactions
-  - allias
-	- look mode:
-	  - head looks (within limit, body turns rest of way) to face target
+  - symbol only approach if alka looking at
 - allias
+  - lerp lookat rotations
   - allias spawning
 	- 11 scattered evenly on map
   - allias navigation
@@ -24,6 +23,7 @@ first:
 	- to alka
 
 issues:
+- allias's head can snap to the other side via rotating an inhumane way?
 
 next:
 - scoring system
@@ -32,6 +32,22 @@ next:
   - set env tonemap
   - glow
 - high-res models, anims
+
+garnish:
+- alka headlamps flicker when near allias
+- symbols emit sparkle effects of respective color
+- tiled floor (how to do large repeating?)
+
+potential stretch goals:
+- monsters evolve as game progresses? (time dependent)
+  - speed, models
+  - potential unique animation
+  - target the "rapidly evolving" community prompt
+  - potentially time-based instead of goal-progress based?
+
+##################################################################################################
+
+TASK CORE
 
 important:
 - monster models are within astronaut suits
@@ -60,15 +76,6 @@ submission:
 completed:
 - test basic first person controls OK
 - load/pause/menu/settings system OK
-
-ignored features:
-- save data
-- localization
-- pause_hud animations
-
-ignored issues:
-- no joypad scroll support on pause_hud legal page
-- fullscreen keybind doesn't work when pause_hud open
 
 ##################################################################################################
 
@@ -107,12 +114,18 @@ game structure:
 game story:
 - see log
 
-potential stretch goals:
-- monsters evolve as game progresses? (time dependent)
-  - speed, models
-  - potential unique animation
-  - target the "rapidly evolving" community prompt
-  - potentially time-based instead of goal-progress based?
+##################################################################################################
+
+MISC
+
+ignored features:
+- save data
+- localization
+- pause_hud animations
+
+ignored issues:
+- no joypad scroll support on pause_hud legal page
+- fullscreen keybind doesn't work when pause_hud open
 
 ##################################################################################################
 

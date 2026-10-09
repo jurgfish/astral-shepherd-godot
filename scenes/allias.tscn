@@ -16,14 +16,19 @@ size = Vector3(0.50201416, 0.802124, 0.24951172)
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
 radius = 10.0
 
-[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_symbol_tri", "_head", "_helmet")]
+[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_target_tracker", "_symbol_tri", "_head", "_helmet", "_helmet_visor")]
 script = ExtResource("1_nim83")
+_target_tracker = NodePath("target_tracker")
 _symbol_tri = NodePath("head/allias_head_tri")
 _head = NodePath("head")
 _helmet = NodePath("allias_helmet")
+_helmet_visor = NodePath("allias_helmet/allias_helmet_visor")
 
 [node name="allias_suit" type="MeshInstance3D" parent="." unique_id=412840481]
 mesh = ExtResource("1_oyysy")
+
+[node name="target_tracker" type="Marker3D" parent="." unique_id=1462607176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="head" type="Marker3D" parent="." unique_id=365328737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
