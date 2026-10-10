@@ -11,13 +11,62 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- increase alka start buffer distance, headlamp range
 - delivery signals (detected, collecting, caught)
+- core gameplay loop
+  - 12 symbols (and allias heads)
+  - scoring system
+	- heart ui with counter
+  - allias interactions
+	- symbol capturing
+	- alka capture
+	  - alka release symbol
 
 issues:
+- test avoidance (alliases can get caught on each other)
 
 next:
-- scoring system
-- test gameplay loop
+- events
+  - on game load:
+	- tutorial:
+	  - only alka, and alka's symbol placed ahead
+	  - game starts when alka captures symbol
+	- start:
+	  - spawn symbols and alliases
+	  - allias start with helmet open, facing alka, no pathfinding
+	  - on first start detect:
+		- all allias helmets close, gameplay continues as normal
+  - on alka approach allias:
+	- note: this logic should be done all within alka, not each allias
+	- within detection
+	  - raise ambient audio
+    - within capture
+	  - ambient audio next level
+	  - trigger flashlight flicker
+	- within collect
+	  - ambient audio final level
+	  - flashlight off
+	  - timer start:
+		- symbol release every 1 second
+	  - if alka has no symbols left:
+		- set navigation and lookat null
+  - on alka capture symbol:
+	- all allias briefly look at true owner of symbol
+	  - alliases that are currently chasing are uninterrupted
+	- allias owner begins chasing alka until symbol no longer in capture state
+	  - forever chases alka as long as alka capturing/collected symbol
+  - on alka collects all symbols:
+	- exit appears furthest distance from alka, allias speed doubles
+	- if alka caught, exit disappears, normal gameplay
+	- on exit, display game over (selfish ending) (retry button)
+	  - on retry, spawn without tutorial
+  - on allias collect symbol:
+	- only collect if allias owner of symbol
+	- helmet close, become dormant
+  - on all allias symbols collected:
+	- all helmets open, head models replaced with happy versions
+	- exit appears furthest distance from alka
+    - on exit, credits, and a thank you
 - test high-fidelity lighting
   - set env tonemap
   - glow
@@ -27,13 +76,14 @@ garnish:
 - alka headlamps flicker when near allias
 - symbols emit sparkle effects of respective color
 - tiled floor (how to do large repeating?)
+  - or wooden floor (ship feeling)
 
 potential stretch goals:
 - monsters evolve as game progresses? (time dependent)
   - speed, models
   - potential unique animation
   - target the "rapidly evolving" community prompt
-  - potentially time-based instead of goal-progress based?
+  - potentially time-based instead of goal-progress based? NO
 
 ##################################################################################################
 
@@ -66,6 +116,8 @@ submission:
 completed:
 - test basic first person controls OK
 - load/pause/menu/settings system OK
+- entity random generation OK
+- entity navigation OK
 
 ##################################################################################################
 
@@ -77,21 +129,21 @@ personal goals:
 - highest possible lighting fidelity
 
 developer goals:
-- prevent hard links between systems (use signal patterns)
+- prevent hard links between systems (use signal patterns) OK
 
 game jam goals:
-- theme: from the stars (must be horror themed)
+- theme: from the stars (must be horror themed) OK
 - community prompts:
-  - ignoring the warnings
-  - rapidly evolving
+  - ignoring the warnings OK
+  - rapidly evolving OK
   - abandon ship
-  - strange signs
+  - strange signs OK
 - moral:
-  - no generative ai
-  - credit any pre-made/asset packs
+  - no generative ai OK
+  - credit any pre-made/asset packs OK
   - original and created during event OK
 - system:
-  - must be downloadable from itch
+  - must be downloadable from itch OK
   - 2GB limit
 
 game structure:
