@@ -12,17 +12,8 @@ TASK QUEUE >>>
 
 first:
 - delivery signals (detected, collecting, caught)
-- allias
-  - allias navigations
-	- to random symbols
-- symbol navigation
-  - return to home x/z coords on idle
-  - avoid other symbols, allias
-	- can't use nav server?
 
 issues:
-- alliases can spawn overlapping
-  - should be a problem with symbols too (add avoid logic)
 
 next:
 - scoring system

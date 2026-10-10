@@ -55,4 +55,5 @@ script = ExtResource("8_4mrxx")
 
 [node name="spawner_symbol" parent="city" unique_id=911735598 instance=ExtResource("9_7r4gi")]
 
-[node name="spawner_allias" parent="city" unique_id=1161042528 instance=ExtResource("9_w7kh3")]
+[node name="spawner_allias" parent="city" unique_id=1161042528 node_paths=PackedStringArray("_spawner_symbol") instance=ExtResource("9_w7kh3")]
+_spawner_symbol = NodePath("../spawner_symbol")

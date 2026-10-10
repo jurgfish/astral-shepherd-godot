@@ -14,8 +14,13 @@ func _spawn_symbol(symbol_id: States.SYMBOL) -> void:
 	var pos_z: float = randf_range(-States.SPAWN_BOUND, States.SPAWN_BOUND)
 	symbol.set_location(Vector3(pos_x, 0.0, pos_z))
 
+##################################################################################################
+
 func spawn(count: int) -> void:
 	for idx in count:
 		_spawn_symbol(States.SYMBOL.STAR)
+
+func get_symbol_list() -> Array:
+	return get_children()
 
 ##################################################################################################

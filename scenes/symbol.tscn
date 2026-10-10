@@ -4,18 +4,22 @@
 [ext_resource type="Script" uid="uid://cyypee7jykrcl" path="res://scripts/symbol.gd" id="1_irjfk"]
 [ext_resource type="ArrayMesh" uid="uid://pdslsetur3vr" path="res://meshes/symbol_star.tres" id="2_irjfk"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
+radius = 0.15
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bed3"]
-radius = 0.1
+radius = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irjfk"]
-radius = 8.0
-height = 50.0
+radius = 10.0
+height = 54.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6bed3"]
-radius = 5.0
-height = 44.0
+radius = 7.0
+height = 48.0
 
-[node name="symbol" type="Node3D" unique_id=1908704221 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri", "_awareness")]
+[node name="symbol" type="AnimatableBody3D" unique_id=341915550 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_tri", "_awareness")]
+sync_to_physics = false
 script = ExtResource("1_irjfk")
 _symbol_gimbal = NodePath("symbol_gimbal")
 _symbol_star = NodePath("symbol_gimbal/symbol_star")
@@ -30,6 +34,9 @@ mesh = ExtResource("2_irjfk")
 [node name="symbol_tri" type="MeshInstance3D" parent="symbol_gimbal" unique_id=42132734]
 visible = false
 mesh = ExtResource("1_6lu6j")
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1008438714]
+shape = SubResource("SphereShape3D_xw2wu")
 
 [node name="awareness" type="Marker3D" parent="." unique_id=1311699346]
 top_level = true

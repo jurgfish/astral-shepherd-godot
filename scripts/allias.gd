@@ -47,6 +47,8 @@ func align_rotation_to_target() -> void:
 
 func set_target_look(body: Node3D) -> void:
 	_target_look = body
+	if _target_look == null:
+		_target_tracker.rotation.y = 0.0
 
 func get_target() -> Vector3:
 	return _head.get_global_transform_interpolated().origin
@@ -59,9 +61,10 @@ func set_target_navigation(body: Node3D) -> void:
 func _physics_process(delta: float) -> void:
 	if _target_look != null:
 		_target_tracker.look_at(_target_look.get_target(), Vector3.UP, true)
-		if abs(_target_tracker.rotation.y - _suit.rotation.y) < HEAD_ROT_LIMIT:
-			_head.rotation = lerp(_head.rotation, _target_tracker.rotation, LERP_H * delta)
-			_helmet.rotation.y = clamp(_head.rotation.y, -HELMET_ROT_LIMIT, HELMET_ROT_LIMIT)
+
+	if abs(_target_tracker.rotation.y - _suit.rotation.y) < HEAD_ROT_LIMIT:
+		_head.rotation = lerp(_head.rotation, _target_tracker.rotation, LERP_H * delta)
+		_helmet.rotation.y = clamp(_head.rotation.y, -HELMET_ROT_LIMIT, HELMET_ROT_LIMIT)
 
 	if _target_nav != null:
 		_nav.target_position = _target_nav.get_global_transform_interpolated().origin

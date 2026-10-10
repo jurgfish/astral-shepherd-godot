@@ -33,13 +33,17 @@ func _start() -> void:
 	_spawner_allias.set_visors(false)
 	_spawner_allias.align_rotation_to_target()
 
-	await get_tree().create_timer(10.0).timeout
-	_spawner_allias.set_target_navigation(_alka)
+	#await get_tree().create_timer(10.0).timeout
+	#_spawner_allias.set_target_navigation(_alka)
 
-	await get_tree().create_timer(5.0).timeout
-	_spawner_allias.set_target_navigation(null)
-	await get_tree().create_timer(5.0).timeout
-	_spawner_allias.set_target_look(null)
+	#await get_tree().create_timer(5.0).timeout
+	#_spawner_allias.set_target_navigation(null)
+	#await get_tree().create_timer(5.0).timeout
+	#_spawner_allias.set_target_look(null)
+
+	while true:
+		_spawner_allias.set_random_symbols_target_navigation()
+		await get_tree().create_timer(20.0).timeout
 
 ##################################################################################################
 
