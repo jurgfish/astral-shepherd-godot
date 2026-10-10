@@ -15,6 +15,7 @@ var _player_detected: bool = false
 var _player_collecting: bool = false
 var _on_screen: bool = false
 var _sky_home: float = 0.0
+var _idle_speed: float = 0.0
 
 @export var _symbol_gimbal: Marker3D
 @export var _symbol_star: MeshInstance3D
@@ -47,9 +48,9 @@ func _physics_process(delta: float) -> void:
 			_symbol_gimbal.rotate_object_local(Vector3.FORWARD, COLLECT_SPEED * delta)
 			translate_object_local(APPROACH_SPEED * delta)
 	else:
-		rotate_x(IDLE_SPEED * delta)
-		rotate_y(IDLE_SPEED * delta)
-		rotate_z(IDLE_SPEED * delta)
+		rotate_x(_idle_speed * delta)
+		rotate_y(_idle_speed * delta)
+		rotate_z(_idle_speed * delta)
 
 		if global_transform.origin.y < _sky_home:
 			global_transform.origin.y += FLOAT_SPEED * delta
@@ -60,6 +61,7 @@ func _ready() -> void:
 	rotation.x = PI * randf()
 	rotation.y = PI * randf()
 	rotation.z = PI * randf()
+	_idle_speed = IDLE_SPEED + randf()
 
 ##################################################################################################
 
