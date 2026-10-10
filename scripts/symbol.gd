@@ -2,7 +2,7 @@
 
 extends Node3D
 
-const IDLE_SPEED: float = 0.8
+const IDLE_SPEED: float = 1.8
 const COLLECT_SPEED: float = 8.8
 const APPROACH_SPEED: Vector3 = Vector3(0.0, 0.0, 1.0)
 const FLOAT_SPEED: float = 0.2
@@ -58,10 +58,10 @@ func _physics_process(delta: float) -> void:
 	_awareness.global_transform.origin = global_transform.origin
 
 func _ready() -> void:
-	rotation.x = PI * randf()
-	rotation.y = PI * randf()
-	rotation.z = PI * randf()
-	_idle_speed = IDLE_SPEED + randf()
+	rotation.x = randf_range(-PI, PI)
+	rotation.y = randf_range(-PI, PI)
+	rotation.z = randf_range(-PI, PI)
+	_idle_speed = randf_range(-IDLE_SPEED, IDLE_SPEED)
 
 ##################################################################################################
 

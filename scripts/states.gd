@@ -17,7 +17,7 @@ enum DEBUG {
 
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.USER
-	^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.LIGHTS_ON
+	^ DEBUG.SKIP_LOAD_SPLASH #^ DEBUG.LIGHTS_ON
 )
 
 ##################################################################################################

@@ -15,6 +15,7 @@ var _target: Node3D = null
 @export var _head: Marker3D
 @export var _helmet: MeshInstance3D
 @export var _helmet_visor: MeshInstance3D
+@export var _suit: MeshInstance3D
 
 ##################################################################################################
 
@@ -28,6 +29,10 @@ func set_symbol(flag: States.SYMBOL) -> void:
 func set_location(pos: Vector3) -> void:
 	global_transform.origin = pos
 
+func align_rotation_to_target() -> void:
+	_target_tracker.look_at(_target.get_target(), Vector3.UP, true)
+	rotation.y = _target_tracker.rotation.y
+
 func set_target(body: Node3D) -> void:
 	_target = body
 
@@ -39,9 +44,11 @@ func get_target() -> Vector3:
 func _physics_process(delta: float) -> void:
 	if _target != null:
 		_target_tracker.look_at(_target.get_target(), Vector3.UP, true)
-		if abs(_target_tracker.rotation.y - rotation.y) < HEAD_ROT_LIMIT:
+		if abs(_target_tracker.rotation.y - _suit.rotation.y) < HEAD_ROT_LIMIT:
 			_head.rotation = lerp(_head.rotation, _target_tracker.rotation, LERP_H * delta)
 			_helmet.rotation.y = clamp(_head.rotation.y, -HELMET_ROT_LIMIT, HELMET_ROT_LIMIT)
+
+		rotation.y += 0.1 * delta
 
 ##################################################################################################
 

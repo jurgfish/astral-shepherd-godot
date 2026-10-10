@@ -24,8 +24,12 @@ func set_visors(flag: bool) -> void:
 	for child in get_children():
 		child.set_visor(flag)
 
+func align_rotation_to_target() -> void:
+	for child in get_children():
+		child.align_rotation_to_target()
+
 func spawn(count: int) -> void:
 	for idx in count:
-		_spawn_allias(States.SYMBOL.STAR)
+		_spawn_allias(States.SYMBOL.TRI)
 
 ##################################################################################################

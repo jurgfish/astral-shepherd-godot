@@ -16,9 +16,11 @@ first:
   - allias navigations
 	- to random points
 	- to alka
+	- avoid other allias
+- symbol navigation
+  - avoid other symbols, allias
 
 issues:
-- allias is spawning without a head
 - alliases can spawn overlapping
   - should be a problem with symbols too (add avoid logic)
 
@@ -141,5 +143,9 @@ NOTABLE CHALLENGES
 
 - this is my first first person game (previously have only made third person 3D, 2D games), setup
   of camera was simple, getting it to work *correctly* with physics interpolation was not
+- had a funny bug where allias would spawn without a head, at first i thought the visor was not
+  opening but i realized i was looking at the back of the inside of the helmet, spent some time
+  checking my sanity for all visibility logic; turned out the game was working as intended, i
+  just hadn't modeled the requested head model yet
 
 ##################################################################################################
