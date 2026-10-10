@@ -13,13 +13,14 @@ TASK QUEUE >>>
 first:
 - delivery signals (detected, collecting, caught)
 - allias
-  - allias spawning
-	- 11 scattered evenly on map
   - allias navigations
 	- to random points
 	- to alka
 
 issues:
+- allias is spawning without a head
+- alliases can spawn overlapping
+  - should be a problem with symbols too (add avoid logic)
 
 next:
 - scoring system

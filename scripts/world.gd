@@ -17,6 +17,8 @@ func _initialize() -> void:
 	get_tree().paused = false # for game reload
 
 	Service.initialize()
+	_alka.set_init_distance(States.SPAWN_BOUND)
+
 	if not States.DEBUG_MODE & States.DEBUG.SKIP_LOAD_SPLASH:
 		await _load_hud.play_load()
 
@@ -24,8 +26,8 @@ func _start() -> void:
 	if States.DEBUG_MODE & States.DEBUG.ENABLED:
 		print("\nHELLO WORLD")
 
-	_spawner_symbol.spawn(11)
-	_spawner_allias.spawn()
+	_spawner_symbol.spawn(States.ALLIAS_COUNT)
+	_spawner_allias.spawn(States.ALLIAS_COUNT)
 	_spawner_allias.set_target(_alka)
 
 ##################################################################################################

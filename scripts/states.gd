@@ -17,7 +17,7 @@ enum DEBUG {
 
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.USER
-	^ DEBUG.SKIP_LOAD_SPLASH #^ DEBUG.LIGHTS_ON
+	^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.LIGHTS_ON
 )
 
 ##################################################################################################
@@ -28,6 +28,10 @@ const GAME_VERSION: String = "0.0.3"
 const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 8 }
 
 ##################################################################################################
+
+# GAME SETTINGS
+const ALLIAS_COUNT: int = 11
+const SPAWN_BOUND: float = 8.0
 
 # DEFAULT SETTINGS
 const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)

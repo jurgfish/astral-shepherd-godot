@@ -18,6 +18,9 @@ var _target: Node3D = null
 
 ##################################################################################################
 
+func set_visor(flag: bool) -> void:
+	_helmet_visor.visible = flag
+
 func set_symbol(flag: States.SYMBOL) -> void:
 	_symbol_tri.visible = flag == States.SYMBOL.TRI
 	_symbol_id = flag
@@ -32,9 +35,6 @@ func get_target() -> Vector3:
 	return _head.get_global_transform_interpolated().origin
 
 ##################################################################################################
-
-func _ready() -> void:
-	_helmet_visor.visible = false
 
 func _physics_process(delta: float) -> void:
 	if _target != null:

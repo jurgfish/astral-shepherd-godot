@@ -35,7 +35,6 @@ _alka = NodePath("alka")
 _pause_hud = NodePath("../pause_hud")
 
 [node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
 metadata/_edit_lock_ = true
