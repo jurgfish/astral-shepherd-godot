@@ -29,13 +29,17 @@ func _start() -> void:
 	_spawner_symbol.spawn(States.ALLIAS_COUNT)
 	_spawner_allias.spawn(States.ALLIAS_COUNT)
 
-	_spawner_allias.set_target(_alka)
+	_spawner_allias.set_target_look(_alka)
 	_spawner_allias.set_visors(false)
-	#await get_tree().create_timer(0.1).timeout
-	#_spawner_allias.align_rotation_to_target()
-#
-	#await get_tree().create_timer(10.0).timeout
-	#_spawner_allias.align_rotation_to_target()
+	_spawner_allias.align_rotation_to_target()
+
+	await get_tree().create_timer(10.0).timeout
+	_spawner_allias.set_target_navigation(_alka)
+
+	await get_tree().create_timer(5.0).timeout
+	_spawner_allias.set_target_navigation(null)
+	await get_tree().create_timer(5.0).timeout
+	_spawner_allias.set_target_look(null)
 
 ##################################################################################################
 

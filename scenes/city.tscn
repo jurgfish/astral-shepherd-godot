@@ -16,7 +16,7 @@ plane = Plane(0, 0, -1, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_movw8"]
 plane = Plane(0, 0, 1, 0)
 
-[node name="city" type="StaticBody3D" unique_id=1539621184]
+[node name="city" type="StaticBody3D" unique_id=1539621184 groups=["nav"]]
 
 [node name="clsn_floor" type="CollisionShape3D" parent="." unique_id=1925561060]
 shape = SubResource("WorldBoundaryShape3D_58ubr")

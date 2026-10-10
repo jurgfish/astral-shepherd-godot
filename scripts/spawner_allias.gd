@@ -16,9 +16,9 @@ func _spawn_allias(symbol_id: States.SYMBOL) -> void:
 
 ##################################################################################################
 
-func set_target(body: Node3D) -> void:
+func set_target_look(body: Node3D) -> void:
 	for child in get_children():
-		child.set_target(body)
+		child.set_target_look(body)
 
 func set_visors(flag: bool) -> void:
 	for child in get_children():
@@ -27,6 +27,10 @@ func set_visors(flag: bool) -> void:
 func align_rotation_to_target() -> void:
 	for child in get_children():
 		child.align_rotation_to_target()
+
+func set_target_navigation(body: Node3D) -> void:
+	for child in get_children():
+		child.set_target_navigation(body)
 
 func spawn(count: int) -> void:
 	for idx in count:

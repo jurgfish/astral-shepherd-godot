@@ -5,7 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 radius = 0.25
 
-[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps")]
+[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps") groups=["nav"]]
 script = ExtResource("1_rrvil")
 _head = NodePath("head")
 _body = NodePath("body")

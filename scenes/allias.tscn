@@ -16,14 +16,21 @@ size = Vector3(0.50201416, 0.802124, 0.24951172)
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
 radius = 10.0
 
-[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_target_tracker", "_symbol_tri", "_head", "_helmet", "_helmet_visor", "_suit")]
+[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_nav_arm", "_nav", "_target_tracker", "_symbol_tri", "_head", "_helmet", "_helmet_visor", "_suit") groups=["nav"]]
 script = ExtResource("1_nim83")
+_nav_arm = NodePath("nav_arm")
+_nav = NodePath("nav_arm/navigator")
 _target_tracker = NodePath("target_tracker")
 _symbol_tri = NodePath("head/allias_head_tri")
 _head = NodePath("head")
 _helmet = NodePath("allias_helmet")
 _helmet_visor = NodePath("allias_helmet/allias_helmet_visor")
 _suit = NodePath("allias_suit")
+
+[node name="nav_arm" type="Marker3D" parent="." unique_id=737887394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+
+[node name="navigator" type="NavigationAgent3D" parent="nav_arm" unique_id=1330671105]
 
 [node name="allias_suit" type="MeshInstance3D" parent="." unique_id=412840481]
 mesh = ExtResource("1_oyysy")

@@ -14,11 +14,11 @@ first:
 - delivery signals (detected, collecting, caught)
 - allias
   - allias navigations
-	- to random points
-	- to alka
-	- avoid other allias
+	- to random symbols
 - symbol navigation
+  - return to home x/z coords on idle
   - avoid other symbols, allias
+	- can't use nav server?
 
 issues:
 - alliases can spawn overlapping
