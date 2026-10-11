@@ -5,10 +5,7 @@ extends Node3D
 @export var _load_hud: Control
 @export var _pause_hud: Control
 @export var _user: Node3D
-@export var _alka: CharacterBody3D
-
-@export var _spawner_symbol: Node3D
-@export var _spawner_allias: Node3D
+@export var _city: Node3D
 
 ##################################################################################################
 
@@ -17,33 +14,14 @@ func _initialize() -> void:
 	get_tree().paused = false # for game reload
 
 	Service.initialize()
-	_alka.set_init_distance(States.SPAWN_BOUND)
-	_spawner_symbol.spawn(States.ALLIAS_COUNT)
-	_spawner_allias.spawn(States.ALLIAS_COUNT)
-	_spawner_allias.set_target_look(_alka)
-	_spawner_allias.set_visors(false)
+	_city.initialize()
 
 	if not States.DEBUG_MODE & States.DEBUG.SKIP_LOAD_SPLASH:
 		await _load_hud.play_load()
-	else:
-		await get_tree().create_timer(0.1).timeout
 
 func _start() -> void:
 	Service.set_status(States.STATUS.READY)
-
-	_spawner_allias.align_rotation_to_target()
-
-	#await get_tree().create_timer(10.0).timeout
-	#_spawner_allias.set_target_navigation(_alka)
-
-	#await get_tree().create_timer(5.0).timeout
-	#_spawner_allias.set_target_navigation(null)
-	#await get_tree().create_timer(5.0).timeout
-	#_spawner_allias.set_target_look(null)
-
-	while true:
-		_spawner_allias.set_random_symbols_target_navigation()
-		await get_tree().create_timer(20.0).timeout
+	_city.begin_routine()
 
 ##################################################################################################
 
@@ -56,7 +34,6 @@ func pause(flag: bool) -> void:
 func quit() -> void:
 	Service.set_status(States.STATUS.SHUTDOWN)
 	get_tree().paused = true
-
 	_pause_hud.quit()
 	_load_hud.quit()
 	get_tree().quit()

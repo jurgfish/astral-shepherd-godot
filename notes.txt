@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- move spawn logic to city, await to world (remove timer in world init)
 - core gameplay loop
   - 12 symbols (and allias heads)
   - scoring system

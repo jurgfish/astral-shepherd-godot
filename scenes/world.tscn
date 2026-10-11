@@ -6,29 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://uvj24qf6rh4n" path="res://scenes/load_hud.tscn" id="2_qfnet"]
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
-[ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/world_environment.gd" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/spawner_symbol.tscn" id="9_7r4gi"]
-[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/spawner_allias.tscn" id="9_w7kh3"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_7r4gi"]
-vertices = PackedVector3Array(-99.5, 0.4, -99.5, -99.5, 0.4, 99.5, 99.5, 0.4, 99.5, 99.5, 0.4, -99.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-geometry_source_geometry_mode = 1
-geometry_source_group_name = &"nav"
-agent_height = 2.0
-
-[sub_resource type="Environment" id="Environment_xw2wu"]
-background_mode = 1
-
-[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_alka", "_spawner_symbol", "_spawner_allias")]
+[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_city")]
 physics_interpolation_mode = 1
 script = ExtResource("1_nnsk1")
 _load_hud = NodePath("load_hud")
 _pause_hud = NodePath("pause_hud")
 _user = NodePath("user")
-_alka = NodePath("user/alka")
-_spawner_symbol = NodePath("city/spawner_symbol")
-_spawner_allias = NodePath("city/spawner_allias")
+_city = NodePath("city")
 
 [node name="load_hud" parent="." unique_id=652777255 instance=ExtResource("2_qfnet")]
 
@@ -42,18 +27,8 @@ _alka = NodePath("alka")
 _pause_hud = NodePath("../pause_hud")
 
 [node name="alka" parent="user" unique_id=1628352519 instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
-[node name="city" parent="." unique_id=1539621184 instance=ExtResource("3_4wyf3")]
+[node name="city" parent="." unique_id=1539621184 node_paths=PackedStringArray("_alka") instance=ExtResource("3_4wyf3")]
+_alka = NodePath("../user/alka")
 metadata/_edit_lock_ = true
-
-[node name="navigation_region" type="NavigationRegion3D" parent="city" unique_id=605426396]
-navigation_mesh = SubResource("NavigationMesh_7r4gi")
-
-[node name="env" type="WorldEnvironment" parent="city" unique_id=1363825567]
-environment = SubResource("Environment_xw2wu")
-script = ExtResource("8_4mrxx")
-
-[node name="spawner_symbol" parent="city" unique_id=911735598 instance=ExtResource("9_7r4gi")]
-
-[node name="spawner_allias" parent="city" unique_id=1161042528 node_paths=PackedStringArray("_spawner_symbol") instance=ExtResource("9_w7kh3")]
-_spawner_symbol = NodePath("../spawner_symbol")

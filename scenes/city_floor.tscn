@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cd37d754ync0f"]
+
+[ext_resource type="ArrayMesh" uid="uid://k6ipgavr5dfk" path="res://meshes/floor.tres" id="1_68qo6"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5shmo"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qdijh"]
+plane = Plane(1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a8rtr"]
+plane = Plane(-1, 0, 0, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tg4u6"]
+plane = Plane(0, 0, -1, 0)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vua1k"]
+plane = Plane(0, 0, 1, 0)
+
+[node name="city_floor" type="StaticBody3D" unique_id=2025584823]
+
+[node name="clsn_floor" type="CollisionShape3D" parent="." unique_id=170564507]
+shape = SubResource("WorldBoundaryShape3D_5shmo")
+
+[node name="clsn_wall" type="CollisionShape3D" parent="." unique_id=1860010111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_qdijh")
+
+[node name="clsn_wall_2" type="CollisionShape3D" parent="." unique_id=2032961532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_a8rtr")
+
+[node name="clsn_wall_3" type="CollisionShape3D" parent="." unique_id=1862513156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80)
+shape = SubResource("WorldBoundaryShape3D_tg4u6")
+
+[node name="clsn_wall_4" type="CollisionShape3D" parent="." unique_id=1097323938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+shape = SubResource("WorldBoundaryShape3D_vua1k")
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=495324925]
+mesh = ExtResource("1_68qo6")

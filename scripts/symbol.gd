@@ -18,6 +18,7 @@ var _player_capturing: bool = false
 var _on_screen: bool = false
 var _sky_home: Vector3 = Vector3.ZERO
 var _idle_speed: float = 0.0
+var _captured: bool = false
 
 @export var _symbol_gimbal: Marker3D
 @export var _symbol_star: MeshInstance3D
@@ -74,21 +75,29 @@ func _on_screen_notifier_screen_exited() -> void:
 	_on_screen = false
 
 func _on_area_detect_body_entered(body: Node3D) -> void:
+	if _captured:
+		return
 	if body is Player:
 		_player_detected = true
 		_target = body
 
 func _on_area_detect_body_exited(body: Node3D) -> void:
+	if _captured:
+		return
 	if body is Player:
 		_player_detected = false
 		_target = null
 
 func _on_area_capturing_body_entered(body: Node3D) -> void:
+	if _captured:
+		return
 	if body is Player:
 		_player_capturing = true
 		emit_signal("delivery", States.DELIVERY.CAPTURING, _target, _symbol_id)
 
 func _on_area_capturing_body_exited(body: Node3D) -> void:
+	if _captured:
+		return
 	if body is Player:
 		_player_capturing = false
 		_symbol_gimbal.rotation = Vector3.ZERO
@@ -96,7 +105,8 @@ func _on_area_capturing_body_exited(body: Node3D) -> void:
 
 func _on_area_captured_body_entered(body: Node3D) -> void:
 	if body is Player:
-		queue_free()
+		_captured = true
 		emit_signal("delivery", States.DELIVERY.CAPTURED, _target, _symbol_id)
+		queue_free()
 
 ##################################################################################################

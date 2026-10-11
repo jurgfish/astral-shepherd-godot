@@ -1,41 +1,36 @@
 [gd_scene format=3 uid="uid://meejsrqvhxcu"]
 
-[ext_resource type="ArrayMesh" uid="uid://k6ipgavr5dfk" path="res://meshes/floor.tres" id="1_bih7l"]
+[ext_resource type="PackedScene" uid="uid://cd37d754ync0f" path="res://scenes/city_floor.tscn" id="1_bih7l"]
+[ext_resource type="Script" uid="uid://mr70ok3xnhp2" path="res://scripts/city.gd" id="1_movw8"]
+[ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/world_environment.gd" id="2_oacpt"]
+[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/spawner_symbol.tscn" id="2_rqxma"]
+[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/spawner_allias.tscn" id="3_movw8"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_58ubr"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_bih7l"]
+vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"nav"
+agent_height = 2.0
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xw2wu"]
-plane = Plane(1, 0, 0, 0)
+[sub_resource type="Environment" id="Environment_2jj31"]
+background_mode = 1
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bih7l"]
-plane = Plane(-1, 0, 0, 0)
+[node name="city" type="Node3D" unique_id=1258476902 node_paths=PackedStringArray("_spawner_symbol", "_spawner_allias") groups=["nav"]]
+script = ExtResource("1_movw8")
+_spawner_symbol = NodePath("spawner_symbol")
+_spawner_allias = NodePath("spawner_allias")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rqxma"]
-plane = Plane(0, 0, -1, 0)
+[node name="navigation_region" type="NavigationRegion3D" parent="." unique_id=620657762]
+navigation_mesh = SubResource("NavigationMesh_bih7l")
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_movw8"]
-plane = Plane(0, 0, 1, 0)
+[node name="env" type="WorldEnvironment" parent="." unique_id=231952191]
+environment = SubResource("Environment_2jj31")
+script = ExtResource("2_oacpt")
 
-[node name="city" type="StaticBody3D" unique_id=1539621184 groups=["nav"]]
+[node name="city_floor" parent="." unique_id=2025584823 instance=ExtResource("1_bih7l")]
 
-[node name="clsn_floor" type="CollisionShape3D" parent="." unique_id=1925561060]
-shape = SubResource("WorldBoundaryShape3D_58ubr")
+[node name="spawner_symbol" parent="." unique_id=911735598 instance=ExtResource("2_rqxma")]
 
-[node name="clsn_wall" type="CollisionShape3D" parent="." unique_id=1432353496]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_xw2wu")
-
-[node name="clsn_wall_2" type="CollisionShape3D" parent="." unique_id=2070530015]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_bih7l")
-
-[node name="clsn_wall_3" type="CollisionShape3D" parent="." unique_id=1729011364]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80)
-shape = SubResource("WorldBoundaryShape3D_rqxma")
-
-[node name="clsn_wall_4" type="CollisionShape3D" parent="." unique_id=2075219200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
-shape = SubResource("WorldBoundaryShape3D_movw8")
-
-[node name="floor" type="MeshInstance3D" parent="." unique_id=945083076]
-mesh = ExtResource("1_bih7l")
+[node name="spawner_allias" parent="." unique_id=1161042528 node_paths=PackedStringArray("_spawner_symbol") instance=ExtResource("3_movw8")]
+_spawner_symbol = NodePath("../spawner_symbol")
