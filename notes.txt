@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- increase alka start buffer distance, headlamp range
 - delivery signals (detected, collecting, caught)
 - core gameplay loop
   - 12 symbols (and allias heads)

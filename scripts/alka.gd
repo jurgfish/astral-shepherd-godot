@@ -17,7 +17,7 @@ var _bob_amp: float = 0.0
 var _bob_weight: float = 0.0
 
 # move
-const SPAWN_BUFFER: float = 10.0
+const SPAWN_BUFFER: float = 20.0
 const MAX_SPEED: float = 2.0
 const LERP_V: float = 18.0
 var _move_dir: Vector3 = Vector3.ZERO
