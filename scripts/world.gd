@@ -18,19 +18,19 @@ func _initialize() -> void:
 
 	Service.initialize()
 	_alka.set_init_distance(States.SPAWN_BOUND)
+	_spawner_symbol.spawn(States.ALLIAS_COUNT)
+	_spawner_allias.spawn(States.ALLIAS_COUNT)
+	_spawner_allias.set_target_look(_alka)
+	_spawner_allias.set_visors(false)
 
 	if not States.DEBUG_MODE & States.DEBUG.SKIP_LOAD_SPLASH:
 		await _load_hud.play_load()
+	else:
+		await get_tree().create_timer(0.1).timeout
 
 func _start() -> void:
-	if States.DEBUG_MODE & States.DEBUG.ENABLED:
-		print("\nHELLO WORLD")
+	Service.set_status(States.STATUS.READY)
 
-	_spawner_symbol.spawn(States.ALLIAS_COUNT)
-	_spawner_allias.spawn(States.ALLIAS_COUNT)
-
-	_spawner_allias.set_target_look(_alka)
-	_spawner_allias.set_visors(false)
 	_spawner_allias.align_rotation_to_target()
 
 	#await get_tree().create_timer(10.0).timeout
@@ -48,17 +48,14 @@ func _start() -> void:
 ##################################################################################################
 
 func pause(flag: bool) -> void:
-	if States.DEBUG_MODE & States.DEBUG.ENABLED:
-		print("PAUSED: %s" % flag)
-
 	_pause_hud.pause(flag)
 	_load_hud.pause(flag)
 	_user.pause(flag)
 	get_tree().paused = flag
 
 func quit() -> void:
-	if States.DEBUG_MODE & States.DEBUG.ENABLED:
-		print("GOODBYE WORLD\n")
+	Service.set_status(States.STATUS.SHUTDOWN)
+	get_tree().paused = true
 
 	_pause_hud.quit()
 	_load_hud.quit()

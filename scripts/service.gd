@@ -4,6 +4,7 @@
 
 extends Node
 
+var _status: int = States.STATUS.STARTUP
 var _world: Node3D = null
 
 ##################################################################################################
@@ -28,11 +29,28 @@ func _request_world(id: String, data: Array) -> void:
 		_world.quit()
 	elif len(data) > 1:
 		if data[0] == States.WORLD.PAUSE:
+			if States.DEBUG_MODE & States.DEBUG.ENABLED:
+				print("PAUSE: %s" % data[1])
 			_world.pause(data[1])
 	else:
 		push_warning("SERVICE REQUEST INVALID: WORLD %s, %s" % [id, data])
 
 ##################################################################################################
+
+func set_status(status: int) -> void:
+	if _status == status:
+		return
+	if _status == States.STATUS.SHUTDOWN:
+		return
+
+	_status = status
+
+	if _status == States.STATUS.READY:
+		if States.DEBUG_MODE & States.DEBUG.ENABLED:
+			print("\nHELLO WORLD")
+	if _status == States.STATUS.SHUTDOWN:
+		if States.DEBUG_MODE & States.DEBUG.ENABLED:
+			print("GOODBYE WORLD\n")
 
 func initialize() -> void:
 	_debug_initialize()
@@ -40,7 +58,24 @@ func initialize() -> void:
 
 ##################################################################################################
 
+func _on_delivery_request(status: int, ...data: Array) -> void:
+	if (_status < States.STATUS.READY) or (_status == States.STATUS.SHUTDOWN):
+		return
+	if States.DEBUG_MODE & States.DEBUG.SERVICE:
+		print("DELIVERY REQUEST: %s, %s" % [status, data])
+
+	if status == States.DELIVERY.CAPTURING:
+		pass
+	elif status == States.DELIVERY.CAPTURED:
+		pass
+	elif status == States.DELIVERY.CANCEL:
+		pass
+	else:
+		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
+
 func _on_service_request(id: String, status: int, ...data: Array) -> void:
+	if (_status < States.STATUS.READY) or (_status == States.STATUS.SHUTDOWN):
+		return
 	if States.DEBUG_MODE & States.DEBUG.SERVICE:
 		print("SERVICE REQUEST: %s, %s, %s" % [id, status, data])
 

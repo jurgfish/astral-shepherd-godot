@@ -6,9 +6,11 @@ extends Node
 
 ##################################################################################################
 
+enum STATUS { STARTUP, READY, INTRO, RUNNING, SHUTDOWN }
 enum REQUEST { WORLD }
 enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
 enum SYMBOL { NULL, STAR, TRI }
+enum DELIVERY { CAPTURING, CAPTURED, CANCEL }
 
 enum DEBUG {
 	DISABLED = 1, ENABLED = 2, USER = 4, SERVICE = 8, SKIP_LOAD_SPLASH = 16,
@@ -16,7 +18,7 @@ enum DEBUG {
 }
 
 var DEBUG_MODE: int = (
-	DEBUG.ENABLED #^ DEBUG.USER
+	DEBUG.ENABLED ^ DEBUG.SERVICE
 	^ DEBUG.SKIP_LOAD_SPLASH #^ DEBUG.LIGHTS_ON
 )
 
