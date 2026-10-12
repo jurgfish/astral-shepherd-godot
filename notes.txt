@@ -12,7 +12,6 @@ TASK QUEUE >>>
 
 first:
 - core gameplay loop (SUN)
-  - 12 allias heads
   - scoring system
 	- alka track captured symbols
 	- heart ui with counter

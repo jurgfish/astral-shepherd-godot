@@ -49,6 +49,7 @@ _awareness = NodePath("awareness")
 [node name="symbol_gimbal" type="Marker3D" parent="." unique_id=116434561]
 
 [node name="symbol_star" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1690556602]
+visible = false
 mesh = ExtResource("2_irjfk")
 
 [node name="symbol_moon" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1843218766]

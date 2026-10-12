@@ -21,7 +21,17 @@ var _curr_rot: float = 0.0
 @export var _nav_arm: Marker3D
 @export var _nav: NavigationAgent3D
 @export var _target_tracker: Marker3D
+@export var _symbol_moon: MeshInstance3D
 @export var _symbol_tri: MeshInstance3D
+@export var _symbol_circle: MeshInstance3D
+@export var _symbol_flower: MeshInstance3D
+@export var _symbol_prop: MeshInstance3D
+@export var _symbol_plus: MeshInstance3D
+@export var _symbol_astral: MeshInstance3D
+@export var _symbol_diamond: MeshInstance3D
+@export var _symbol_apostrophe: MeshInstance3D
+@export var _symbol_therefore: MeshInstance3D
+@export var _symbol_hexagon: MeshInstance3D
 @export var _head: Marker3D
 @export var _helmet: MeshInstance3D
 @export var _helmet_visor: MeshInstance3D
@@ -33,7 +43,20 @@ func set_visor(flag: bool) -> void:
 	_helmet_visor.visible = flag
 
 func set_symbol(flag: States.SYMBOL) -> void:
+	if flag == States.SYMBOL.STAR:
+		push_error("ALLIAS: set symbol (star) invalid")
+		return
+	_symbol_moon.visible = flag == States.SYMBOL.MOON
 	_symbol_tri.visible = flag == States.SYMBOL.TRI
+	_symbol_circle.visible = flag == States.SYMBOL.CIRCLE
+	_symbol_flower.visible = flag == States.SYMBOL.FLOWER
+	_symbol_prop.visible = flag == States.SYMBOL.PROP
+	_symbol_plus.visible = flag == States.SYMBOL.PLUS
+	_symbol_astral.visible = flag == States.SYMBOL.ASTRAL
+	_symbol_diamond.visible = flag == States.SYMBOL.DIAMOND
+	_symbol_apostrophe.visible = flag == States.SYMBOL.APOSTROPHE
+	_symbol_therefore.visible = flag == States.SYMBOL.THEREFORE
+	_symbol_hexagon.visible = flag == States.SYMBOL.HEXAGON
 	_symbol_id = flag
 
 func set_location(pos: Vector3) -> void:
