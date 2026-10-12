@@ -11,9 +11,10 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- core gameplay loop
+- core gameplay loop (SUN)
   - 12 symbols (and allias heads)
   - scoring system
+	- alka track captured symbols
 	- heart ui with counter
   - allias interactions
 	- symbol capturing
@@ -24,7 +25,20 @@ issues:
 - test avoidance (alliases can get caught on each other)
 
 next:
-- events
+- events (MON-TUES)
+  - the following requires the following functionality:
+	- alka/allias symbol catch/release logic
+	  - and progress tracking
+	- alka flashlight flickering
+	- tutorial sequence
+	- temp audio?
+	- spawn delegate chase logic based on symbol emit service delivery request
+	- exit sequence
+	  - end ui
+	- models:
+		- all symbols, heads
+		- allias happy models
+		- exit door
   - on game load:
 	- tutorial:
 	  - only alka, and alka's symbol placed ahead
@@ -65,10 +79,13 @@ next:
 	- all helmets open, head models replaced with happy versions
 	- exit appears furthest distance from alka
     - on exit, credits, and a thank you
-- test high-fidelity lighting
+
+- high-res models (WEDS)
+- test high-fidelity lighting (WEDS)
   - set env tonemap
   - glow
-- high-res models, anims
+- anims (THURS-FRI)
+- sound (SAT)
 
 garnish:
 - alka headlamps flicker when near allias
