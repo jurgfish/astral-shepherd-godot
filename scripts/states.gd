@@ -9,7 +9,10 @@ extends Node
 enum STATUS { STARTUP, READY, INTRO, RUNNING, SHUTDOWN }
 enum REQUEST { WORLD }
 enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
-enum SYMBOL { NULL, STAR, TRI }
+enum SYMBOL {
+	NULL, STAR, MOON, TRI, CIRCLE, FLOWER, PROP, PLUS, ASTRAL, DIAMOND, APOSTROPHE, THEREFORE,
+	HEXAGON
+}
 enum DELIVERY { CAPTURING, CAPTURED, CANCEL }
 
 enum DEBUG {
@@ -32,7 +35,10 @@ const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 11 }
 ##################################################################################################
 
 # GAME SETTINGS
-const ALLIAS_COUNT: int = 11
+const ALLIAS_SYMBOLS: Array = [
+	SYMBOL.MOON, SYMBOL.TRI, SYMBOL.CIRCLE, SYMBOL.FLOWER, SYMBOL.PROP, SYMBOL.PLUS,
+	SYMBOL.ASTRAL, SYMBOL.DIAMOND, SYMBOL.APOSTROPHE, SYMBOL.THEREFORE, SYMBOL.HEXAGON
+]
 
 # DEFAULT SETTINGS
 const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)

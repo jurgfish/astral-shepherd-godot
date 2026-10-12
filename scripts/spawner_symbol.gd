@@ -16,9 +16,12 @@ func _spawn_symbol(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
 
 ##################################################################################################
 
+# param: count [int] max State.ALLIAS_SYMBOLS size
+# note: spawned allias symbols should match spawned symbols
 func spawn(count: int, spawn_bound: float) -> void:
+	count = min(count, States.ALLIAS_SYMBOLS.size())
 	for idx in count:
-		_spawn_symbol(States.SYMBOL.STAR, spawn_bound)
+		_spawn_symbol(States.ALLIAS_SYMBOLS[idx], spawn_bound)
 
 func get_symbol_list() -> Array:
 	return get_children()

@@ -56,9 +56,12 @@ func set_random_symbols_target_navigation() -> void:
 	for idx in _allias_list.size():
 		_allias_list[idx].set_target_navigation(symbol_list[idx])
 
+# param: count [int] max State.ALLIAS_SYMBOLS size
+# note: spawned allias symbols should match spawned symbols
 func spawn(count: int, spawn_bound: float) -> void:
+	count = min(count, States.ALLIAS_SYMBOLS.size())
 	for idx in count:
-		_spawn_allias(States.SYMBOL.TRI, spawn_bound)
+		_spawn_allias(States.ALLIAS_SYMBOLS[idx], spawn_bound)
 	_allias_list = get_children()
 
 ##################################################################################################
