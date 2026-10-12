@@ -15,7 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cldkkyclo2u8u" path="res://meshes/symbol_hexagon.tres" id="12_in45d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
-radius = 0.1
+radius = 0.15
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irjfk"]
 radius = 10.0
@@ -26,7 +26,7 @@ radius = 7.0
 height = 48.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bed3"]
-radius = 0.2
+radius = 0.22
 
 [node name="symbol" type="AnimatableBody3D" unique_id=341915550 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_moon", "_symbol_tri", "_symbol_circle", "_symbol_flower", "_symbol_prop", "_symbol_plus", "_symbol_astral", "_symbol_diamond", "_symbol_apostrophe", "_symbol_therefore", "_symbol_hexagon", "_awareness")]
 sync_to_physics = false

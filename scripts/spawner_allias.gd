@@ -20,8 +20,6 @@ func _spawn_allias(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
 
 func _retrieve_symbol_list() -> Array:
 	var symbol_list: Array = _spawner_symbol.get_symbol_list()
-	if _allias_list.size() != symbol_list.size():
-		push_error("ALLIAS SPAWNER: mismatched symbol/allias counts")
 	return symbol_list
 
 ##################################################################################################
@@ -53,7 +51,8 @@ func set_random_symbols_target_navigation() -> void:
 	var symbol_list: Array = _retrieve_symbol_list()
 	symbol_list.shuffle()
 
-	for idx in _allias_list.size():
+	for idx in symbol_list.size():
+		# TODO: do not set nav for _allias that is chasing/dormant
 		_allias_list[idx].set_target_navigation(symbol_list[idx])
 
 # param: count [int] max State.ALLIAS_SYMBOLS size

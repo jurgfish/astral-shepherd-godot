@@ -12,7 +12,6 @@ TASK QUEUE >>>
 
 first:
 - core gameplay loop (SUN)
-  - increase symbol size
   - 12 allias heads
   - scoring system
 	- alka track captured symbols
@@ -23,6 +22,7 @@ first:
 	  - alka release symbol
 
 issues:
+- allias_spawner do not set random nav for allias that is chasing/dormant
 - test avoidance (alliases can get caught on each other)
 
 next:
