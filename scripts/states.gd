@@ -33,7 +33,6 @@ const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 11 }
 
 # GAME SETTINGS
 const ALLIAS_COUNT: int = 11
-const SPAWN_BOUND: float = 8.0
 
 # DEFAULT SETTINGS
 const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)

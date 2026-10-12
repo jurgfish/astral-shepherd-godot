@@ -10,11 +10,11 @@ var _allias_list: Array = []
 
 ##################################################################################################
 
-func _spawn_allias(symbol_id: States.SYMBOL) -> void:
+func _spawn_allias(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
 	var allias := ALLIAS.instantiate()
 	add_child(allias)
-	var pos_x: float = randf_range(-States.SPAWN_BOUND, States.SPAWN_BOUND)
-	var pos_z: float = randf_range(-States.SPAWN_BOUND, States.SPAWN_BOUND)
+	var pos_x: float = randf_range(-spawn_bound, spawn_bound)
+	var pos_z: float = randf_range(-spawn_bound, spawn_bound)
 	allias.set_location(Vector3(pos_x, 0.0, pos_z))
 	allias.set_symbol(symbol_id)
 
@@ -56,9 +56,9 @@ func set_random_symbols_target_navigation() -> void:
 	for idx in _allias_list.size():
 		_allias_list[idx].set_target_navigation(symbol_list[idx])
 
-func spawn(count: int) -> void:
+func spawn(count: int, spawn_bound: float) -> void:
 	for idx in count:
-		_spawn_allias(States.SYMBOL.TRI)
+		_spawn_allias(States.SYMBOL.TRI, spawn_bound)
 	_allias_list = get_children()
 
 ##################################################################################################
