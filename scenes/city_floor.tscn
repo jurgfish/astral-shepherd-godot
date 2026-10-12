@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd37d754ync0f"]
 
-[ext_resource type="ArrayMesh" uid="uid://k6ipgavr5dfk" path="res://meshes/floor.tres" id="1_68qo6"]
+[ext_resource type="ArrayMesh" uid="uid://k6ipgavr5dfk" path="res://meshes/city/floor.tres" id="1_68qo6"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5shmo"]
 

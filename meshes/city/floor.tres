@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" format=3 uid="uid://k6ipgavr5dfk"]
 
-[ext_resource type="Material" uid="uid://bwg5trwwxqd3k" path="res://materials/standard.material" id="1_b4cbv"]
+[ext_resource type="Material" uid="uid://bwg5trwwxqd3k" path="res://materials/standard.material" id="1_x6dnp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pikm4"]
 _surfaces = [{
@@ -24,7 +24,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
-"material": ExtResource("1_b4cbv"),
+"material": ExtResource("1_x6dnp"),
 "name": "standard",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
