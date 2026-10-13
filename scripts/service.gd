@@ -78,7 +78,9 @@ func _on_delivery_request(status: int, ...data: Array) -> void:
 	elif status == States.DELIVERY.CANCEL:
 		pass
 	elif status == States.DELIVERY.RELEASE:
-		_alka.release_symbol()
+		var erased: States.SYMBOL = _alka.release_symbol()
+		if erased != States.SYMBOL.NULL:
+			_city.spawn_symbol(erased)
 	else:
 		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
 

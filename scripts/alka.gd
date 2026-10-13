@@ -54,14 +54,20 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALKA SYMBOLS (CAPTURE):", _captured_symbols)
 
-func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> void:
-	if symbol == States.SYMBOL.NULL:
-		_captured_symbols.pop_front()
-	else:
-		_captured_symbols.erase(symbol)
+func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> States.SYMBOL:
+	var erased: States.SYMBOL = States.SYMBOL.NULL
+
+	if not _captured_symbols.is_empty():
+		if symbol == States.SYMBOL.NULL:
+			erased = _captured_symbols.pop_front()
+		else:
+			_captured_symbols.erase(symbol)
+			erased = symbol
 
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALKA SYMBOLS (RELEASE):", _captured_symbols)
+
+	return erased
 
 ##################################################################################################
 
