@@ -51,11 +51,25 @@ func set_random_symbols_target_navigation() -> void:
 	var symbol_list: Array = _retrieve_symbol_list()
 	symbol_list.shuffle()
 
-	for idx in symbol_list.size():
-		# TODO: do not set nav for _allias that is chasing/dormant
-		_allias_list[idx].set_target_navigation(symbol_list[idx])
+	# allias list will always be >= remaining symbols
+	# remaining symbols should be >= allias idle
+	# captured symbols = (alka captured = allias chasing) + allias captured
+	# remaining symbols = (uncaptured = allias idle)
+	for allias in _allias_list:
+		if not (allias.is_chasing() or allias.is_dormant()):
+			var target = symbol_list.pop_back()
+			if target != null:
+				allias.set_target_navigation(target)
+			else:
+				push_warning("SPAWNER ALLIAS: unexpected symbol mismatch")
 
 ##################################################################################################
+
+func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
+	for allias in _allias_list:
+		if allias.get_symbol() == symbol:
+			allias.set_chasing(flag, body)
+			return
 
 func capture_symbol(symbol: States.SYMBOL) -> void:
 	for allias in _allias_list:

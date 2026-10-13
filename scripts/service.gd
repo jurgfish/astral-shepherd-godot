@@ -69,18 +69,20 @@ func _on_delivery_request(status: int, ...data: Array) -> void:
 		print("DELIVERY REQUEST: %s, %s" % [status, data])
 
 	if status == States.DELIVERY.CAPTURING:
-		pass
+		if data[0] is Player:
+			_city.set_chasing(data[1], true, _alka)
 	elif status == States.DELIVERY.CAPTURED:
 		if data[0] is Player:
 			_alka.capture_symbol(data[1])
 		elif data[0] is Played:
 			_city.capture_symbol(data[1])
 	elif status == States.DELIVERY.CANCEL:
-		pass
+		_city.set_chasing(data[1], false, null)
 	elif status == States.DELIVERY.RELEASE:
 		var erased: States.SYMBOL = _alka.release_symbol()
 		if erased != States.SYMBOL.NULL:
 			_city.spawn_symbol(erased)
+			_city.set_chasing(erased, false, null)
 	else:
 		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
 

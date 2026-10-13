@@ -18,6 +18,9 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 func spawn_symbol(symbol: States.SYMBOL) -> void:
 	_spawner_symbol.spawn_symbol(symbol, SYMBOL_SPAWN_BOUND)
 
+func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
+	_spawner_allias.set_chasing(symbol, flag, body)
+
 ##################################################################################################
 
 func initialize() -> void:

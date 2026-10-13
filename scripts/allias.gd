@@ -7,17 +7,20 @@ const HEAD_ROT_LIMIT: float = 2.2
 const HELMET_ROT_LIMIT: float = 1.6
 const LERP_H: float = 10.0
 const LERP_R: float = 2.0
-const SPEED: float = 0.2
+const WALK_S: float = 0.2
+const RUN_S: float = 1.5
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target_look: Node3D = null
 var _next_pos: Vector3 = Vector3.ZERO
 var _offset_pos: Vector3 = Vector3.ZERO
 var _dir: Vector3 = Vector3.ZERO
+var _speed: float = 0.0
 var _target_nav: Node3D = null
 var _updated_rot: float = 0.0
 var _curr_rot: float = 0.0
 var _symbol_captured: bool = false
+var _chasing: bool = false
 
 @export var _nav_arm: Marker3D
 @export var _nav: NavigationAgent3D
@@ -64,6 +67,19 @@ func set_target_navigation(body: Node3D) -> void:
 	if _symbol_captured:
 		body = null
 	_target_nav = body
+
+func set_chasing(flag: bool, body: Node3D) -> void:
+	if _symbol_captured:
+		flag = false
+		body = null
+	_target_nav = body
+	_chasing = flag
+
+func is_chasing() -> bool:
+	return _chasing
+
+func is_dormant() -> bool:
+	return _symbol_captured
 
 ##################################################################################################
 
@@ -115,12 +131,13 @@ func _physics_process(delta: float) -> void:
 		_offset_pos = _nav_arm.position
 		_dir = global_position.direction_to(_next_pos - _offset_pos)
 		_dir.y = 0.0
+		_speed = RUN_S if _chasing else WALK_S
 
 		_updated_rot = Vector3.MODEL_FRONT.signed_angle_to(_dir, Vector3.UP)
 		if not is_equal_approx(_curr_rot, _updated_rot):
 			_curr_rot = lerp_angle(_curr_rot, _updated_rot, LERP_R * delta)
 
-		velocity = SPEED * _dir
+		velocity = _speed * _dir
 		rotation.y = _curr_rot
 
 		move_and_slide()

@@ -11,32 +11,21 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- core gameplay loop (MON)
-  - scoring system
-	- heart ui with counter
-  - allias interactions
-	- alka capture
-	  - alka release symbol
-
-issues:
-- allias_spawner do not set random nav for allias that is chasing/dormant
-- test avoidance (alliases can get caught on each other)
-
-next:
-- events (MON-TUES)
-  - the following requires the following functionality:
-	- alka/allias symbol catch/release logic
-	  - and progress tracking
+- core gameplay elements
+  - missing functions
+	- helmet anim and logic
 	- alka flashlight flickering
+	- scoring system
+	  - heart ui with counter
+  - missing models:
+	- allias happy models
+	- exit door
+  - event dependencies
 	- tutorial sequence
 	- temp audio?
-	- spawn delegate chase logic based on symbol emit service delivery request
 	- exit sequence
 	  - end ui
-	- models:
-		- all symbols, heads
-		- allias happy models
-		- exit door
+- events (MON-TUES)
   - on game load:
 	- tutorial:
 	  - only alka, and alka's symbol placed ahead
@@ -59,25 +48,31 @@ next:
 	  - timer start:
 		- symbol release every 1 second
 	  - if alka has no symbols left:
-		- set navigation and lookat null
+		- set navigation and lookat null OK
   - on alka capture symbol:
 	- all allias briefly look at true owner of symbol
 	  - alliases that are currently chasing are uninterrupted
-	- allias owner begins chasing alka until symbol no longer in capture state
-	  - forever chases alka as long as alka capturing/collected symbol
+	- allias owner begins chasing alka until symbol no longer in capture state OK
+	  - forever chases alka as long as alka capturing/collected symbol OK
   - on alka collects all symbols:
 	- exit appears furthest distance from alka, allias speed doubles
 	- if alka caught, exit disappears, normal gameplay
 	- on exit, display game over (selfish ending) (retry button)
 	  - on retry, spawn without tutorial
   - on allias collect symbol:
-	- only collect if allias owner of symbol
+	- only collect if allias owner of symbol OK
 	- helmet close, become dormant
   - on all allias symbols collected:
 	- all helmets open, head models replaced with happy versions
 	- exit appears furthest distance from alka
     - on exit, credits, and a thank you
 
+issues:
+- alka should not take damage if allias is dormant
+- allias_spawner do not set random nav for allias that is chasing/dormant
+- test avoidance (alliases can get caught on each other)
+
+next:
 - high-res models (WEDS)
 - test high-fidelity lighting (WEDS)
   - set env tonemap
