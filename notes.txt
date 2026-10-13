@@ -11,12 +11,10 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- core gameplay loop (SUN)
+- core gameplay loop (MON)
   - scoring system
-	- alka track captured symbols
 	- heart ui with counter
   - allias interactions
-	- symbol capturing
 	- alka capture
 	  - alka release symbol
 

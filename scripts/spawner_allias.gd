@@ -25,8 +25,8 @@ func _retrieve_symbol_list() -> Array:
 ##################################################################################################
 
 func set_target_look(body: Node3D) -> void:
-	for child in _allias_list:
-		child.set_target_look(body)
+	for allias in _allias_list:
+		allias.set_target_look(body)
 
 func set_random_symbols_target_look() -> void:
 	var symbol_list: Array = _retrieve_symbol_list()
@@ -36,16 +36,16 @@ func set_random_symbols_target_look() -> void:
 		_allias_list[idx].set_target_look(symbol_list[idx])
 
 func set_visors(flag: bool) -> void:
-	for child in _allias_list:
-		child.set_visor(flag)
+	for allias in _allias_list:
+		allias.set_visor(flag)
 
 func align_rotation_to_target() -> void:
-	for child in _allias_list:
-		child.align_rotation_to_target()
+	for allias in _allias_list:
+		allias.align_rotation_to_target()
 
 func set_target_navigation(body: Node3D) -> void:
-	for child in _allias_list:
-		child.set_target_navigation(body)
+	for allias in _allias_list:
+		allias.set_target_navigation(body)
 
 func set_random_symbols_target_navigation() -> void:
 	var symbol_list: Array = _retrieve_symbol_list()
@@ -54,6 +54,14 @@ func set_random_symbols_target_navigation() -> void:
 	for idx in symbol_list.size():
 		# TODO: do not set nav for _allias that is chasing/dormant
 		_allias_list[idx].set_target_navigation(symbol_list[idx])
+
+##################################################################################################
+
+func capture_symbol(symbol: States.SYMBOL) -> void:
+	for allias in _allias_list:
+		if allias.get_symbol() == symbol:
+			allias.capture_symbol(symbol)
+			return
 
 # param: count [int] max State.ALLIAS_SYMBOLS size
 # note: spawned allias symbols should match spawned symbols

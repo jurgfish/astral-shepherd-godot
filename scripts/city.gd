@@ -12,6 +12,11 @@ const ALLIAS_SPAWN_BOUND: float = 5.0
 
 ##################################################################################################
 
+func capture_symbol(symbol: States.SYMBOL) -> void:
+	_spawner_allias.capture_symbol(symbol)
+
+##################################################################################################
+
 func initialize() -> void:
 	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
 	_spawner_allias.spawn(States.ALLIAS_SYMBOLS.size(), ALLIAS_SPAWN_BOUND)

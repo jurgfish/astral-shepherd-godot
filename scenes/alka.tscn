@@ -5,6 +5,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 radius = 0.25
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fsvqc"]
+radius = 0.4
+
 [node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps") groups=["nav"]]
 script = ExtResource("1_rrvil")
 _head = NodePath("head")
@@ -38,3 +41,11 @@ transform = Transform3D(0.9848078, 0, -0.1736482, 0, 1, 0, 0.1736482, 0, 0.98480
 light_energy = 2.0
 shadow_enabled = true
 spot_range = 10.0
+
+[node name="area_capture" type="Area3D" parent="." unique_id=291587435]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area_capture" unique_id=2073092314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fsvqc")
+
+[connection signal="body_entered" from="area_capture" to="." method="_on_area_capture_body_entered"]

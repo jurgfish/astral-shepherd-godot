@@ -6,6 +6,8 @@ extends Node
 
 var _status: int = States.STATUS.STARTUP
 var _world: Node3D = null
+var _alka: Node3D = null
+var _city: Node3D = null
 
 ##################################################################################################
 
@@ -55,6 +57,8 @@ func set_status(status: int) -> void:
 func initialize() -> void:
 	_debug_initialize()
 	_world = get_tree().get_root().get_node("world")
+	_alka = get_tree().get_root().get_node("world/user/alka")
+	_city = get_tree().get_root().get_node("world/city")
 
 ##################################################################################################
 
@@ -67,9 +71,14 @@ func _on_delivery_request(status: int, ...data: Array) -> void:
 	if status == States.DELIVERY.CAPTURING:
 		pass
 	elif status == States.DELIVERY.CAPTURED:
-		pass
+		if data[0] is Player:
+			_alka.capture_symbol(data[1])
+		elif data[0] is Played:
+			_city.capture_symbol(data[1])
 	elif status == States.DELIVERY.CANCEL:
 		pass
+	elif status == States.DELIVERY.RELEASE:
+		_alka.release_symbol()
 	else:
 		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
 

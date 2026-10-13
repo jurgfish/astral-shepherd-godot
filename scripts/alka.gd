@@ -3,6 +3,8 @@
 class_name Player
 extends CharacterBody3D
 
+signal delivery(status, data)
+
 # look
 const MIN_PITCH: float = -1.2
 const MAX_PITCH: float = 1.2
@@ -21,6 +23,7 @@ const MAX_SPEED: float = 2.0
 const LERP_V: float = 18.0
 var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
+var _captured_symbols: Array = []
 
 @export var _head: Marker3D
 @export var _body: Marker3D
@@ -45,6 +48,26 @@ func set_location(pos: Vector3) -> void:
 
 ##################################################################################################
 
+func capture_symbol(symbol: States.SYMBOL) -> void:
+	_captured_symbols.push_back(symbol)
+
+	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
+		prints("ALKA SYMBOLS (CAPTURE):", _captured_symbols)
+
+func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> void:
+	if symbol == States.SYMBOL.NULL:
+		_captured_symbols.pop_front()
+	else:
+		_captured_symbols.erase(symbol)
+
+	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
+		prints("ALKA SYMBOLS (RELEASE):", _captured_symbols)
+
+##################################################################################################
+
+func _ready() -> void:
+	connect("delivery", Callable(Service, "_on_delivery_request"))
+
 func _process(delta: float) -> void:
 	_head.rotation.x = _look_dir.y # pitch
 	_head.rotation.y = _look_dir.x # yaw
@@ -59,5 +82,11 @@ func _physics_process(delta: float) -> void:
 	velocity = lerp(velocity, _move_dir * _speed, LERP_V * delta)
 	_headlamps.rotation.x = _look_dir.y
 	move_and_slide()
+
+##################################################################################################
+
+func _on_area_capture_body_entered(body: Node3D) -> void:
+	if body is Played:
+		emit_signal("delivery", States.DELIVERY.RELEASE, body)
 
 ##################################################################################################

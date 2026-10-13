@@ -124,9 +124,9 @@ func _on_area_capturing_body_exited(body: Node3D) -> void:
 		emit_signal("delivery", States.DELIVERY.CANCEL, _target, _symbol_id)
 
 func _on_area_captured_body_entered(body: Node3D) -> void:
-	if body is Player:
+	if body is Player or (body is Played and body.get_symbol() == _symbol_id):
 		_captured = true
-		emit_signal("delivery", States.DELIVERY.CAPTURED, _target, _symbol_id)
+		emit_signal("delivery", States.DELIVERY.CAPTURED, body, _symbol_id)
 		queue_free()
 
 ##################################################################################################

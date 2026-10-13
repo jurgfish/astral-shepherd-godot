@@ -17,6 +17,7 @@ var _dir: Vector3 = Vector3.ZERO
 var _target_nav: Node3D = null
 var _updated_rot: float = 0.0
 var _curr_rot: float = 0.0
+var _symbol_captured: bool = false
 
 @export var _nav_arm: Marker3D
 @export var _nav: NavigationAgent3D
@@ -42,23 +43,6 @@ var _curr_rot: float = 0.0
 func set_visor(flag: bool) -> void:
 	_helmet_visor.visible = flag
 
-func set_symbol(flag: States.SYMBOL) -> void:
-	if flag == States.SYMBOL.STAR:
-		push_error("ALLIAS: set symbol (star) invalid")
-		return
-	_symbol_moon.visible = flag == States.SYMBOL.MOON
-	_symbol_tri.visible = flag == States.SYMBOL.TRI
-	_symbol_circle.visible = flag == States.SYMBOL.CIRCLE
-	_symbol_flower.visible = flag == States.SYMBOL.FLOWER
-	_symbol_prop.visible = flag == States.SYMBOL.PROP
-	_symbol_plus.visible = flag == States.SYMBOL.PLUS
-	_symbol_astral.visible = flag == States.SYMBOL.ASTRAL
-	_symbol_diamond.visible = flag == States.SYMBOL.DIAMOND
-	_symbol_apostrophe.visible = flag == States.SYMBOL.APOSTROPHE
-	_symbol_therefore.visible = flag == States.SYMBOL.THEREFORE
-	_symbol_hexagon.visible = flag == States.SYMBOL.HEXAGON
-	_symbol_id = flag
-
 func set_location(pos: Vector3) -> void:
 	global_transform.origin = pos
 
@@ -77,7 +61,43 @@ func get_target() -> Vector3:
 	return _head.get_global_transform_interpolated().origin
 
 func set_target_navigation(body: Node3D) -> void:
+	if _symbol_captured:
+		body = null
 	_target_nav = body
+
+##################################################################################################
+
+func set_symbol(flag: States.SYMBOL) -> void:
+	if flag == States.SYMBOL.STAR:
+		push_error("ALLIAS: set symbol (star) invalid")
+		return
+	_symbol_moon.visible = flag == States.SYMBOL.MOON
+	_symbol_tri.visible = flag == States.SYMBOL.TRI
+	_symbol_circle.visible = flag == States.SYMBOL.CIRCLE
+	_symbol_flower.visible = flag == States.SYMBOL.FLOWER
+	_symbol_prop.visible = flag == States.SYMBOL.PROP
+	_symbol_plus.visible = flag == States.SYMBOL.PLUS
+	_symbol_astral.visible = flag == States.SYMBOL.ASTRAL
+	_symbol_diamond.visible = flag == States.SYMBOL.DIAMOND
+	_symbol_apostrophe.visible = flag == States.SYMBOL.APOSTROPHE
+	_symbol_therefore.visible = flag == States.SYMBOL.THEREFORE
+	_symbol_hexagon.visible = flag == States.SYMBOL.HEXAGON
+	_symbol_id = flag
+
+func get_symbol() -> States.SYMBOL:
+	return _symbol_id
+
+func capture_symbol(symbol: States.SYMBOL) -> void:
+	if symbol != _symbol_id:
+		push_error("ALLIAS INVALID SYMBOL CAPTURE")
+		return
+
+	_symbol_captured = true
+	set_target_navigation(null)
+	set_target_look(null)
+
+	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
+		prints("ALLIAS SYMBOL CAPTURED:", _symbol_id)
 
 ##################################################################################################
 
