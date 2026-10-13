@@ -19,7 +19,6 @@ first:
 	  - alka release symbol
 
 issues:
-- allias rotation shake when arriving at navigation waypoint
 - allias_spawner do not set random nav for allias that is chasing/dormant
 - test avoidance (alliases can get caught on each other)
 

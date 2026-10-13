@@ -114,11 +114,13 @@ func _physics_process(delta: float) -> void:
 		_next_pos = _nav.get_next_path_position()
 		_offset_pos = _nav_arm.position
 		_dir = global_position.direction_to(_next_pos - _offset_pos)
-		velocity = SPEED * _dir
+		_dir.y = 0.0
 
 		_updated_rot = Vector3.MODEL_FRONT.signed_angle_to(_dir, Vector3.UP)
 		if not is_equal_approx(_curr_rot, _updated_rot):
 			_curr_rot = lerp_angle(_curr_rot, _updated_rot, LERP_R * delta)
+
+		velocity = SPEED * _dir
 		rotation.y = _curr_rot
 
 		move_and_slide()
