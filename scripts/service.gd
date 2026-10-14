@@ -4,8 +4,11 @@
 
 extends Node
 
+signal status_update(status)
+
 var _status: int = States.STATUS.STARTUP
 var _world: Node3D = null
+var _game_hud: Control = null
 var _alka: Node3D = null
 var _city: Node3D = null
 
@@ -54,9 +57,16 @@ func set_status(status: int) -> void:
 		if States.DEBUG_MODE & States.DEBUG.ENABLED:
 			print("GOODBYE WORLD\n")
 
+	emit_signal("status_update", status)
+
+func wait_for_status(req_status: int) -> void:
+	while(_status < req_status):
+		await status_update
+
 func initialize() -> void:
 	_debug_initialize()
 	_world = get_tree().get_root().get_node("world")
+	_game_hud = get_tree().get_root().get_node("world/game_hud")
 	_alka = get_tree().get_root().get_node("world/user/alka")
 	_city = get_tree().get_root().get_node("world/city")
 
@@ -71,18 +81,26 @@ func _on_delivery_request(status: int, ...data: Array) -> void:
 	if status == States.DELIVERY.CAPTURING:
 		if data[0] is Player:
 			_city.set_chasing(data[1], true, _alka)
+
 	elif status == States.DELIVERY.CAPTURED:
 		if data[0] is Player:
-			_alka.capture_symbol(data[1])
+			var count: int = _alka.capture_symbol(data[1])
+			_game_hud.set_count(count)
 		elif data[0] is Played:
 			_city.capture_symbol(data[1])
+
 	elif status == States.DELIVERY.CANCEL:
 		_city.set_chasing(data[1], false, null)
+
 	elif status == States.DELIVERY.RELEASE:
-		var erased: States.SYMBOL = _alka.release_symbol()
-		if erased != States.SYMBOL.NULL:
-			_city.spawn_symbol(erased)
-			_city.set_chasing(erased, false, null)
+		var release_data: Array = _alka.release_symbol()
+		var count: int = release_data[0]
+		var erased_symbol: States.SYMBOL = release_data[1]
+		_game_hud.set_count(count)
+		if erased_symbol != States.SYMBOL.NULL:
+			_city.spawn_symbol(erased_symbol)
+			_city.set_chasing(erased_symbol, false, null)
+
 	else:
 		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
 

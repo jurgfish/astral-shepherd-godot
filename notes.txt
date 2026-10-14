@@ -11,6 +11,9 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- move pause/quit logic to service
+  - game_hud do not unfade prior to running
+  - allow quit at any time prior to quit (startup)
 - core gameplay elements
   - missing functions
 	- scoring system

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kq32ak8sxlrx"]
 
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="1_jna2d"]
+[ext_resource type="Script" uid="uid://c884d6d8e7axf" path="res://scripts/game_hud.gd" id="1_n64bn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw2wu"]
 content_margin_left = 28.0
@@ -18,13 +19,136 @@ corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 
-[node name="game_hud" type="Control" unique_id=735745526]
+[sub_resource type="Animation" id="Animation_jna2d"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layout_count/hold_count/count_label:offset_transform_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("layout_count/hold_count/count_label:offset_transform_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gjmhc"]
+resource_name = "decrement"
+length = 0.2
+step = 0.025
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layout_count/hold_count/count_label:offset_transform_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3, 3),
+"points": PackedFloat32Array(0, -0.025, -34, 0.025, 34, 30, -0.025, 5, 0.025, -5, -10, -0.024999999, 0, 0.024999999, 0, 0, -0.025, -2.5, 0.025, 2.5),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_pexd4"]
+resource_name = "fade_in"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n64bn"]
+resource_name = "increment"
+length = 0.2
+step = 0.025
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("layout_count/hold_count/count_label:offset_transform_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3, 3, 3),
+"points": PackedFloat32Array(0, -0.025, 34, 0.025, -34, -30, -0.025, -13, 0.025, 13, 10, -0.024999999, -6, 0.024999999, 6, 0, -0.025000006, 1, 0.025000006, -1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gjmhc"]
+_data = {
+&"RESET": SubResource("Animation_jna2d"),
+&"decrement": SubResource("Animation_gjmhc"),
+&"fade_in": SubResource("Animation_pexd4"),
+&"increment": SubResource("Animation_n64bn")
+}
+
+[node name="game_hud" type="Control" unique_id=735745526 node_paths=PackedStringArray("_count_label", "_anim")]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n64bn")
+_count_label = NodePath("layout_count/hold_count/count_label")
+_anim = NodePath("anim")
 
 [node name="layout_count" type="MarginContainer" parent="." unique_id=1609794661]
 layout_mode = 1
@@ -43,11 +167,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="label" type="Label" parent="layout_count/hold_count" unique_id=178513422]
+[node name="count_label" type="Label" parent="layout_count/hold_count" unique_id=178513422]
 layout_mode = 2
+offset_transform_enabled = true
 theme = ExtResource("1_jna2d")
 theme_override_colors/font_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_xw2wu")
-text = "2"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=890577014]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_gjmhc")

@@ -39,11 +39,14 @@ func _hide_epigraph() -> void:
 
 	await _anim.animation_finished
 
+	Service.set_status(States.STATUS.INTRO)
+
 ##################################################################################################
 
 func play_load() -> void:
 	_anim.play("logo_reveal")
 	await _anim.animation_finished
+	Service.set_status(States.STATUS.READY)
 	if _quit_queued:
 		return
 	_anim.play("epigraph_reveal")

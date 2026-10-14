@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://kq32ak8sxlrx" path="res://scenes/game_hud.tscn" id="3_i7141"]
 
-[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_city")]
+[node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_game_hud", "_user", "_city")]
 physics_interpolation_mode = 1
 script = ExtResource("1_nnsk1")
 _load_hud = NodePath("load_hud")
 _pause_hud = NodePath("pause_hud")
+_game_hud = NodePath("game_hud")
 _user = NodePath("user")
 _city = NodePath("city")
 
