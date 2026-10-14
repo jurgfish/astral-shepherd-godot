@@ -135,12 +135,13 @@ _data = {
 &"flicker_headlamps_capturing": SubResource("Animation_x7mpy")
 }
 
-[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps", "_anim_effects") groups=["nav"]]
+[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps", "_anim_effects", "_timer_release") groups=["nav"]]
 script = ExtResource("1_rrvil")
 _head = NodePath("head")
 _body = NodePath("body")
 _headlamps = NodePath("body/headlamps")
 _anim_effects = NodePath("anim_effects")
+_timer_release = NodePath("timer_release")
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1047630779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -185,7 +186,10 @@ shape = SubResource("CapsuleShape3D_fsvqc")
 [node name="anim_effects" type="AnimationPlayer" parent="." unique_id=1298220752]
 libraries/ = SubResource("AnimationLibrary_06njs")
 
+[node name="timer_release" type="Timer" parent="." unique_id=1778195425]
+
 [connection signal="body_entered" from="area_capturing" to="." method="_on_area_capturing_body_entered"]
 [connection signal="body_exited" from="area_capturing" to="." method="_on_area_capturing_body_exited"]
 [connection signal="body_entered" from="area_captured" to="." method="_on_area_captured_body_entered"]
 [connection signal="body_exited" from="area_captured" to="." method="_on_area_captured_body_exited"]
+[connection signal="timeout" from="timer_release" to="." method="_on_timer_release_timeout"]

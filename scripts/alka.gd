@@ -25,6 +25,7 @@ var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 var _captured_symbols: Array = []
 
+const RELEASE_PERIOD: float = 1.0
 var _capturing_count: int = 0
 var _captured_count: int = 0
 
@@ -32,6 +33,7 @@ var _captured_count: int = 0
 @export var _body: Marker3D
 @export var _headlamps: Marker3D
 @export var _anim_effects: AnimationPlayer
+@export var _timer_release: Timer
 
 ##################################################################################################
 
@@ -58,6 +60,8 @@ func _count_allias_captured(increment: bool) -> void:
 	if increment:
 		_captured_count += 1
 		_flicker_headlamps(true, true)
+		if _timer_release.time_left == 0.0:
+			_timer_release.start(RELEASE_PERIOD)
 	else:
 		_captured_count -= 1
 		if _captured_count <= 0:
@@ -66,6 +70,7 @@ func _count_allias_captured(increment: bool) -> void:
 				_flicker_headlamps(true, false)
 			else:
 				_flicker_headlamps(false)
+			_timer_release.stop()
 
 ##################################################################################################
 
@@ -147,10 +152,12 @@ func _on_area_captured_body_entered(body: Node3D) -> void:
 	if body is Played:
 		if not body.is_dormant():
 			_count_allias_captured(true)
-			emit_signal("delivery", States.DELIVERY.RELEASE, body)
 
 func _on_area_captured_body_exited(body: Node3D) -> void:
 	if body is Played:
 		_count_allias_captured(false)
+
+func _on_timer_release_timeout() -> void:
+	emit_signal("delivery", States.DELIVERY.RELEASE, null)
 
 ##################################################################################################

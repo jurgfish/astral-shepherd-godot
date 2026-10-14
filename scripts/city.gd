@@ -22,6 +22,9 @@ func spawn_symbol(symbol: States.SYMBOL) -> void:
 func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
 	_spawner_allias.set_chasing(symbol, flag, body)
 
+func reset_random_navigation() -> void:
+	_spawner_allias.set_random_symbols_target_navigation()
+
 ##################################################################################################
 
 func initialize() -> void:

@@ -31,8 +31,6 @@ first:
 	  - ambient audio next level
 	- within collect
 	  - ambient audio final level
-	  - timer start:
-		- symbol release every 1 second
   - on alka collects all symbols:
 	- exit appears furthest distance from alka, allias speed doubles
 	- if alka caught, exit disappears, normal gameplay

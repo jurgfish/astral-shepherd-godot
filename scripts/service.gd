@@ -95,10 +95,12 @@ func _symbol_released() -> void:
 	var release_data: Array = _alka.release_symbol()
 	var count: int = release_data[0]
 	var erased_symbol: States.SYMBOL = release_data[1]
-	_game_hud.set_count(count)
 	if erased_symbol != States.SYMBOL.NULL:
+		_game_hud.set_count(count)
 		_city.spawn_symbol(erased_symbol)
 		_city.set_chasing(erased_symbol, false, null)
+	if count == 0:
+		_city.reset_random_navigation()
 
 ##################################################################################################
 
