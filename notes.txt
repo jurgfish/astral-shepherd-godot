@@ -19,51 +19,29 @@ first:
 	- allias happy models
 	- exit door
   - event dependencies
-	- tutorial sequence OK
 	- temp audio?
 	- exit sequence
 	  - end ui
 - events (MON-TUES)
-  - on game load:
-	- tutorial:
-	  - only alka, and alka's symbol placed ahead OK
-	  - game starts when alka captures symbol OK
-	- start:
-	  - spawn symbols and alliases OK
-	  - allias start with helmet open, facing alka, no pathfinding OK
-	  - on first start detect: OK
-		- all allias helmets close, gameplay continues as normal SKIP
   - on alka approach allias:
-	- note: this logic should be done all within alka, not each allias
+	- note: this logic should be done all within alka, not each allias OK
 	- within detection
 	  - raise ambient audio
-    - within capture
+	- within capture
 	  - ambient audio next level
-	  - trigger flashlight flicker OK
 	- within collect
 	  - ambient audio final level
-	  - flashlight off OK
 	  - timer start:
 		- symbol release every 1 second
-	  - if alka has no symbols left:
-		- set navigation and lookat null OK
-  - on alka capture symbol:
-	- all allias briefly look at true owner of symbol SKIP
-	  - alliases that are currently chasing are uninterrupted N/A
-	- allias owner begins chasing alka until symbol no longer in capture state OK
-	  - forever chases alka as long as alka capturing/collected symbol OK
   - on alka collects all symbols:
 	- exit appears furthest distance from alka, allias speed doubles
 	- if alka caught, exit disappears, normal gameplay
 	- on exit, display game over (selfish ending) (retry button)
 	  - on retry, spawn without tutorial
-  - on allias collect symbol:
-	- only collect if allias owner of symbol OK
-	- helmet close, become dormant OK
   - on all allias symbols collected:
 	- all helmets open, head models replaced with happy versions
 	- exit appears furthest distance from alka
-    - on exit, credits, and a thank you
+	- on exit, credits, and a thank you
 
 issues:
 

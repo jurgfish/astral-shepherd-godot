@@ -1,5 +1,7 @@
 # Copyright © 2026, jurgfish. All rights reserved.
 
+# core sequence logic
+
 extends Node3D
 
 @export var _load_hud: Control
@@ -25,10 +27,6 @@ func _start() -> void:
 
 	await Service.wait_for_status(States.STATUS.RUNNING)
 	_city.begin_routine()
-
-##################################################################################################
-
-# GAME STARUP SEQUENCE
 
 func _ready() -> void:
 	_initialize()
