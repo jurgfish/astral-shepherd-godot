@@ -17,6 +17,7 @@ func _spawn_allias(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
 	var pos_z: float = randf_range(-spawn_bound, spawn_bound)
 	allias.set_location(Vector3(pos_x, 0.0, pos_z))
 	allias.set_symbol(symbol_id)
+	allias.open_visor(true)
 
 func _retrieve_symbol_list() -> Array:
 	var symbol_list: Array = _spawner_symbol.get_symbol_list()
@@ -35,9 +36,9 @@ func set_random_symbols_target_look() -> void:
 	for idx in _allias_list.size():
 		_allias_list[idx].set_target_look(symbol_list[idx])
 
-func set_visors(flag: bool) -> void:
+func open_visors(flag: bool) -> void:
 	for allias in _allias_list:
-		allias.set_visor(flag)
+		allias.open_visor(flag)
 
 func align_rotation_to_target() -> void:
 	for allias in _allias_list:

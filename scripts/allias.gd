@@ -38,13 +38,16 @@ var _chasing: bool = false
 @export var _symbol_hexagon: MeshInstance3D
 @export var _head: Marker3D
 @export var _helmet: MeshInstance3D
-@export var _helmet_visor: MeshInstance3D
 @export var _suit: MeshInstance3D
+@export var _anim_effects: AnimationPlayer
 
 ##################################################################################################
 
-func set_visor(flag: bool) -> void:
-	_helmet_visor.visible = flag
+func open_visor(flag: bool) -> void:
+	if flag:
+		_anim_effects.play("open_visor")
+	else:
+		_anim_effects.play_backwards("open_visor")
 
 func set_location(pos: Vector3) -> void:
 	global_transform.origin = pos
@@ -111,6 +114,7 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 	_symbol_captured = true
 	set_target_navigation(null)
 	set_target_look(null)
+	open_visor(false)
 
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALLIAS SYMBOL CAPTURED:", _symbol_id)

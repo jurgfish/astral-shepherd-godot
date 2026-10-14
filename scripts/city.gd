@@ -27,7 +27,6 @@ func initialize() -> void:
 	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
 	_spawner_allias.spawn(States.ALLIAS_SYMBOLS.size(), ALLIAS_SPAWN_BOUND)
 	_spawner_allias.set_target_look(_alka)
-	_spawner_allias.set_visors(false)
 	_alka.set_location(Vector3(0.0, 0.0, ALKA_SPAWN_BOUND))
 
 func begin_routine() -> void:

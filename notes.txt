@@ -13,7 +13,6 @@ TASK QUEUE >>>
 first:
 - core gameplay elements
   - missing functions
-	- helmet anim and logic
 	- alka flashlight flickering
 	- scoring system
 	  - heart ui with counter
