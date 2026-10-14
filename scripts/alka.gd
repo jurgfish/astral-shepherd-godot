@@ -25,9 +25,47 @@ var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 var _captured_symbols: Array = []
 
+var _capturing_count: int = 0
+var _captured_count: int = 0
+
 @export var _head: Marker3D
 @export var _body: Marker3D
 @export var _headlamps: Marker3D
+@export var _anim_effects: AnimationPlayer
+
+##################################################################################################
+
+func _flicker_headlamps(flag: bool, captured: bool = false) -> void:
+	if flag:
+		if not captured:
+			_anim_effects.play("flicker_headlamps_capturing")
+		else:
+			_anim_effects.play("flicker_headlamps_captured")
+	else:
+		_anim_effects.play("RESET_HEADLAMPS")
+
+func _count_allias_capturing(increment: bool) -> void:
+	if increment:
+		_capturing_count += 1
+		_flicker_headlamps(true)
+	else:
+		_capturing_count -= 1
+		if _capturing_count <= 0:
+			_capturing_count = 0
+			_flicker_headlamps(false)
+
+func _count_allias_captured(increment: bool) -> void:
+	if increment:
+		_captured_count += 1
+		_flicker_headlamps(true, true)
+	else:
+		_captured_count -= 1
+		if _captured_count <= 0:
+			_captured_count = 0
+			if _capturing_count > 0:
+				_flicker_headlamps(true, false)
+			else:
+				_flicker_headlamps(false)
 
 ##################################################################################################
 
@@ -91,8 +129,23 @@ func _physics_process(delta: float) -> void:
 
 ##################################################################################################
 
-func _on_area_capture_body_entered(body: Node3D) -> void:
+func _on_area_capturing_body_entered(body: Node3D) -> void:
 	if body is Played:
-		emit_signal("delivery", States.DELIVERY.RELEASE, body)
+		if not body.is_dormant():
+			_count_allias_capturing(true)
+
+func _on_area_capturing_body_exited(body: Node3D) -> void:
+	if body is Played:
+		_count_allias_capturing(false)
+
+func _on_area_captured_body_entered(body: Node3D) -> void:
+	if body is Played:
+		if not body.is_dormant():
+			_count_allias_captured(true)
+			emit_signal("delivery", States.DELIVERY.RELEASE, body)
+
+func _on_area_captured_body_exited(body: Node3D) -> void:
+	if body is Played:
+		_count_allias_captured(false)
 
 ##################################################################################################
