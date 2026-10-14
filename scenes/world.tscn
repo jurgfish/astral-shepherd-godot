@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uvj24qf6rh4n" path="res://scenes/load_hud.tscn" id="2_qfnet"]
 [ext_resource type="PackedScene" uid="uid://by4fqvbkmbdhl" path="res://scenes/alka.tscn" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://meejsrqvhxcu" path="res://scenes/city.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://kq32ak8sxlrx" path="res://scenes/game_hud.tscn" id="3_i7141"]
 
 [node name="world" type="Node3D" unique_id=1665150136 node_paths=PackedStringArray("_load_hud", "_pause_hud", "_user", "_city")]
 physics_interpolation_mode = 1
@@ -16,6 +17,8 @@ _user = NodePath("user")
 _city = NodePath("city")
 
 [node name="load_hud" parent="." unique_id=652777255 instance=ExtResource("2_qfnet")]
+
+[node name="game_hud" parent="." unique_id=735745526 instance=ExtResource("3_i7141")]
 
 [node name="pause_hud" parent="." unique_id=1635939161 node_paths=PackedStringArray("_user") instance=ExtResource("2_71j4m")]
 visible = false

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://kq32ak8sxlrx"]
+
+[ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="1_jna2d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw2wu"]
+content_margin_left = 28.0
+content_margin_top = 16.0
+content_margin_right = 28.0
+content_margin_bottom = 16.0
+bg_color = Color(0, 0, 0, 0.53333336)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="game_hud" type="Control" unique_id=735745526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="layout_count" type="MarginContainer" parent="." unique_id=1609794661]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_right = 43.0
+offset_bottom = 158.0
+grow_horizontal = 2
+
+[node name="hold_count" type="VBoxContainer" parent="layout_count" unique_id=1646811034]
+layout_mode = 2
+
+[node name="control" type="Control" parent="layout_count/hold_count" unique_id=1204288381]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="label" type="Label" parent="layout_count/hold_count" unique_id=178513422]
+layout_mode = 2
+theme = ExtResource("1_jna2d")
+theme_override_colors/font_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_xw2wu")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
