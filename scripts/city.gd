@@ -2,9 +2,10 @@
 
 extends Node3D
 
-const ALKA_SPAWN_BOUND: float = 28.0
+const ALKA_SPAWN_BOUND: float = 38.0
 const SYMBOL_SPAWN_BOUND: float = 8.0
 const ALLIAS_SPAWN_BOUND: float = 5.0
+const ALKA_SYMBOL_SPAWN_LOC: Vector3 = Vector3(0.0, 5.0, 25.0)
 
 @export var _alka: CharacterBody3D
 @export var _spawner_symbol: Node3D
@@ -24,12 +25,15 @@ func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
 ##################################################################################################
 
 func initialize() -> void:
-	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
 	_spawner_allias.spawn(States.ALLIAS_SYMBOLS.size(), ALLIAS_SPAWN_BOUND)
 	_spawner_allias.set_target_look(_alka)
 	_alka.set_location(Vector3(0.0, 0.0, ALKA_SPAWN_BOUND))
 
+	var alka_symbol: Node3D = _spawner_symbol.spawn_symbol(States.SYMBOL.STAR, SYMBOL_SPAWN_BOUND)
+	alka_symbol.set_location(ALKA_SYMBOL_SPAWN_LOC, true)
+
 func begin_routine() -> void:
+	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
 	_spawner_allias.align_rotation_to_target()
 
 	#await get_tree().create_timer(10.0).timeout

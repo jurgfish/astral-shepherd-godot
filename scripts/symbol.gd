@@ -71,8 +71,11 @@ func set_symbol(flag: States.SYMBOL) -> void:
 func get_symbol() -> States.SYMBOL:
 	return _symbol_id
 
-func set_location(pos: Vector3) -> void:
-	_sky_home = Vector3(pos.x, SKY_HEIGHT + (SKY_MAX * randf()), pos.z)
+func set_location(pos: Vector3, override_y: bool = false) -> void:
+	if not override_y:
+		_sky_home = Vector3(pos.x, SKY_HEIGHT + (SKY_MAX * randf()), pos.z)
+	else:
+		_sky_home = pos
 	global_transform.origin = _sky_home
 
 func get_target() -> Vector3:

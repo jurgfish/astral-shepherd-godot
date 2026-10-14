@@ -11,31 +11,28 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- move pause/quit logic to service
-  - game_hud do not unfade prior to running
-  - allow quit at any time prior to quit (startup)
 - core gameplay elements
   - missing functions
 	- scoring system
-	  - heart ui with counter
+	  - heart ui
   - missing models:
 	- allias happy models
 	- exit door
   - event dependencies
-	- tutorial sequence
+	- tutorial sequence OK
 	- temp audio?
 	- exit sequence
 	  - end ui
 - events (MON-TUES)
   - on game load:
 	- tutorial:
-	  - only alka, and alka's symbol placed ahead
-	  - game starts when alka captures symbol
+	  - only alka, and alka's symbol placed ahead OK
+	  - game starts when alka captures symbol OK
 	- start:
-	  - spawn symbols and alliases
-	  - allias start with helmet open, facing alka, no pathfinding
-	  - on first start detect:
-		- all allias helmets close, gameplay continues as normal
+	  - spawn symbols and alliases OK
+	  - allias start with helmet open, facing alka, no pathfinding OK
+	  - on first start detect: OK
+		- all allias helmets close, gameplay continues as normal SKIP
   - on alka approach allias:
 	- note: this logic should be done all within alka, not each allias
 	- within detection
@@ -51,8 +48,8 @@ first:
 	  - if alka has no symbols left:
 		- set navigation and lookat null OK
   - on alka capture symbol:
-	- all allias briefly look at true owner of symbol
-	  - alliases that are currently chasing are uninterrupted
+	- all allias briefly look at true owner of symbol SKIP
+	  - alliases that are currently chasing are uninterrupted N/A
 	- allias owner begins chasing alka until symbol no longer in capture state OK
 	  - forever chases alka as long as alka capturing/collected symbol OK
   - on alka collects all symbols:
@@ -62,16 +59,13 @@ first:
 	  - on retry, spawn without tutorial
   - on allias collect symbol:
 	- only collect if allias owner of symbol OK
-	- helmet close, become dormant
+	- helmet close, become dormant OK
   - on all allias symbols collected:
 	- all helmets open, head models replaced with happy versions
 	- exit appears furthest distance from alka
     - on exit, credits, and a thank you
 
 issues:
-- alka should not take damage if allias is dormant
-- allias_spawner do not set random nav for allias that is chasing/dormant
-- test avoidance (alliases can get caught on each other)
 
 next:
 - high-res models (WEDS)
@@ -177,6 +171,7 @@ ignored features:
 ignored issues:
 - no joypad scroll support on pause_hud legal page
 - fullscreen keybind doesn't work when pause_hud open
+- alliases can spawn clipped into each other (fixed when nav becomes active)
 
 ##################################################################################################
 

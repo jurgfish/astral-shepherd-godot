@@ -6,7 +6,7 @@ const SYMBOL = preload("uid://b8qqhyewwc2jk")
 
 ##################################################################################################
 
-func spawn_symbol(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
+func spawn_symbol(symbol_id: States.SYMBOL, spawn_bound: float) -> Node3D:
 	if symbol_id == States.SYMBOL.NULL:
 		return
 
@@ -16,6 +16,8 @@ func spawn_symbol(symbol_id: States.SYMBOL, spawn_bound: float) -> void:
 	var pos_x: float = randf_range(-spawn_bound, spawn_bound)
 	var pos_z: float = randf_range(-spawn_bound, spawn_bound)
 	symbol.set_location(Vector3(pos_x, 0.0, pos_z))
+
+	return symbol
 
 # param: count [int] max State.ALLIAS_SYMBOLS size
 # note: spawned allias symbols should match spawned symbols
