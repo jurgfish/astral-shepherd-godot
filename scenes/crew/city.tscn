@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://meejsrqvhxcu"]
 
-[ext_resource type="PackedScene" uid="uid://cd37d754ync0f" path="res://scenes/city_floor.tscn" id="1_bih7l"]
-[ext_resource type="Script" uid="uid://mr70ok3xnhp2" path="res://scripts/city.gd" id="1_movw8"]
-[ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/world_environment.gd" id="2_oacpt"]
-[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/spawner_symbol.tscn" id="2_rqxma"]
-[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/spawner_allias.tscn" id="3_movw8"]
-[ext_resource type="PackedScene" uid="uid://dqhv1ht3kldcr" path="res://scenes/exit.tscn" id="6_2jj31"]
+[ext_resource type="PackedScene" uid="uid://cd37d754ync0f" path="res://scenes/crew/city_floor.tscn" id="1_bih7l"]
+[ext_resource type="Script" uid="uid://mr70ok3xnhp2" path="res://scripts/stage/city.gd" id="1_movw8"]
+[ext_resource type="Script" uid="uid://bb12ts8lc4whr" path="res://scripts/stage/world_environment.gd" id="2_oacpt"]
+[ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/cast/spawner_symbol.tscn" id="2_rqxma"]
+[ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/cast/spawner_allias.tscn" id="3_movw8"]
+[ext_resource type="PackedScene" uid="uid://dqhv1ht3kldcr" path="res://scenes/crew/exit.tscn" id="6_2jj31"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_bih7l"]
 vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)

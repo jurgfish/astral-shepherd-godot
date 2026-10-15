@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://kq32ak8sxlrx"]
 
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="1_jna2d"]
-[ext_resource type="Script" uid="uid://c884d6d8e7axf" path="res://scripts/game_hud.gd" id="1_n64bn"]
+[ext_resource type="Script" uid="uid://c884d6d8e7axf" path="res://scripts/crew/game_hud.gd" id="1_n64bn"]
 [ext_resource type="Texture2D" uid="uid://d3hjle6oikg2f" path="res://misc/app_images/heart.png" id="3_gjmhc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xw2wu"]

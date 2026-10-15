@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- organize scripts, scenes
 - core gameplay elements
   - event dependencies
 	- temp audio?
@@ -47,8 +46,8 @@ next:
 - sound (SAT)
 
 garnish:
-- alka headlamps flicker when near allias
-- symbols emit sparkle effects of respective color
+- alka headlamps flicker when near allias OK
+- symbols emit sparkle effects of respective color PARTIAL (of heart color)
 - tiled floor (how to do large repeating?)
   - or wooden floor (ship feeling)
 

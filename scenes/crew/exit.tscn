@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dqhv1ht3kldcr"]
 
-[ext_resource type="Script" uid="uid://d3rg0mecfy1ka" path="res://scripts/exit.gd" id="1_l5n14"]
-[ext_resource type="PackedScene" uid="uid://dtor5e7s2gmhs" path="res://scenes/exit_door.tscn" id="1_uyw7u"]
-[ext_resource type="PackedScene" uid="uid://dswsdqvapc4k4" path="res://scenes/exit_frame.tscn" id="2_l5n14"]
+[ext_resource type="Script" uid="uid://d3rg0mecfy1ka" path="res://scripts/stage/exit.gd" id="1_l5n14"]
+[ext_resource type="PackedScene" uid="uid://dtor5e7s2gmhs" path="res://scenes/crew/exit_door.tscn" id="1_uyw7u"]
+[ext_resource type="PackedScene" uid="uid://dswsdqvapc4k4" path="res://scenes/crew/exit_frame.tscn" id="2_l5n14"]
 
 [sub_resource type="Animation" id="Animation_uyw7u"]
 length = 0.001

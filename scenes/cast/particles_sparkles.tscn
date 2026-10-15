@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhmsmjcv4dtup"]
 
 [ext_resource type="ArrayMesh" uid="uid://bwxhq81mm1sgy" path="res://meshes/symbol/sparkle.tres" id="1_4xif4"]
-[ext_resource type="Script" uid="uid://cmwur5signhv" path="res://scenes/particles_sparkles.gd" id="2_80kxq"]
+[ext_resource type="Script" uid="uid://cmwur5signhv" path="res://scripts/cast/particles_sparkles.gd" id="2_80kxq"]
 
 [sub_resource type="Curve" id="Curve_6udq5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.74864864, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8qqhyewwc2jk"]
 
 [ext_resource type="ArrayMesh" uid="uid://f434xf0n8s0j" path="res://meshes/symbol/symbol_tri.tres" id="1_6lu6j"]
-[ext_resource type="Script" uid="uid://cyypee7jykrcl" path="res://scripts/symbol.gd" id="1_irjfk"]
+[ext_resource type="Script" uid="uid://cyypee7jykrcl" path="res://scripts/cast/symbol.gd" id="1_irjfk"]
 [ext_resource type="ArrayMesh" uid="uid://pdslsetur3vr" path="res://meshes/symbol/symbol_star.tres" id="2_irjfk"]
 [ext_resource type="ArrayMesh" uid="uid://ckhkk0oyjlvoq" path="res://meshes/symbol/symbol_moon.tres" id="3_htimy"]
 [ext_resource type="ArrayMesh" uid="uid://cbmfs4m11b1nv" path="res://meshes/symbol/symbol_circle.tres" id="5_uoylp"]

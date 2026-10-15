@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uvj24qf6rh4n"]
 
 [ext_resource type="Texture2D" uid="uid://vi8o0rwbcxu6" path="res://misc/app_images/jurgfish_logo_splash.png" id="1_0fc4w"]
-[ext_resource type="Script" uid="uid://b4bds40hma5wj" path="res://scripts/load_hud.gd" id="1_yf4pc"]
+[ext_resource type="Script" uid="uid://b4bds40hma5wj" path="res://scripts/crew/load_hud.gd" id="1_yf4pc"]
 [ext_resource type="Texture2D" uid="uid://c6ausgd8m0ilr" path="res://misc/app_images/jurgfish_txt_splash.png" id="2_yf4pc"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="4_lku5e"]
 [ext_resource type="Theme" uid="uid://bjwlbwsddvie" path="res://misc/ui/ui_small.tres" id="5_r8vf1"]

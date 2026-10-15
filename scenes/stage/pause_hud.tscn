@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dyd77v6ecdovk"]
 
-[ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/pause_hud.gd" id="1_dljab"]
+[ext_resource type="Script" uid="uid://ceedxaacbk6qo" path="res://scripts/crew/pause_hud.gd" id="1_dljab"]
 [ext_resource type="Theme" uid="uid://bu722xccgeloo" path="res://misc/ui/ui_large.tres" id="2_3q0sb"]
 [ext_resource type="Theme" uid="uid://cqxpv5aecln53" path="res://misc/ui/ui_normal.tres" id="3_v22qg"]
 [ext_resource type="Theme" uid="uid://bjwlbwsddvie" path="res://misc/ui/ui_small.tres" id="4_vodl4"]
-[ext_resource type="Script" uid="uid://d2hidlwttum2o" path="res://scripts/legal_text.gd" id="5_v31rm"]
+[ext_resource type="Script" uid="uid://d2hidlwttum2o" path="res://scripts/crew/legal_text.gd" id="5_v31rm"]
 
 [node name="pause_hud" type="Control" unique_id=1635939161 node_paths=PackedStringArray("_sensitivity_value", "_invert_cam_v_button", "_invert_cam_h_button", "_volume_value", "_frame_rate_slider", "_frame_rate_value", "_vsync_button", "_fullscreen_button", "_game_info", "_resume_button", "_sensitivity_slider", "_volume_slider", "_legal_button", "_info_button", "_settings")]
 process_mode = 2
