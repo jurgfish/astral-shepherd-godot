@@ -22,7 +22,7 @@ func open_door(flag: bool) -> void:
 		await _anim.animation_finished
 		_door_open = true
 	elif _door_open and not _req_open:
-		_anim.play_backwards("toggle")
+		_anim.play_backwards("open_door")
 		await _anim.animation_finished
 		_door_open = false
 		_light.visible = false

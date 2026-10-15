@@ -81,15 +81,30 @@ func _symbol_capturing(host: Node3D, symbol_id: States.SYMBOL) -> void:
 			_city.set_chasing(symbol_id, true, _alka)
 
 func _symbol_captured(host: Node3D, symbol_id: States.SYMBOL) -> void:
+	var alka_captures: int = 0
+	var allias_captures: int = 0
+
 	if host is Player:
-		var count: int = _alka.capture_symbol(symbol_id)
-		_game_hud.set_count(count)
+		alka_captures = _alka.capture_symbol(symbol_id)
+		allias_captures = _city.get_allias_capture_count()
+		_game_hud.set_count(alka_captures)
 
 		if symbol_id == States.ALKA_SYMBOL:
 			set_status(States.STATUS.RUNNING)
 
 	elif host is Played:
-		_city.capture_symbol(symbol_id)
+		alka_captures = _alka.get_capture_count()
+		allias_captures = _city.capture_symbol(symbol_id)
+
+	var total_count: int = _city.get_spawn_count() + 1 # account for alka's star
+	var remaining_symbols: int = total_count - (alka_captures + allias_captures)
+	if remaining_symbols == 0:
+		_city.open_exits(true)
+
+	if States.DEBUG_MODE & States.DEBUG.ENABLED:
+		print("SYMBOL STATUS: total: %s - (alka: %s + allias: %s) = %s" % [
+			total_count, alka_captures, allias_captures, remaining_symbols
+		])
 
 func _symbol_released() -> void:
 	var release_data: Array = _alka.release_symbol()
@@ -101,6 +116,7 @@ func _symbol_released() -> void:
 		_city.set_chasing(erased_symbol, false, null)
 	if count == 0:
 		_city.reset_random_navigation()
+	_city.open_exits(false)
 
 func _clockout() -> void:
 	print("CLOCKOUT")

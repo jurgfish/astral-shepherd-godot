@@ -13,26 +13,17 @@ TASK QUEUE >>>
 first:
 - core gameplay elements
   - event dependencies
-	- temp audio?
 	- exit sequence
 	  - end ui
 - events (MON-TUES)
-  - on alka approach allias:
-	- note: this logic should be done all within alka, not each allias OK
-	- within detection
-	  - raise ambient audio
-	- within capture
-	  - ambient audio next level
-	- within collect
-	  - ambient audio final level
   - on alka collects all symbols:
-	- exit appears furthest distance from alka, allias speed doubles
-	- if alka caught, exit disappears, normal gameplay
+	- exit appears furthest distance from alka, allias speed doubles NO
+	- if alka caught, exit disappears, normal gameplay OK
 	- on exit, display game over (selfish ending) (retry button)
 	  - on retry, spawn without tutorial
   - on all allias symbols collected:
 	- all helmets open, head models replaced with happy versions
-	- exit appears furthest distance from alka
+	- exit appears furthest distance from alka OK
 	- on exit, credits, and a thank you
 
 issues:
@@ -44,6 +35,13 @@ next:
   - glow
 - anims (THURS-FRI)
 - sound (SAT)
+  - audio on alka approach allias:
+	- within detection
+	  - raise ambient audio
+	- within capture
+	  - ambient audio next level
+	- within collect
+	  - ambient audio final level
 
 garnish:
 - tiled floor (how to do large repeating?)
@@ -135,6 +133,7 @@ ignored issues:
 - no joypad scroll support on pause_hud legal page
 - fullscreen keybind doesn't work when pause_hud open
 - alliases can spawn clipped into each other (fixed when nav becomes active)
+- if alka releases a symbol at the door and enters it before it closes, game still ends
 
 ##################################################################################################
 

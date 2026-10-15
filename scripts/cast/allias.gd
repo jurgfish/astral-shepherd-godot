@@ -68,7 +68,7 @@ func set_chasing(flag: bool, body: Node3D) -> void:
 	_target_nav = body
 	_chasing = flag
 
-func set_happy(flag: bool) -> void:
+func _set_happy(flag: bool) -> void:
 	_head.visible = !flag
 	_head_happy.visible = flag
 
@@ -103,7 +103,7 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 	_symbol_captured = true
 	set_target_navigation(null)
 	set_target_look(null)
-	set_happy(true)
+	_set_happy(true)
 	open_visor(false)
 
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
@@ -112,7 +112,7 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 ##################################################################################################
 
 func _ready() -> void:
-	set_happy(false)
+	_set_happy(false)
 	open_visor(false)
 
 func _physics_process(delta: float) -> void:

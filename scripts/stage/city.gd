@@ -7,6 +7,8 @@ const SYMBOL_SPAWN_BOUND: float = 8.0
 const ALLIAS_SPAWN_BOUND: float = 5.0
 const ALKA_SYMBOL_SPAWN_LOC: Vector3 = Vector3(0.0, 5.0, 25.0)
 
+var _spawn_count: int = States.ALLIAS_SYMBOLS.size()
+
 @export var _alka: CharacterBody3D
 @export var _spawner_symbol: Node3D
 @export var _spawner_allias: Node3D
@@ -14,8 +16,8 @@ const ALKA_SYMBOL_SPAWN_LOC: Vector3 = Vector3(0.0, 5.0, 25.0)
 
 ##################################################################################################
 
-func capture_symbol(symbol: States.SYMBOL) -> void:
-	_spawner_allias.capture_symbol(symbol)
+func capture_symbol(symbol: States.SYMBOL) -> int:
+	return _spawner_allias.capture_symbol(symbol)
 
 func spawn_symbol(symbol: States.SYMBOL) -> void:
 	_spawner_symbol.spawn_symbol(symbol, SYMBOL_SPAWN_BOUND)
@@ -30,10 +32,19 @@ func open_exits(flag: bool) -> void:
 	for exit in _exits.get_children():
 		exit.open_door(flag)
 
+func get_spawn_count() -> int:
+	return _spawn_count
+
+func get_allias_capture_count() -> int:
+	return _spawner_allias.get_capture_count()
+
 ##################################################################################################
 
 func initialize() -> void:
-	_spawner_allias.spawn(States.ALLIAS_SYMBOLS.size(), ALLIAS_SPAWN_BOUND)
+	if States.DEBUG_MODE & States.DEBUG.CUSTOM_SPAWN_COUNT:
+		_spawn_count = States.DEBUG_SPAWN_COUNT
+
+	_spawner_allias.spawn(_spawn_count, ALLIAS_SPAWN_BOUND)
 	_spawner_allias.set_target_look(_alka)
 	_alka.set_location(Vector3(0.0, 0.0, ALKA_SPAWN_BOUND))
 
@@ -42,7 +53,7 @@ func initialize() -> void:
 
 func begin_routine() -> void:
 	_spawner_allias.open_visors(true)
-	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
+	_spawner_symbol.spawn(_spawn_count, SYMBOL_SPAWN_BOUND)
 	_spawner_allias.align_rotation_to_target()
 
 	#await get_tree().create_timer(10.0).timeout

@@ -5,6 +5,7 @@ extends Node3D
 const ALLIAS = preload("uid://cbmg7ps1h673y")
 
 var _allias_list: Array = []
+var _capture_count: int = 0
 
 @export var _spawner_symbol: Node3D
 
@@ -73,11 +74,15 @@ func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
 			allias.set_chasing(flag, body)
 			return
 
-func capture_symbol(symbol: States.SYMBOL) -> void:
+func capture_symbol(symbol: States.SYMBOL) -> int:
 	for allias in _allias_list:
 		if allias.get_symbol() == symbol:
 			allias.capture_symbol(symbol)
-			return
+			_capture_count += 1
+	return _capture_count
+
+func get_capture_count() -> int:
+	return _capture_count
 
 # param: count [int] max State.ALLIAS_SYMBOLS size
 # note: spawned allias symbols should match spawned symbols

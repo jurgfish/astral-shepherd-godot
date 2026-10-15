@@ -92,7 +92,7 @@ func set_location(pos: Vector3) -> void:
 
 ##################################################################################################
 
-func get_symbol_count() -> int:
+func get_capture_count() -> int:
 	return _captured_symbols.size()
 
 func capture_symbol(symbol: States.SYMBOL) -> int:
@@ -101,7 +101,7 @@ func capture_symbol(symbol: States.SYMBOL) -> int:
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALKA SYMBOLS (CAPTURE):", _captured_symbols)
 
-	return get_symbol_count()
+	return get_capture_count()
 
 func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> Array:
 	var erased: States.SYMBOL = States.SYMBOL.NULL
@@ -116,7 +116,7 @@ func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> Array:
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALKA SYMBOLS (RELEASE):", _captured_symbols)
 
-	return [get_symbol_count(), erased]
+	return [get_capture_count(), erased]
 
 ##################################################################################################
 
