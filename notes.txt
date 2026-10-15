@@ -26,6 +26,9 @@ next:
 	- within collect
 	  - ambient audio final level
 
+release:
+- put epilepsy warning
+
 garnish:
 - tiled floor (how to do large repeating?)
   - or wooden floor (ship feeling)
