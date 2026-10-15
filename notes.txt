@@ -46,33 +46,24 @@ next:
 - sound (SAT)
 
 garnish:
-- alka headlamps flicker when near allias OK
-- symbols emit sparkle effects of respective color PARTIAL (of heart color)
 - tiled floor (how to do large repeating?)
   - or wooden floor (ship feeling)
-
-potential stretch goals:
-- monsters evolve as game progresses? (time dependent)
-  - speed, models
-  - potential unique animation
-  - target the "rapidly evolving" community prompt
-  - potentially time-based instead of goal-progress based? NO
 
 ##################################################################################################
 
 TASK CORE
 
 important:
-- monster models are within astronaut suits
-  - tie to "from the stars" theme and overarching Alka & Allias lore
+- monster models are within astronaut suits OK
+  - tie to "from the stars" theme and overarching Alka & Allias lore OK
 - collectible models are various symbols, not just stars
-  - color coded, but distinguished shapes (color-blind friendly)
-  - tie to "strange signs" community prompt
+  - color coded, but distinguished shapes (color-blind friendly) OK
+  - tie to "strange signs" community prompt OK
 - monsters warn the player through body language and sound design
-  - not actually dangerous to the player
-  - give the player direction of objective
-  - tie to "ignoring the warnings" community prompt
-	- expected that players chase collectibles and ignore monster cues on first playthrough
+  - not actually dangerous to the player OK
+  - give the player direction of objective OK
+  - tie to "ignoring the warnings" community prompt OK
+	- expected that players chase collectibles and ignore monster cues on first playthrough OK
 - focus on ambient design to trigger a sense of horror
   - heavy focus on audio
   - subdued emphasis on unnerving monster model design
@@ -91,6 +82,8 @@ completed:
 - load/pause/menu/settings system OK
 - entity random generation OK
 - entity navigation OK
+- game ui OK
+- core gameplay OK
 
 ##################################################################################################
 
@@ -109,7 +102,7 @@ game jam goals:
 - community prompts:
   - ignoring the warnings OK
   - rapidly evolving OK
-  - abandon ship
+  - abandon ship NO
   - strange signs OK
 - moral:
   - no generative ai OK
@@ -117,7 +110,7 @@ game jam goals:
   - original and created during event OK
 - system:
   - must be downloadable from itch OK
-  - 2GB limit
+  - 2GB limit OK
 
 game structure:
 - input is only wasd/left-joystick to move and mouse/right-joystick to look
