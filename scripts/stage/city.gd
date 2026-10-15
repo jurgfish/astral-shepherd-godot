@@ -16,17 +16,7 @@ var _spawn_count: int = States.ALLIAS_SYMBOLS.size()
 
 ##################################################################################################
 
-func capture_symbol(symbol: States.SYMBOL) -> int:
-	return _spawner_allias.capture_symbol(symbol)
-
-func spawn_symbol(symbol: States.SYMBOL) -> void:
-	_spawner_symbol.spawn_symbol(symbol, SYMBOL_SPAWN_BOUND)
-
-func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
-	_spawner_allias.set_chasing(symbol, flag, body)
-
-func reset_random_navigation() -> void:
-	_spawner_allias.set_random_symbols_target_navigation()
+# GENERAL
 
 func open_exits(flag: bool) -> void:
 	for exit in _exits.get_children():
@@ -34,6 +24,29 @@ func open_exits(flag: bool) -> void:
 
 func get_spawn_count() -> int:
 	return _spawn_count
+
+##################################################################################################
+
+# SYMBOLS
+
+func spawn_symbol(symbol: States.SYMBOL) -> void:
+	_spawner_symbol.spawn_symbol(symbol, SYMBOL_SPAWN_BOUND)
+
+##################################################################################################
+
+# ALLIAS
+
+func capture_symbol(symbol: States.SYMBOL) -> int:
+	return _spawner_allias.capture_symbol(symbol)
+
+func open_allias_visors(flag: bool) -> void:
+	_spawner_allias.open_visors(flag)
+
+func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
+	_spawner_allias.set_chasing(symbol, flag, body)
+
+func reset_random_navigation() -> void:
+	_spawner_allias.set_random_symbols_target_navigation()
 
 func get_allias_capture_count() -> int:
 	return _spawner_allias.get_capture_count()

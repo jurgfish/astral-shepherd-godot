@@ -73,6 +73,21 @@ func wait_for_status(req_status: int) -> void:
 
 # MAIN DELIVERY REQUEST PROCESSING
 
+func _process_capture_counts() -> void:
+	var total_count: int = _city.get_spawn_count() + 1 # account for alka's star
+	var alka_captures: int = _alka.get_capture_count()
+	var allias_captures: int = _city.get_allias_capture_count()
+	var remaining_symbols: int = total_count - (alka_captures + allias_captures)
+
+	_city.open_exits(remaining_symbols == 0)
+	if allias_captures == (total_count - 1): # impossible to undo this state
+		_city.open_allias_visors(true)
+
+	if States.DEBUG_MODE & States.DEBUG.ENABLED:
+		print("SYMBOL STATUS: total: %s - (alka: %s + allias: %s) = %s remain" % [
+			total_count, alka_captures, allias_captures, remaining_symbols
+		])
+
 func _symbol_capturing(host: Node3D, symbol_id: States.SYMBOL) -> void:
 	if host is Player:
 		if symbol_id == States.ALKA_SYMBOL:
@@ -81,42 +96,29 @@ func _symbol_capturing(host: Node3D, symbol_id: States.SYMBOL) -> void:
 			_city.set_chasing(symbol_id, true, _alka)
 
 func _symbol_captured(host: Node3D, symbol_id: States.SYMBOL) -> void:
-	var alka_captures: int = 0
-	var allias_captures: int = 0
-
 	if host is Player:
-		alka_captures = _alka.capture_symbol(symbol_id)
-		allias_captures = _city.get_allias_capture_count()
+		var alka_captures: int = _alka.capture_symbol(symbol_id)
 		_game_hud.set_count(alka_captures)
-
 		if symbol_id == States.ALKA_SYMBOL:
 			set_status(States.STATUS.RUNNING)
 
 	elif host is Played:
-		alka_captures = _alka.get_capture_count()
-		allias_captures = _city.capture_symbol(symbol_id)
+		_city.capture_symbol(symbol_id)
 
-	var total_count: int = _city.get_spawn_count() + 1 # account for alka's star
-	var remaining_symbols: int = total_count - (alka_captures + allias_captures)
-	if remaining_symbols == 0:
-		_city.open_exits(true)
-
-	if States.DEBUG_MODE & States.DEBUG.ENABLED:
-		print("SYMBOL STATUS: total: %s - (alka: %s + allias: %s) = %s" % [
-			total_count, alka_captures, allias_captures, remaining_symbols
-		])
+	_process_capture_counts()
 
 func _symbol_released() -> void:
 	var release_data: Array = _alka.release_symbol()
-	var count: int = release_data[0]
+	var alka_captures: int = release_data[0]
 	var erased_symbol: States.SYMBOL = release_data[1]
 	if erased_symbol != States.SYMBOL.NULL:
-		_game_hud.set_count(count)
+		_game_hud.set_count(alka_captures)
 		_city.spawn_symbol(erased_symbol)
 		_city.set_chasing(erased_symbol, false, null)
-	if count == 0:
+	if alka_captures == 0:
 		_city.reset_random_navigation()
-	_city.open_exits(false)
+
+	_process_capture_counts()
 
 func _clockout() -> void:
 	print("CLOCKOUT")
