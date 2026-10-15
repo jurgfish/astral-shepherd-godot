@@ -49,6 +49,8 @@ func set_target_navigation(body: Node3D) -> void:
 
 func set_random_symbols_target_navigation() -> void:
 	var symbol_list: Array = _retrieve_symbol_list()
+	if symbol_list.is_empty():
+		return
 	symbol_list.shuffle()
 
 	# allias list will always be >= remaining symbols

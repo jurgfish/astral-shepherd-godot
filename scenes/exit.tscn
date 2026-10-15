@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dqhv1ht3kldcr"]
+
+[ext_resource type="Script" uid="uid://d3rg0mecfy1ka" path="res://scripts/exit.gd" id="1_l5n14"]
+[ext_resource type="PackedScene" uid="uid://dtor5e7s2gmhs" path="res://scenes/exit_door.tscn" id="1_uyw7u"]
+[ext_resource type="PackedScene" uid="uid://dswsdqvapc4k4" path="res://scenes/exit_frame.tscn" id="2_l5n14"]
+
+[sub_resource type="Animation" id="Animation_uyw7u"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exit_door:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_l5n14"]
+resource_name = "open_door"
+length = 2.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exit_door:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 3),
+"points": PackedFloat32Array(0, -0.5, 0.049161993, 0.5, -0.049161993, -2.0943952, -0.5, 0.088080406, 0.5, -0.088080406),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7mer"]
+_data = {
+&"RESET": SubResource("Animation_uyw7u"),
+&"open_door": SubResource("Animation_l5n14")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw2wu"]
+size = Vector3(1.5, 4, 0.1)
+
+[node name="exit" type="Node3D" unique_id=1239175321 node_paths=PackedStringArray("_light", "_anim")]
+script = ExtResource("1_l5n14")
+_light = NodePath("light")
+_anim = NodePath("anim")
+
+[node name="exit_frame" parent="." unique_id=1216343841 instance=ExtResource("2_l5n14")]
+
+[node name="exit_door" parent="." unique_id=1215648048 instance=ExtResource("1_uyw7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.1)
+
+[node name="light" type="OmniLight3D" parent="." unique_id=829687065]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=619824443]
+libraries/ = SubResource("AnimationLibrary_c7mer")
+
+[node name="area_detect" type="Area3D" parent="." unique_id=752146966]
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="area_detect" unique_id=533703758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
+shape = SubResource("BoxShape3D_xw2wu")
+
+[connection signal="body_entered" from="area_detect" to="." method="_on_area_detect_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dswsdqvapc4k4"]
+
+[ext_resource type="ArrayMesh" uid="uid://co868eynrnc1h" path="res://meshes/city/exit_frame.tres" id="1_gomqx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw2wu"]
+size = Vector3(0.2, 4, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1qdp8"]
+size = Vector3(2, 4, 0.2)
+
+[node name="exit_frame" type="StaticBody3D" unique_id=1329724662]
+
+[node name="exit_frame" type="MeshInstance3D" parent="." unique_id=1041849927]
+mesh = ExtResource("1_gomqx")
+
+[node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1116198052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 2, -0.1)
+shape = SubResource("BoxShape3D_xw2wu")
+
+[node name="collision_shape_3d_2" type="CollisionShape3D" parent="." unique_id=1817539588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 2, -0.1)
+shape = SubResource("BoxShape3D_xw2wu")
+
+[node name="collision_shape_3d_3" type="CollisionShape3D" parent="." unique_id=265196899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.2)
+shape = SubResource("BoxShape3D_1qdp8")

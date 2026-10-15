@@ -10,6 +10,7 @@ const ALKA_SYMBOL_SPAWN_LOC: Vector3 = Vector3(0.0, 5.0, 25.0)
 @export var _alka: CharacterBody3D
 @export var _spawner_symbol: Node3D
 @export var _spawner_allias: Node3D
+@export var _exits: Node3D
 
 ##################################################################################################
 
@@ -24,6 +25,10 @@ func set_chasing(symbol: States.SYMBOL, flag: bool, body: Node3D) -> void:
 
 func reset_random_navigation() -> void:
 	_spawner_allias.set_random_symbols_target_navigation()
+
+func open_exits(flag: bool) -> void:
+	for exit in _exits.get_children():
+		exit.open_door(flag)
 
 ##################################################################################################
 

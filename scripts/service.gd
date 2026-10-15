@@ -102,6 +102,9 @@ func _symbol_released() -> void:
 	if count == 0:
 		_city.reset_random_navigation()
 
+func _clockout() -> void:
+	print("CLOCKOUT")
+
 ##################################################################################################
 
 # MAIN WORLD LOGIC REQUEST PROCESSING
@@ -152,8 +155,10 @@ func _on_delivery_request(status: int, ...data: Array) -> void:
 		_city.set_chasing(data[1], false, null)
 	elif status == States.DELIVERY.RELEASE:
 		_symbol_released()
+	elif status == States.DELIVERY.CLOCKOUT:
+		_clockout()
 	else:
-		push_warning("DELIVERY REQUEST INVALID: %s, %s_%s" % [status, data[0], data[1]])
+		push_warning("DELIVERY REQUEST INVALID: %s, %s" % [status, data])
 
 func _on_service_request(id: String, status: int, ...data: Array) -> void:
 	if _status >= States.STATUS.SHUTDOWN:
