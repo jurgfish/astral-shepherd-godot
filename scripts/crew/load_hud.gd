@@ -9,6 +9,7 @@ const BANNED_KEYS: Array = [
 ]
 
 var _epigraph_shown: bool = false
+var _ending_shown: bool = false
 var _tip_shown: bool = false
 var _quit_queued: bool = false
 
@@ -19,6 +20,10 @@ var _quit_queued: bool = false
 
 func _set_epigraph_shown() -> void:
 	_epigraph_shown = true
+	set_process_input(true)
+
+func _set_ending_shown() -> void:
+	_ending_shown = true
 	set_process_input(true)
 
 func _set_tip_shown() -> void:
@@ -40,6 +45,22 @@ func _hide_epigraph() -> void:
 	await _anim.animation_finished
 	Service.set_status(States.STATUS.INTRO)
 
+func _hide_ending() -> void:
+	if (not _ending_shown) or _quit_queued:
+		return
+	_ending_shown = false
+	set_process_input(false)
+
+	if _anim.is_playing() and _tip_shown:
+		await _anim.animation_finished
+	if _tip_shown:
+		_anim.play("lose_tip_hide")
+	else:
+		_anim.play("lose_hide")
+
+	await _anim.animation_finished
+	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.RELOAD)
+
 ##################################################################################################
 
 func play_load() -> void:
@@ -49,7 +70,15 @@ func play_load() -> void:
 
 func play_epigraph() -> void:
 	_anim.play("epigraph_reveal")
-	await _anim.animation_finished
+
+func hide_curtain() -> void:
+	_anim.play("curtain_hide")
+
+func play_lose() -> void:
+	_anim.play("lose_reveal")
+
+func play_win() -> void:
+	_anim.play("win_reveal")
 
 func pause(flag: bool) -> void:
 	if _epigraph_shown:
@@ -70,13 +99,16 @@ func _ready() -> void:
 		visible = false
 
 func _input(event: InputEvent) -> void:
-	if _epigraph_shown and not (event.is_released() or
+	if (_epigraph_shown or _ending_shown) and not (event.is_released() or
 			event.is_action_pressed("FULLSCREEN_TOGGLE") or
 			event.is_action_pressed("PAUSE") or
 			event is InputEventMouseMotion or event is InputEventPanGesture or
 			event is InputEventJoypadMotion or (event is InputEventKey and (
 			(event.physical_keycode >= Key.KEY_F1 or event.keycode >= Key.KEY_F1 or
 			event.physical_keycode in BANNED_KEYS or event.keycode in BANNED_KEYS)))):
-		_hide_epigraph()
+		if _epigraph_shown:
+			_hide_epigraph()
+		elif _ending_shown:
+			_hide_ending()
 
 ##################################################################################################

@@ -149,6 +149,8 @@ func _quit_game() -> void:
 func _request_world(id: String, data: Array) -> void:
 	if data[0] == States.WORLD.QUIT:
 		_quit_game()
+	elif data[0] == States.WORLD.RELOAD:
+		print("RELOAD")
 	elif len(data) > 1:
 		if data[0] == States.WORLD.PAUSE:
 			_pause_game(data[1])

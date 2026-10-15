@@ -13,6 +13,8 @@ TASK QUEUE >>>
 first:
 - core gameplay elements
   - event dependencies
+	- reload logic
+	- skip epigraph on reload
 	- exit sequence
 	  - end ui
 - events (MON-TUES)
