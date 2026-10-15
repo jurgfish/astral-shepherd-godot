@@ -12,9 +12,6 @@ TASK QUEUE >>>
 
 first:
 - high-res models (WEDS)
-- test high-fidelity lighting (WEDS)
-  - set env tonemap
-  - glow
 
 issues:
 

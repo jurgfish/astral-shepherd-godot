@@ -22,8 +22,8 @@ enum DEBUG {
 
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.SERVICE
-	#^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.SKIP_EPIGRAPH #^ DEBUG.LIGHTS_ON
-	^ DEBUG.DELIVERY ^ DEBUG.CUSTOM_SPAWN_COUNT
+	^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.SKIP_EPIGRAPH #^ DEBUG.LIGHTS_ON
+	#^ DEBUG.DELIVERY ^ DEBUG.CUSTOM_SPAWN_COUNT
 )
 
 ##################################################################################################
@@ -43,7 +43,7 @@ const ALLIAS_SYMBOLS: Array = [
 	SYMBOL.ASTRAL, SYMBOL.DIAMOND, SYMBOL.APOSTROPHE, SYMBOL.THEREFORE, SYMBOL.HEXAGON
 ]
 const ALKA_SYMBOL: SYMBOL = SYMBOL.STAR
-const DEBUG_SPAWN_COUNT: int = 2 # ignored in release
+const DEBUG_SPAWN_COUNT: int = 0 # ignored in release
 const SYMBOL_DICT: Dictionary = {
 	"star": SYMBOL.STAR,
 	"moon": SYMBOL.MOON,

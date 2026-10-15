@@ -181,3 +181,4 @@ common/enable_object_picking=false
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+anti_aliasing/quality/use_taa=true

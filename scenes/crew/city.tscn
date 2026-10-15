@@ -16,6 +16,11 @@ agent_height = 2.0
 
 [sub_resource type="Environment" id="Environment_2jj31"]
 background_mode = 1
+tonemap_mode = 4
+ssao_enabled = true
+glow_enabled = true
+glow_levels/6 = 0.5
+glow_bloom = 0.5
 
 [node name="city" type="Node3D" unique_id=1258476902 node_paths=PackedStringArray("_spawner_symbol", "_spawner_allias", "_exits") groups=["nav"]]
 script = ExtResource("1_movw8")

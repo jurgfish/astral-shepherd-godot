@@ -13,5 +13,5 @@ void fragment() {
 	ALBEDO = albedo_tex;
 	EMISSION = albedo_tex * emission_tex;
 	METALLIC = 0.0;
-	ROUGHNESS = 0.5;
+	ROUGHNESS = 0.8;
 }

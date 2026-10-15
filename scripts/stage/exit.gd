@@ -7,7 +7,7 @@ signal delivery(status, data)
 var _req_open: bool = false
 var _door_open: bool = false
 
-@export var _light: OmniLight3D
+@export var _light: SpotLight3D
 @export var _anim: AnimationPlayer
 
 ##################################################################################################
