@@ -41,6 +41,20 @@ const ALLIAS_SYMBOLS: Array = [
 	SYMBOL.ASTRAL, SYMBOL.DIAMOND, SYMBOL.APOSTROPHE, SYMBOL.THEREFORE, SYMBOL.HEXAGON
 ]
 const ALKA_SYMBOL: SYMBOL = SYMBOL.STAR
+const SYMBOL_DICT: Dictionary = {
+	"star": SYMBOL.STAR,
+	"moon": SYMBOL.MOON,
+	"tri": SYMBOL.TRI,
+	"circle": SYMBOL.CIRCLE,
+	"flower": SYMBOL.FLOWER,
+	"prop": SYMBOL.PROP,
+	"plus": SYMBOL.PLUS,
+	"astral": SYMBOL.ASTRAL,
+	"diamond": SYMBOL.DIAMOND,
+	"apostrophe": SYMBOL.APOSTROPHE,
+	"therefore": SYMBOL.THEREFORE,
+	"hexagon": SYMBOL.HEXAGON
+}
 
 # DEFAULT SETTINGS
 const INIT_SENSITIVITY: float = 1.0 # slider range: 0.0 to 2.0 (increments 0.01)

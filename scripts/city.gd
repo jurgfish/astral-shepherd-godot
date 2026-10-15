@@ -36,6 +36,7 @@ func initialize() -> void:
 	alka_symbol.set_location(ALKA_SYMBOL_SPAWN_LOC, true)
 
 func begin_routine() -> void:
+	_spawner_allias.open_visors(true)
 	_spawner_symbol.spawn(States.ALLIAS_SYMBOLS.size(), SYMBOL_SPAWN_BOUND)
 	_spawner_allias.align_rotation_to_target()
 

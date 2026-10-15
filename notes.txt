@@ -13,8 +13,7 @@ TASK QUEUE >>>
 first:
 - core gameplay elements
   - missing models:
-	- allias happy models
-	- exit door
+	- symbol sparkle
   - event dependencies
 	- temp audio?
 	- exit sequence

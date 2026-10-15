@@ -25,18 +25,8 @@ var _chasing: bool = false
 @export var _nav_arm: Marker3D
 @export var _nav: NavigationAgent3D
 @export var _target_tracker: Marker3D
-@export var _symbol_moon: MeshInstance3D
-@export var _symbol_tri: MeshInstance3D
-@export var _symbol_circle: MeshInstance3D
-@export var _symbol_flower: MeshInstance3D
-@export var _symbol_prop: MeshInstance3D
-@export var _symbol_plus: MeshInstance3D
-@export var _symbol_astral: MeshInstance3D
-@export var _symbol_diamond: MeshInstance3D
-@export var _symbol_apostrophe: MeshInstance3D
-@export var _symbol_therefore: MeshInstance3D
-@export var _symbol_hexagon: MeshInstance3D
 @export var _head: Marker3D
+@export var _head_happy: Marker3D
 @export var _helmet: MeshInstance3D
 @export var _suit: MeshInstance3D
 @export var _anim_effects: AnimationPlayer
@@ -78,6 +68,10 @@ func set_chasing(flag: bool, body: Node3D) -> void:
 	_target_nav = body
 	_chasing = flag
 
+func set_happy(flag: bool) -> void:
+	_head.visible = !flag
+	_head_happy.visible = flag
+
 func is_chasing() -> bool:
 	return _chasing
 
@@ -90,17 +84,12 @@ func set_symbol(flag: States.SYMBOL) -> void:
 	if flag == States.SYMBOL.STAR:
 		push_error("ALLIAS: set symbol (star) invalid")
 		return
-	_symbol_moon.visible = flag == States.SYMBOL.MOON
-	_symbol_tri.visible = flag == States.SYMBOL.TRI
-	_symbol_circle.visible = flag == States.SYMBOL.CIRCLE
-	_symbol_flower.visible = flag == States.SYMBOL.FLOWER
-	_symbol_prop.visible = flag == States.SYMBOL.PROP
-	_symbol_plus.visible = flag == States.SYMBOL.PLUS
-	_symbol_astral.visible = flag == States.SYMBOL.ASTRAL
-	_symbol_diamond.visible = flag == States.SYMBOL.DIAMOND
-	_symbol_apostrophe.visible = flag == States.SYMBOL.APOSTROPHE
-	_symbol_therefore.visible = flag == States.SYMBOL.THEREFORE
-	_symbol_hexagon.visible = flag == States.SYMBOL.HEXAGON
+
+	for head in _head.get_children():
+		head.visible = States.SYMBOL_DICT[head.name] == flag
+	for head_happy in _head_happy.get_children():
+		head_happy.visible = States.SYMBOL_DICT[head_happy.name] == flag
+
 	_symbol_id = flag
 
 func get_symbol() -> States.SYMBOL:
@@ -114,12 +103,17 @@ func capture_symbol(symbol: States.SYMBOL) -> void:
 	_symbol_captured = true
 	set_target_navigation(null)
 	set_target_look(null)
+	set_happy(true)
 	open_visor(false)
 
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALLIAS SYMBOL CAPTURED:", _symbol_id)
 
 ##################################################################################################
+
+func _ready() -> void:
+	set_happy(false)
+	open_visor(false)
 
 func _physics_process(delta: float) -> void:
 	if _target_look != null:

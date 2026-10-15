@@ -28,71 +28,59 @@ height = 48.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bed3"]
 radius = 0.22
 
-[node name="symbol" type="AnimatableBody3D" unique_id=341915550 node_paths=PackedStringArray("_symbol_gimbal", "_symbol_star", "_symbol_moon", "_symbol_tri", "_symbol_circle", "_symbol_flower", "_symbol_prop", "_symbol_plus", "_symbol_astral", "_symbol_diamond", "_symbol_apostrophe", "_symbol_therefore", "_symbol_hexagon", "_awareness")]
+[node name="symbol" type="AnimatableBody3D" unique_id=341915550 node_paths=PackedStringArray("_symbol_gimbal", "_awareness")]
 sync_to_physics = false
 script = ExtResource("1_irjfk")
 _symbol_gimbal = NodePath("symbol_gimbal")
-_symbol_star = NodePath("symbol_gimbal/symbol_star")
-_symbol_moon = NodePath("symbol_gimbal/symbol_moon")
-_symbol_tri = NodePath("symbol_gimbal/symbol_tri")
-_symbol_circle = NodePath("symbol_gimbal/symbol_circle")
-_symbol_flower = NodePath("symbol_gimbal/symbol_flower")
-_symbol_prop = NodePath("symbol_gimbal/symbol_prop")
-_symbol_plus = NodePath("symbol_gimbal/symbol_plus")
-_symbol_astral = NodePath("symbol_gimbal/symbol_astral")
-_symbol_diamond = NodePath("symbol_gimbal/symbol_diamond")
-_symbol_apostrophe = NodePath("symbol_gimbal/symbol_apostrophe")
-_symbol_therefore = NodePath("symbol_gimbal/symbol_therefore")
-_symbol_hexagon = NodePath("symbol_gimbal/symbol_hexagon")
 _awareness = NodePath("awareness")
 
 [node name="symbol_gimbal" type="Marker3D" parent="." unique_id=116434561]
 
-[node name="symbol_star" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1690556602]
+[node name="star" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1690556602]
 visible = false
 mesh = ExtResource("2_irjfk")
 
-[node name="symbol_moon" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1843218766]
+[node name="moon" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1843218766]
 visible = false
 mesh = ExtResource("3_htimy")
 
-[node name="symbol_tri" type="MeshInstance3D" parent="symbol_gimbal" unique_id=42132734]
+[node name="tri" type="MeshInstance3D" parent="symbol_gimbal" unique_id=42132734]
 visible = false
 mesh = ExtResource("1_6lu6j")
 
-[node name="symbol_circle" type="MeshInstance3D" parent="symbol_gimbal" unique_id=569264088]
+[node name="circle" type="MeshInstance3D" parent="symbol_gimbal" unique_id=569264088]
 visible = false
 mesh = ExtResource("5_uoylp")
 
-[node name="symbol_flower" type="MeshInstance3D" parent="symbol_gimbal" unique_id=2055998603]
+[node name="flower" type="MeshInstance3D" parent="symbol_gimbal" unique_id=2055998603]
 visible = false
 mesh = ExtResource("6_6udq5")
 
-[node name="symbol_prop" type="MeshInstance3D" parent="symbol_gimbal" unique_id=994810236]
+[node name="prop" type="MeshInstance3D" parent="symbol_gimbal" unique_id=994810236]
 visible = false
 mesh = ExtResource("7_q8ihs")
 
-[node name="symbol_plus" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1650604471]
+[node name="plus" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1650604471]
 visible = false
 mesh = ExtResource("8_xiiqg")
 
-[node name="symbol_astral" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1120091260]
+[node name="astral" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1120091260]
 visible = false
 mesh = ExtResource("9_3rhrp")
 
-[node name="symbol_diamond" type="MeshInstance3D" parent="symbol_gimbal" unique_id=355262779]
+[node name="diamond" type="MeshInstance3D" parent="symbol_gimbal" unique_id=355262779]
 visible = false
 mesh = ExtResource("10_agydh")
 
-[node name="symbol_apostrophe" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1460823231]
+[node name="apostrophe" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1460823231]
 visible = false
 mesh = ExtResource("11_uoylp")
 
-[node name="symbol_therefore" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1479879972]
+[node name="therefore" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1479879972]
 visible = false
 mesh = ExtResource("11_2x7ml")
 
-[node name="symbol_hexagon" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1224980071]
+[node name="hexagon" type="MeshInstance3D" parent="symbol_gimbal" unique_id=1224980071]
 visible = false
 mesh = ExtResource("12_in45d")
 

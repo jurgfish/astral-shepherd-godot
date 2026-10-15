@@ -15,6 +15,17 @@
 [ext_resource type="ArrayMesh" uid="uid://qpe5bouedobr" path="res://meshes/allias/allias_head_apostrophe.tres" id="11_ayody"]
 [ext_resource type="ArrayMesh" uid="uid://dxe2luxpmgkat" path="res://meshes/allias/allias_head_therefore.tres" id="12_ofcvj"]
 [ext_resource type="ArrayMesh" uid="uid://vevyo58hq3ci" path="res://meshes/allias/allias_head_hexagon.tres" id="13_k0gqn"]
+[ext_resource type="ArrayMesh" uid="uid://bpkkxhlnmk5bj" path="res://meshes/allias/allias_head_moon_happy.tres" id="14_lvnhg"]
+[ext_resource type="ArrayMesh" uid="uid://boh42qp1i3o8w" path="res://meshes/allias/allias_head_tri_happy.tres" id="15_4fm5t"]
+[ext_resource type="ArrayMesh" uid="uid://8325tjrt5kmf" path="res://meshes/allias/allias_head_circle_happy.tres" id="16_ndi3g"]
+[ext_resource type="ArrayMesh" uid="uid://y0h8eyc7nib7" path="res://meshes/allias/allias_head_flower_happy.tres" id="17_2egur"]
+[ext_resource type="ArrayMesh" uid="uid://4281vpqbth8x" path="res://meshes/allias/allias_head_prop_happy.tres" id="18_wtav1"]
+[ext_resource type="ArrayMesh" uid="uid://dc2jls8u1d04m" path="res://meshes/allias/allias_head_plus_happy.tres" id="19_3iv5t"]
+[ext_resource type="ArrayMesh" uid="uid://mxq4t8eqgcst" path="res://meshes/allias/allias_head_astral_happy.tres" id="20_hspo4"]
+[ext_resource type="ArrayMesh" uid="uid://cjenn6t7mus6h" path="res://meshes/allias/allias_head_diamond_happy.tres" id="21_6yw2t"]
+[ext_resource type="ArrayMesh" uid="uid://ck6q0lqypmrsp" path="res://meshes/allias/allias_head_apostrophe_happy.tres" id="22_ouh6s"]
+[ext_resource type="ArrayMesh" uid="uid://ds4pt6b17evtc" path="res://meshes/allias/allias_head_therefore_happy.tres" id="23_qmdld"]
+[ext_resource type="ArrayMesh" uid="uid://1hbiobsd5uic" path="res://meshes/allias/allias_head_hexagon_happy.tres" id="24_7q8t6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 radius = 0.2529297
@@ -64,7 +75,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_lvnhg"]
 resource_name = "open_visor"
-length = 0.19999999999999998
+length = 0.2
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -106,23 +117,13 @@ _data = {
 &"open_visor": SubResource("Animation_lvnhg")
 }
 
-[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_nav_arm", "_nav", "_target_tracker", "_symbol_moon", "_symbol_tri", "_symbol_circle", "_symbol_flower", "_symbol_prop", "_symbol_plus", "_symbol_astral", "_symbol_diamond", "_symbol_apostrophe", "_symbol_therefore", "_symbol_hexagon", "_head", "_helmet", "_suit", "_anim_effects") groups=["nav"]]
+[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_nav_arm", "_nav", "_target_tracker", "_head", "_head_happy", "_helmet", "_suit", "_anim_effects") groups=["nav"]]
 script = ExtResource("1_nim83")
 _nav_arm = NodePath("nav_arm")
 _nav = NodePath("nav_arm/navigator")
 _target_tracker = NodePath("target_tracker")
-_symbol_moon = NodePath("head/allias_head_moon")
-_symbol_tri = NodePath("head/allias_head_tri")
-_symbol_circle = NodePath("head/allias_head_circle")
-_symbol_flower = NodePath("head/allias_head_flower")
-_symbol_prop = NodePath("head/allias_head_prop")
-_symbol_plus = NodePath("head/allias_head_plus")
-_symbol_astral = NodePath("head/allias_head_astral")
-_symbol_diamond = NodePath("head/allias_head_diamond")
-_symbol_apostrophe = NodePath("head/allias_head_apostrophe")
-_symbol_therefore = NodePath("head/allias_head_therefore")
-_symbol_hexagon = NodePath("head/allias_head_hexagon")
 _head = NodePath("head")
+_head_happy = NodePath("head_happy")
 _helmet = NodePath("allias_helmet")
 _suit = NodePath("allias_suit")
 _anim_effects = NodePath("anim_effects")
@@ -141,49 +142,97 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="head" type="Marker3D" parent="." unique_id=365328737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[node name="allias_head_moon" type="MeshInstance3D" parent="head" unique_id=515417299]
+[node name="moon" type="MeshInstance3D" parent="head" unique_id=515417299]
 visible = false
 mesh = ExtResource("3_ohthq")
 
-[node name="allias_head_tri" type="MeshInstance3D" parent="head" unique_id=2010060218]
+[node name="tri" type="MeshInstance3D" parent="head" unique_id=2010060218]
 visible = false
 mesh = ExtResource("2_nim83")
 
-[node name="allias_head_circle" type="MeshInstance3D" parent="head" unique_id=1090477287]
+[node name="circle" type="MeshInstance3D" parent="head" unique_id=1090477287]
 visible = false
 mesh = ExtResource("5_lvnhg")
 
-[node name="allias_head_flower" type="MeshInstance3D" parent="head" unique_id=2001993697]
+[node name="flower" type="MeshInstance3D" parent="head" unique_id=2001993697]
 visible = false
 mesh = ExtResource("6_4o1qy")
 
-[node name="allias_head_prop" type="MeshInstance3D" parent="head" unique_id=1798923996]
+[node name="prop" type="MeshInstance3D" parent="head" unique_id=1798923996]
 visible = false
 mesh = ExtResource("7_ty4a4")
 
-[node name="allias_head_plus" type="MeshInstance3D" parent="head" unique_id=930864631]
+[node name="plus" type="MeshInstance3D" parent="head" unique_id=930864631]
 visible = false
 mesh = ExtResource("8_4fm5t")
 
-[node name="allias_head_astral" type="MeshInstance3D" parent="head" unique_id=1289651448]
+[node name="astral" type="MeshInstance3D" parent="head" unique_id=1289651448]
 visible = false
 mesh = ExtResource("9_ndi3g")
 
-[node name="allias_head_diamond" type="MeshInstance3D" parent="head" unique_id=2133630607]
+[node name="diamond" type="MeshInstance3D" parent="head" unique_id=2133630607]
 visible = false
 mesh = ExtResource("10_2egur")
 
-[node name="allias_head_apostrophe" type="MeshInstance3D" parent="head" unique_id=1599585023]
+[node name="apostrophe" type="MeshInstance3D" parent="head" unique_id=1599585023]
 visible = false
 mesh = ExtResource("11_ayody")
 
-[node name="allias_head_therefore" type="MeshInstance3D" parent="head" unique_id=1680799513]
+[node name="therefore" type="MeshInstance3D" parent="head" unique_id=1680799513]
 visible = false
 mesh = ExtResource("12_ofcvj")
 
-[node name="allias_head_hexagon" type="MeshInstance3D" parent="head" unique_id=742122758]
+[node name="hexagon" type="MeshInstance3D" parent="head" unique_id=742122758]
 visible = false
 mesh = ExtResource("13_k0gqn")
+
+[node name="head_happy" type="Marker3D" parent="." unique_id=228033159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+visible = false
+
+[node name="moon" type="MeshInstance3D" parent="head_happy" unique_id=102568207]
+visible = false
+mesh = ExtResource("14_lvnhg")
+
+[node name="tri" type="MeshInstance3D" parent="head_happy" unique_id=721762269]
+visible = false
+mesh = ExtResource("15_4fm5t")
+
+[node name="circle" type="MeshInstance3D" parent="head_happy" unique_id=1099908118]
+visible = false
+mesh = ExtResource("16_ndi3g")
+
+[node name="flower" type="MeshInstance3D" parent="head_happy" unique_id=1341938017]
+visible = false
+mesh = ExtResource("17_2egur")
+
+[node name="prop" type="MeshInstance3D" parent="head_happy" unique_id=157859770]
+visible = false
+mesh = ExtResource("18_wtav1")
+
+[node name="plus" type="MeshInstance3D" parent="head_happy" unique_id=292468603]
+visible = false
+mesh = ExtResource("19_3iv5t")
+
+[node name="astral" type="MeshInstance3D" parent="head_happy" unique_id=1659260020]
+visible = false
+mesh = ExtResource("20_hspo4")
+
+[node name="diamond" type="MeshInstance3D" parent="head_happy" unique_id=750351923]
+visible = false
+mesh = ExtResource("21_6yw2t")
+
+[node name="apostrophe" type="MeshInstance3D" parent="head_happy" unique_id=135600910]
+visible = false
+mesh = ExtResource("22_ouh6s")
+
+[node name="therefore" type="MeshInstance3D" parent="head_happy" unique_id=849073035]
+visible = false
+mesh = ExtResource("23_qmdld")
+
+[node name="hexagon" type="MeshInstance3D" parent="head_happy" unique_id=1661925967]
+visible = false
+mesh = ExtResource("24_7q8t6")
 
 [node name="allias_helmet" type="MeshInstance3D" parent="." unique_id=1739736708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
