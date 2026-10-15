@@ -12,9 +12,6 @@ TASK QUEUE >>>
 
 first:
 - core gameplay elements
-  - missing functions
-	- scoring system
-	  - heart ui
   - missing models:
 	- allias happy models
 	- exit door

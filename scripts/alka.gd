@@ -25,7 +25,8 @@ var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 var _captured_symbols: Array = []
 
-const RELEASE_PERIOD: float = 1.0
+# symbols
+const RELEASE_PERIOD: float = 0.8
 var _capturing_count: int = 0
 var _captured_count: int = 0
 

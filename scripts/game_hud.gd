@@ -2,6 +2,8 @@
 
 extends Control
 
+const COUNT_STR: String = "      %s"
+
 var _count: int = 0
 
 @export var _count_label: Label
@@ -17,7 +19,7 @@ func set_count(in_count: int) -> void:
 	else:
 		_anim.play("decrement")
 	_count = in_count
-	_count_label.text = str(_count)
+	_count_label.text = COUNT_STR % _count
 
 func fade_in(flag: bool) -> void:
 	if flag:
