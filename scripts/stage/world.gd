@@ -19,12 +19,11 @@ func _initialize() -> void:
 		Service.set_status(States.STATUS.READY)
 
 func _start() -> void:
-	if not States.DEBUG_MODE & States.DEBUG.SKIP_EPIGRAPH:
+	if States.session_counter == 1 and not States.DEBUG_MODE & States.DEBUG.SKIP_EPIGRAPH:
 		_load_hud.play_epigraph()
-		await Service.wait_for_status(States.STATUS.INTRO)
 	else:
-		Service.set_status(States.STATUS.INTRO)
-
+		_load_hud.hide_curtain()
+	await Service.wait_for_status(States.STATUS.INTRO)
 	await Service.wait_for_status(States.STATUS.RUNNING)
 	_city.begin_routine()
 

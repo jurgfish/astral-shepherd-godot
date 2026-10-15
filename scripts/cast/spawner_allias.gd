@@ -92,4 +92,8 @@ func spawn(count: int, spawn_bound: float) -> void:
 		_spawn_allias(States.ALLIAS_SYMBOLS[idx], spawn_bound)
 	_allias_list = get_children()
 
+func despawn_all() -> void:
+	for allias in _allias_list:
+		allias.queue_free()
+
 ##################################################################################################

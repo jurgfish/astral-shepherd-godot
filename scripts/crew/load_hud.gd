@@ -4,6 +4,9 @@
 
 extends Control
 
+signal request(id, status, data)
+
+const COUNT_STR: String = "      %s"
 const BANNED_KEYS: Array = [
 	Key.KEY_NONE, Key.KEY_SPECIAL, Key.KEY_PRINT, Key.KEY_SYSREQ, Key.KEY_META, Key.KEY_ALT
 ]
@@ -13,6 +16,9 @@ var _ending_shown: bool = false
 var _tip_shown: bool = false
 var _quit_queued: bool = false
 
+@export var _lose_message: Label
+@export var _alka_capture_counter: Label
+@export var _allias_capture_counter: Label
 @export var _display: Control
 @export var _anim: AnimationPlayer
 
@@ -73,15 +79,25 @@ func play_epigraph() -> void:
 
 func hide_curtain() -> void:
 	_anim.play("curtain_hide")
+	await _anim.animation_finished
+	Service.set_status(States.STATUS.INTRO)
 
-func play_lose() -> void:
+func play_lose(alka_captures: int, allias_captures: int) -> void:
+	_alka_capture_counter.text = COUNT_STR % alka_captures
+	_allias_capture_counter.text = COUNT_STR % allias_captures
+	if alka_captures == States.ALLIAS_SYMBOLS.size() + 1:
+		_lose_message.text = "heartless ending"
+	elif alka_captures > allias_captures:
+		_lose_message.text = "heartbreaker ending"
+	else:
+		_lose_message.text = "hopeful ending"
 	_anim.play("lose_reveal")
 
 func play_win() -> void:
 	_anim.play("win_reveal")
 
 func pause(flag: bool) -> void:
-	if _epigraph_shown:
+	if _epigraph_shown or _ending_shown:
 		set_process_input(!flag)
 	_display.visible = !flag
 
@@ -95,6 +111,7 @@ func quit() -> void:
 
 func _ready() -> void:
 	set_process_input(false)
+	connect("request", Callable(Service, "_on_service_request"))
 	if States.DEBUG_MODE & States.DEBUG.SKIP_LOAD_SPLASH:
 		visible = false
 

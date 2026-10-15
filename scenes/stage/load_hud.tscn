@@ -205,7 +205,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("display/lose_hold/message/subject:modulate")
+tracks/16/path = NodePath("display/lose_hold/message/message:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -217,7 +217,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("display/lose_hold/message/alka_counter:modulate")
+tracks/17/path = NodePath("display/lose_hold/message/hold_counters/alka_counter:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -229,7 +229,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("display/lose_hold/message/allias_counter:modulate")
+tracks/18/path = NodePath("display/lose_hold/message/hold_counters/allias_counter:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -1054,7 +1054,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/lose_hold/message/subject:modulate")
+tracks/7/path = NodePath("display/lose_hold/message/message:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1066,7 +1066,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/lose_hold/message/alka_counter:modulate")
+tracks/8/path = NodePath("display/lose_hold/message/hold_counters/alka_counter:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1078,7 +1078,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/lose_hold/message/allias_counter:modulate")
+tracks/9/path = NodePath("display/lose_hold/message/hold_counters/allias_counter:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1102,7 +1102,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_uvp72"]
 resource_name = "lose_reveal"
-length = 5.0
+length = 7.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1191,7 +1191,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/lose_hold/message/subject:modulate")
+tracks/7/path = NodePath("display/lose_hold/message/message:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1203,7 +1203,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/lose_hold/message/alka_counter:modulate")
+tracks/8/path = NodePath("display/lose_hold/message/hold_counters/alka_counter:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1215,7 +1215,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/lose_hold/message/allias_counter:modulate")
+tracks/9/path = NodePath("display/lose_hold/message/hold_counters/allias_counter:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1231,10 +1231,39 @@ tracks/10/path = NodePath("display/lose_hold/continue/continue:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(4, 5),
+"times": PackedFloat32Array(6, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4, 6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_set_ending_shown"
+}, {
+"args": [],
+"method": &"_set_tip_shown"
+}]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("curtain:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_lkx43"]
@@ -1327,7 +1356,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/lose_hold/message/subject:modulate")
+tracks/7/path = NodePath("display/lose_hold/message/message:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1339,7 +1368,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/lose_hold/message/alka_counter:modulate")
+tracks/8/path = NodePath("display/lose_hold/message/hold_counters/alka_counter:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1351,7 +1380,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/lose_hold/message/allias_counter:modulate")
+tracks/9/path = NodePath("display/lose_hold/message/hold_counters/allias_counter:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -1574,6 +1603,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("curtain:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bctsy"]
 _data = {
@@ -1590,7 +1631,7 @@ _data = {
 &"win_reveal": SubResource("Animation_ofi6u")
 }
 
-[node name="load_hud" type="Control" unique_id=652777255 node_paths=PackedStringArray("_display", "_anim")]
+[node name="load_hud" type="Control" unique_id=652777255 node_paths=PackedStringArray("_lose_message", "_alka_capture_counter", "_allias_capture_counter", "_display", "_anim")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1598,6 +1639,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yf4pc")
+_lose_message = NodePath("display/lose_hold/message/message")
+_alka_capture_counter = NodePath("display/lose_hold/message/hold_counters/alka_counter")
+_allias_capture_counter = NodePath("display/lose_hold/message/hold_counters/allias_counter")
 _display = NodePath("display")
 _anim = NodePath("animation_player")
 
@@ -1749,29 +1793,32 @@ theme_override_colors/font_color = Color(0.93333334, 0.7647059, 0.5411765, 1)
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="subject" type="Label" parent="display/lose_hold/message" unique_id=1609047703]
+[node name="message" type="Label" parent="display/lose_hold/message" unique_id=1609047703]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
-text = "lost ending"
+text = "placeholder ending"
 horizontal_alignment = 1
 
 [node name="space" type="Control" parent="display/lose_hold/message" unique_id=1624563034]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="alka_counter" type="Label" parent="display/lose_hold/message" unique_id=1101417203]
-modulate = Color(1, 1, 1, 0)
+[node name="hold_counters" type="VBoxContainer" parent="display/lose_hold/message" unique_id=866018149]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="alka_counter" type="Label" parent="display/lose_hold/message/hold_counters" unique_id=1101417203]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
-text = "      0"
-horizontal_alignment = 1
+text = "      WWWW"
 vertical_alignment = 1
 
-[node name="heart" type="TextureRect" parent="display/lose_hold/message/alka_counter" unique_id=480478058]
+[node name="heart" type="TextureRect" parent="display/lose_hold/message/hold_counters/alka_counter" unique_id=480478058]
 modulate = Color(0.8039216, 0.36078432, 0.36078432, 1)
 layout_mode = 1
 anchors_preset = 4
@@ -1786,17 +1833,16 @@ pivot_offset = Vector2(0, 116)
 texture = ExtResource("7_uvp72")
 stretch_mode = 5
 
-[node name="allias_counter" type="Label" parent="display/lose_hold/message" unique_id=266885033]
+[node name="allias_counter" type="Label" parent="display/lose_hold/message/hold_counters" unique_id=266885033]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 theme = ExtResource("4_lku5e")
 theme_override_colors/font_color = Color(0.8039216, 0.36078432, 0.36078432, 1)
-text = "      0"
-horizontal_alignment = 1
+text = "      1"
 vertical_alignment = 1
 
-[node name="heart" type="TextureRect" parent="display/lose_hold/message/allias_counter" unique_id=643528333]
+[node name="heart" type="TextureRect" parent="display/lose_hold/message/hold_counters/allias_counter" unique_id=643528333]
 modulate = Color(0.8039216, 0.36078432, 0.36078432, 1)
 layout_mode = 1
 anchors_preset = 4

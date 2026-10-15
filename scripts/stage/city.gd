@@ -81,4 +81,7 @@ func begin_routine() -> void:
 		_spawner_allias.set_random_symbols_target_navigation()
 		await get_tree().create_timer(20.0).timeout
 
+func end_routine() -> void:
+	_spawner_allias.despawn_all()
+
 ##################################################################################################

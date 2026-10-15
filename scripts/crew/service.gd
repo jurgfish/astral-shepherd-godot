@@ -59,7 +59,7 @@ func set_status(status: int) -> void:
 	if _status == States.STATUS.READY:
 		if States.DEBUG_MODE & States.DEBUG.ENABLED:
 			print("\nHELLO WORLD")
-	if _status == States.STATUS.SHUTDOWN:
+	elif _status == States.STATUS.SHUTDOWN:
 		if States.DEBUG_MODE & States.DEBUG.ENABLED:
 			print("GOODBYE WORLD\n")
 
@@ -121,7 +121,18 @@ func _symbol_released() -> void:
 	_process_capture_counts()
 
 func _clockout() -> void:
-	print("CLOCKOUT")
+	set_status(States.STATUS.COOLDOWN)
+	_city.end_routine()
+	_game_hud.quit()
+
+	var spawn_count: int = _city.get_spawn_count()
+	var alka_captures: int = _alka.get_capture_count()
+	var allias_captures: int = _city.get_allias_capture_count()
+
+	if spawn_count != allias_captures:
+		_load_hud.play_lose(alka_captures, allias_captures)
+	else:
+		_load_hud.play_win()
 
 ##################################################################################################
 
@@ -138,10 +149,18 @@ func _pause_game(flag: bool) -> void:
 	if _status >= States.STATUS.RUNNING:
 		_game_hud.fade_in(!flag)
 
+func _reload_game() -> void:
+	if States.DEBUG_MODE & States.DEBUG.ENABLED:
+		print("RELOAD\n")
+
+	States.session_counter += 1
+	_status = States.STATUS.STARTUP
+	get_tree().reload_current_scene()
+
 func _quit_game() -> void:
 	set_status(States.STATUS.SHUTDOWN)
 	get_tree().paused = true
-	_game_hud.fade_in(false)
+	_game_hud.quit()
 	_pause_hud.quit()
 	_load_hud.quit()
 	get_tree().quit()
@@ -150,7 +169,7 @@ func _request_world(id: String, data: Array) -> void:
 	if data[0] == States.WORLD.QUIT:
 		_quit_game()
 	elif data[0] == States.WORLD.RELOAD:
-		print("RELOAD")
+		_reload_game()
 	elif len(data) > 1:
 		if data[0] == States.WORLD.PAUSE:
 			_pause_game(data[1])
@@ -162,7 +181,7 @@ func _request_world(id: String, data: Array) -> void:
 # INCOMING SIGNAL REQUESTS
 
 func _on_delivery_request(status: int, ...data: Array) -> void:
-	if (_status < States.STATUS.READY) or (_status >= States.STATUS.SHUTDOWN):
+	if (_status < States.STATUS.READY) or (_status >= States.STATUS.COOLDOWN):
 		return
 	if States.DEBUG_MODE & States.DEBUG.SERVICE:
 		print("DELIVERY REQUEST: %s, %s" % [status, data])

@@ -11,30 +11,14 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- core gameplay elements
-  - event dependencies
-	- reload logic
-	- skip epigraph on reload
-	- exit sequence
-	  - end ui
-- events (MON-TUES)
-  - on alka collects all symbols:
-	- exit appears furthest distance from alka, allias speed doubles NO
-	- if alka caught, exit disappears, normal gameplay OK
-	- on exit, display game over (selfish ending) (retry button)
-	  - on retry, spawn without tutorial
-  - on all allias symbols collected:
-	- all helmets open, head models replaced with happy versions
-	- exit appears furthest distance from alka OK
-	- on exit, credits, and a thank you
-
-issues:
-
-next:
 - high-res models (WEDS)
 - test high-fidelity lighting (WEDS)
   - set env tonemap
   - glow
+
+issues:
+
+next:
 - anims (THURS-FRI)
 - sound (SAT)
   - audio on alka approach allias:
@@ -72,7 +56,7 @@ important:
 	- monster models will only be illuminated by player's headlamps
 
 submission:
-- 10/17/26 deadline
+- 10/19/26 deadline
 - tagged #chicaghoul2026
 - fill out google form
   - link to itch page
@@ -85,6 +69,7 @@ completed:
 - entity navigation OK
 - game ui OK
 - core gameplay OK
+- full events/endings OK
 
 ##################################################################################################
 
