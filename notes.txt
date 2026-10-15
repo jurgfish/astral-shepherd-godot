@@ -11,9 +11,8 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- organize scripts, scenes
 - core gameplay elements
-  - missing models:
-	- symbol sparkle
   - event dependencies
 	- temp audio?
 	- exit sequence

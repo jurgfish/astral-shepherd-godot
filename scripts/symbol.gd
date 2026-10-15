@@ -4,6 +4,7 @@ extends Node3D
 
 signal delivery(status, data)
 
+const PARTICLES_SPARKLES = preload("uid://bhmsmjcv4dtup")
 const IDLE_R: float = 1.8
 const CAPTURE_R: float = 8.8
 const APPROACH_S: Vector3 = Vector3(0.0, 0.0, 1.1)
@@ -26,6 +27,12 @@ var _captured: bool = false
 
 ##################################################################################################
 
+func _instance_sparkles() -> void:
+	var sparkles := PARTICLES_SPARKLES.instantiate()
+	get_parent().get_parent().add_child(sparkles)
+	sparkles.global_transform = get_global_transform_interpolated()
+	sparkles.emit_particles()
+
 func _set_capturing(flag: bool, body: Node3D) -> void:
 	_player_capturing = flag
 	if _player_capturing:
@@ -36,6 +43,7 @@ func _set_capturing(flag: bool, body: Node3D) -> void:
 
 func _set_captured(body: Node3D) -> void:
 	_captured = true
+	_instance_sparkles()
 	emit_signal("delivery", States.DELIVERY.CAPTURED, body, _symbol_id)
 	queue_free()
 
@@ -129,6 +137,8 @@ func _on_area_capturing_body_exited(body: Node3D) -> void:
 		_set_capturing(false, body)
 
 func _on_area_captured_body_entered(body: Node3D) -> void:
+	if _captured:
+		return
 	if body is Player or (body is Played and body.get_symbol() == _symbol_id):
 		_set_captured(body)
 
