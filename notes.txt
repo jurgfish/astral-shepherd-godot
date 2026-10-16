@@ -11,6 +11,7 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- alka properly handle allias detection (keep list of alliases, do periodic checks on captured)
 - high-res models (WEDS)
 
 issues:

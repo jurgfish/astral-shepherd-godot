@@ -101,6 +101,8 @@ func _symbol_captured(host: Node3D, symbol_id: States.SYMBOL) -> void:
 		_game_hud.set_count(alka_captures)
 		if symbol_id == States.ALKA_SYMBOL:
 			set_status(States.STATUS.RUNNING)
+		else:
+			_city.set_chasing(symbol_id, true, _alka) # possible to capture if not capturing
 
 	elif host is Played:
 		_city.capture_symbol(symbol_id)

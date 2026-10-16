@@ -23,7 +23,7 @@ enum DEBUG {
 var DEBUG_MODE: int = (
 	DEBUG.ENABLED #^ DEBUG.SERVICE
 	^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.SKIP_EPIGRAPH #^ DEBUG.LIGHTS_ON
-	#^ DEBUG.DELIVERY ^ DEBUG.CUSTOM_SPAWN_COUNT
+	^ DEBUG.DELIVERY #^ DEBUG.CUSTOM_SPAWN_COUNT
 )
 
 ##################################################################################################
