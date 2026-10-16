@@ -144,5 +144,11 @@ NOTABLE CHALLENGES
   opening but i realized i was looking at the back of the inside of the helmet, spent some time
   checking my sanity for all visibility logic; turned out the game was working as intended, i
   just hadn't modeled the requested head model yet
+- getting the floor working was unexpectedly difficult; first time figuring out how to use 3D
+  gridmaps; had a strange issue where the floor wouldn't be lit correctly (all the tiles in the
+  negative/positive(?) x/z(?) axis from the camera wouldn't receieve any light at all), i had
+  disabled center-y and set the y offsets in the gridmap mesh of the floor tiles, undoing all
+  that and just manually moving the gridmap down solved this issue (at one point i even tried
+  manually adding all several thousand floor tile meshes manually and the editor started lagging)
 
 ##################################################################################################
