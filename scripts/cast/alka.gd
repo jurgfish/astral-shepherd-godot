@@ -25,10 +25,10 @@ var _move_dir: Vector3 = Vector3.ZERO
 var _speed: float = 0.0
 var _captured_symbols: Array = []
 
-# symbols
+# delivery
 const RELEASE_PERIOD: float = 0.8
-var _capturing_count: int = 0
-var _captured_count: int = 0
+var _allias_capturing: Array = []
+var _allias_captured: Array = []
 
 @export var _head: Marker3D
 @export var _body: Marker3D
@@ -47,31 +47,51 @@ func _flicker_headlamps(flag: bool, captured: bool = false) -> void:
 	else:
 		_anim_effects.play("RESET_HEADLAMPS")
 
-func _count_allias_capturing(increment: bool) -> void:
+func _prune_allias_list(allias_list: Array) -> Array:
+	var dormant_idxs: Array = []
+	for idx in allias_list.size():
+		if allias_list[idx].is_dormant():
+			dormant_idxs.push_back(idx)
+
+	for idx in dormant_idxs:
+		allias_list.remove_at(idx)
+	return allias_list
+
+func _count_allias_capturing(increment: bool, body: Node3D) -> void:
 	if increment:
-		_capturing_count += 1
+		if body.is_dormant():
+			return
+		_allias_capturing.push_back(body)
 		_flicker_headlamps(true)
 	else:
-		_capturing_count -= 1
-		if _capturing_count <= 0:
-			_capturing_count = 0
-			_flicker_headlamps(false)
+		if body.is_dormant():
+			return
+		_allias_capturing.erase(body)
 
-func _count_allias_captured(increment: bool) -> void:
+	_allias_capturing = _prune_allias_list(_allias_capturing)
+	if _allias_capturing.is_empty():
+		_flicker_headlamps(false)
+
+func _count_allias_captured(increment: bool, body: Node3D) -> void:
 	if increment:
-		_captured_count += 1
+		if body.is_dormant():
+			return
+		_allias_captured.push_back(body)
 		_flicker_headlamps(true, true)
 		if _timer_release.time_left == 0.0:
 			_timer_release.start(RELEASE_PERIOD)
 	else:
-		_captured_count -= 1
-		if _captured_count <= 0:
-			_captured_count = 0
-			if _capturing_count > 0:
-				_flicker_headlamps(true, false)
-			else:
-				_flicker_headlamps(false)
-			_timer_release.stop()
+		if body.is_dormant():
+			return
+		_allias_captured.erase(body)
+
+	_allias_captured = _prune_allias_list(_allias_captured)
+	if _allias_captured.is_empty():
+		if _allias_capturing.is_empty():
+			_flicker_headlamps(false)
+		else:
+			_flicker_headlamps(true, false)
+		_timer_release.stop()
 
 ##################################################################################################
 
@@ -143,20 +163,20 @@ func _physics_process(delta: float) -> void:
 func _on_area_capturing_body_entered(body: Node3D) -> void:
 	if body is Played:
 		if not body.is_dormant():
-			_count_allias_capturing(true)
+			_count_allias_capturing(true, body)
 
 func _on_area_capturing_body_exited(body: Node3D) -> void:
 	if body is Played:
-		_count_allias_capturing(false)
+		_count_allias_capturing(false, body)
 
 func _on_area_captured_body_entered(body: Node3D) -> void:
 	if body is Played:
 		if not body.is_dormant():
-			_count_allias_captured(true)
+			_count_allias_captured(true, body)
 
 func _on_area_captured_body_exited(body: Node3D) -> void:
 	if body is Played:
-		_count_allias_captured(false)
+		_count_allias_captured(false, body)
 
 func _on_timer_release_timeout() -> void:
 	emit_signal("delivery", States.DELIVERY.RELEASE, null)
