@@ -11,13 +11,13 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- high-res models (WEDS)
+- high-res models (SAT)
+- anims (SAT)
 
 issues:
 
 next:
-- anims (THURS-FRI)
-- sound (SAT)
+- sound (MON)
   - audio on alka approach allias:
 	- within detection
 	  - raise ambient audio
@@ -30,8 +30,6 @@ release:
 - put epilepsy warning
 
 garnish:
-- tiled floor (how to do large repeating?)
-  - or wooden floor (ship feeling)
 - alliases float into air if all happy?
 
 ##################################################################################################

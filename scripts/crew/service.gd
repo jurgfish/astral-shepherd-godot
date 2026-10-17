@@ -157,6 +157,9 @@ func _reload_game() -> void:
 
 	States.session_counter += 1
 	_status = States.STATUS.STARTUP
+	_game_hud.quit()
+	_pause_hud.quit()
+	_load_hud.quit()
 	get_tree().reload_current_scene()
 
 func _quit_game() -> void:

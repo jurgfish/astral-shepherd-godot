@@ -157,6 +157,9 @@ func _on_controls_pressed() -> void:
 func _on_options_pressed():
 	_switch_page("options")
 
+func _on_reload_pressed() -> void:
+	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.RELOAD)
+
 func _on_abandon_pressed() -> void:
 	emit_signal("request", name, States.REQUEST.WORLD, States.WORLD.QUIT)
 

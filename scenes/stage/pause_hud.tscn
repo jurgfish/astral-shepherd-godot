@@ -82,6 +82,14 @@ focus_neighbor_right = NodePath(".")
 theme = ExtResource("2_3q0sb")
 text = "options"
 
+[node name="reload" type="Button" parent="settings/main" unique_id=966900147]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+theme = ExtResource("2_3q0sb")
+text = "reload"
+
 [node name="abandon" type="Button" parent="settings/main" unique_id=698160410]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -431,6 +439,7 @@ text = "return"
 [connection signal="pressed" from="settings/main/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings/main/controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="settings/main/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="settings/main/reload" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="settings/main/abandon" to="." method="_on_abandon_pressed"]
 [connection signal="value_changed" from="settings/controls/sliders/controls/sensitivity_slider" to="." method="_on_sensitivity_slider_value_changed"]
 [connection signal="pressed" from="settings/controls/toggles/controls/invert_cam_v" to="." method="_on_invert_cam_v_pressed"]
