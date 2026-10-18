@@ -117,7 +117,7 @@ func _symbol_released() -> void:
 		_game_hud.set_count(alka_captures)
 		_city.spawn_symbol(erased_symbol)
 		_city.set_chasing(erased_symbol, false, null)
-	if alka_captures == 0:
+	if alka_captures == 0 and _status >= States.STATUS.RUNNING:
 		_city.reset_random_navigation()
 
 	_process_capture_counts()

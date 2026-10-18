@@ -11,7 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- disable city nav if game not running
 - anims (SAT/MON)
 - sound (MON)
   - audio on alka approach allias:
