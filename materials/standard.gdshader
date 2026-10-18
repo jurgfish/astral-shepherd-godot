@@ -3,8 +3,8 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
-uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
-uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
+global uniform float distance_fade_min;
+global uniform float distance_fade_max;
 
 const vec3 MAGIC_D = vec3(0.06711056, 0.00583715, 52.9829189);
 

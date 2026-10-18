@@ -9,6 +9,8 @@ const MOUSE_MULT: float = 0.0005
 const MIN_SY: float = 0.1 # sensitivity
 const BASE_SY: float = 1.8
 const MAX_SY: float = 5.0
+const DISTANCE_FADE_MIN: float = 50.0
+const DISTANCE_FADE_MAX: float = 40.0
 var _invert_look: Vector2 = Vector2.ONE
 var _in_look: Vector2 = Vector2.ZERO
 var _look_sy: float = 1.8
@@ -121,6 +123,10 @@ func _ready() -> void:
 	set_frame_rate(States.user.frame_rate, false)
 	set_fullscreen(States.user.fullscreen, false)
 	set_vsync(States.user.fullscreen, false)
+
+	# kept at 0.0 in the editor so material always visible; set once on load and never again
+	RenderingServer.global_shader_parameter_set("distance_fade_min", DISTANCE_FADE_MIN)
+	RenderingServer.global_shader_parameter_set("distance_fade_max", DISTANCE_FADE_MAX)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

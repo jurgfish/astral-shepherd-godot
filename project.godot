@@ -182,3 +182,14 @@ rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 anti_aliasing/quality/use_taa=true
+
+[shader_globals]
+
+distance_fade_min={
+"type": "float",
+"value": 0.0
+}
+distance_fade_max={
+"type": "float",
+"value": 0.0
+}

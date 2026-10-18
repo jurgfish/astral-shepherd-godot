@@ -11,12 +11,8 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- high-res models (SAT)
-- anims (SAT)
-
-issues:
-
-next:
+- disable city nav if game not running
+- anims (SAT/MON)
 - sound (MON)
   - audio on alka approach allias:
 	- within detection
@@ -25,6 +21,11 @@ next:
 	  - ambient audio next level
 	- within collect
 	  - ambient audio final level
+
+issues:
+
+next:
+
 
 release:
 - put epilepsy warning

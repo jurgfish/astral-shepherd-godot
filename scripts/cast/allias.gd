@@ -3,8 +3,8 @@
 class_name Played
 extends CharacterBody3D
 
-const HEAD_ROT_LIMIT: float = 2.2
-const HELMET_ROT_LIMIT: float = 1.6
+const HEAD_ROT_LIMIT: float = 1.8
+const HELMET_ROT_LIMIT: float = 1.0
 const LERP_H: float = 10.0
 const LERP_R: float = 2.0
 const WALK_S: float = 0.2

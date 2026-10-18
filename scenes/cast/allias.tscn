@@ -42,34 +42,12 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("allias_helmet/allias_helmet_visor:rotation:x")
+tracks/0/path = NodePath("helmet_gimbal/allias_helmet/allias_helmet_visor:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("allias_helmet/allias_helmet_visor:rotation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("allias_helmet/allias_helmet_visor:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -80,35 +58,13 @@ step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("allias_helmet/allias_helmet_visor:rotation:x")
+tracks/0/path = NodePath("helmet_gimbal/allias_helmet/allias_helmet_visor:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.0010000442, -1.3962634, -0.09999999, 0.026713729, 0, 0),
-"times": PackedFloat32Array(0, 0.19999999)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("allias_helmet/allias_helmet_visor:rotation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.19999999)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("allias_helmet/allias_helmet_visor:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.19999999)
+"handle_modes": PackedInt32Array(0, 3),
+"points": PackedFloat32Array(0, -0.1, 0, 0.1, 0.31618875, 3.1415927, -0.1, -0.3625586, 0.1, 0.3625586),
+"times": PackedFloat32Array(0, 0.2)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4o1qy"]
@@ -124,7 +80,7 @@ _nav = NodePath("nav_arm/navigator")
 _target_tracker = NodePath("target_tracker")
 _head = NodePath("head")
 _head_happy = NodePath("head_happy")
-_helmet = NodePath("allias_helmet")
+_helmet = NodePath("helmet_gimbal/allias_helmet")
 _suit = NodePath("allias_suit")
 _anim_effects = NodePath("anim_effects")
 
@@ -140,7 +96,7 @@ mesh = ExtResource("1_oyysy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="head" type="Marker3D" parent="." unique_id=365328737]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.777, 0.031341825)
 
 [node name="moon" type="MeshInstance3D" parent="head" unique_id=515417299]
 visible = false
@@ -187,7 +143,7 @@ visible = false
 mesh = ExtResource("13_k0gqn")
 
 [node name="head_happy" type="Marker3D" parent="." unique_id=228033159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.777, 0.031341825)
 visible = false
 
 [node name="moon" type="MeshInstance3D" parent="head_happy" unique_id=102568207]
@@ -234,12 +190,13 @@ mesh = ExtResource("23_qmdld")
 visible = false
 mesh = ExtResource("24_7q8t6")
 
-[node name="allias_helmet" type="MeshInstance3D" parent="." unique_id=1739736708]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+[node name="helmet_gimbal" type="Marker3D" parent="." unique_id=1402459442]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 1.5999998, 0)
+
+[node name="allias_helmet" type="MeshInstance3D" parent="helmet_gimbal" unique_id=1739736708]
 mesh = ExtResource("3_6gwu1")
 
-[node name="allias_helmet_visor" type="MeshInstance3D" parent="allias_helmet" unique_id=1731323957]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+[node name="allias_helmet_visor" type="MeshInstance3D" parent="helmet_gimbal/allias_helmet" unique_id=1731323957]
 mesh = ExtResource("4_uxde5")
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1163996762]
