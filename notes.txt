@@ -21,6 +21,7 @@ first:
 	  - ambient audio final level
 
 issues:
+- if alka standing and being captured, if allias captures symbol, does not exit alka capture
 
 next:
 
