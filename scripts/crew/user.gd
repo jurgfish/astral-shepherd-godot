@@ -110,8 +110,6 @@ func set_accepting_input(flag: bool) -> void:
 
 func pause(flag: bool) -> void:
 	set_accepting_input(!flag)
-	if Service.get_status() <= States.STATUS.INTRO:
-		_accepting_input = false
 	if flag:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
