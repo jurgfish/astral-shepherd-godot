@@ -7,8 +7,10 @@ const HEAD_ROT_LIMIT: float = 1.8
 const HELMET_ROT_LIMIT: float = 1.0
 const LERP_H: float = 10.0
 const LERP_R: float = 2.0
+const LERP_V: float = 5.0
 const WALK_S: float = 0.2
 const RUN_S: float = 1.5
+const ANIM_FACTOR: float = 2.8
 
 var _symbol_id: States.SYMBOL = States.SYMBOL.NULL
 var _target_look: Node3D = null
@@ -31,6 +33,7 @@ var _chasing: bool = false
 @export var _helmet: MeshInstance3D
 @export var _suit: MeshInstance3D
 @export var _anim_effects: AnimationPlayer
+@export var _anim_tree: AnimationTree
 
 ##################################################################################################
 
@@ -135,11 +138,16 @@ func _physics_process(delta: float) -> void:
 		_updated_rot = Vector3.MODEL_FRONT.signed_angle_to(_dir, Vector3.UP)
 		if not is_equal_approx(_curr_rot, _updated_rot):
 			_curr_rot = lerp_angle(_curr_rot, _updated_rot, LERP_R * delta)
-
-		velocity = _speed * _dir
 		rotation.y = _curr_rot
+	else:
+		_speed = 0.0
 
-		move_and_slide()
+	velocity = lerp(velocity, _speed * _dir, LERP_V * delta)
+	rotation.y = _curr_rot
+
+	_anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / ANIM_FACTOR)
+
+	move_and_slide()
 
 ##################################################################################################
 
