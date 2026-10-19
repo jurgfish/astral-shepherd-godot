@@ -29,7 +29,6 @@ release:
 - poster
 
 garnish:
-- alliases float into air if all happy? NO
 
 ##################################################################################################
 
