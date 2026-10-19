@@ -12,6 +12,8 @@ TASK QUEUE >>>
 
 first:
 - anims (SAT/MON)
+  - idle OK
+  - walk
 - sound (MON)
   - audio on alka approach allias:
 	- within detection
@@ -22,12 +24,13 @@ first:
 	  - ambient audio final level
 
 issues:
+- allias head rotation is off (doesn't respect angle of neck; might be ok?)
 
 next:
 
-
 release:
 - put epilepsy warning
+- poster
 
 garnish:
 - alliases float into air if all happy?
@@ -49,13 +52,13 @@ important:
 	- expected that players chase collectibles and ignore monster cues on first playthrough OK
 - focus on ambient design to trigger a sense of horror
   - heavy focus on audio
-  - subdued emphasis on unnerving monster model design
-	- let animation shine through; do not outdo audio
-	- monster models will only be illuminated by player's headlamps
+  - subdued emphasis on unnerving monster model design NO
+	- let animation shine through; do not outdo audio PARTIAL
+	- monster models will only be illuminated by player's headlamps OK
 
 submission:
 - 10/19/26 deadline
-- tagged #chicaghoul2026
+- tagged #chicaghoul2026 OK
 - fill out google form
   - link to itch page
 - requires 10/25/26 live presence
@@ -74,7 +77,13 @@ completed:
 GAME ORGANIZATION
 
 personal goals:
-- high-poly, animated 3D models
+- high-poly, animated 3D models PARTIAL
+  - wasn't able to make fully high-poly, ended up mostly resembling the art style i've been using
+	for IOM, unexpectedly somewhat low poly despite higher poly counts (it's very time-consuming
+	to add lots of mesh detail; i did not figure out how to texture paint/deform), it's a lot
+	more colorful and oddly cozy than i anticipated due to using the same color atlas material
+	i'm using in IOM
+  - didn't have time to make more than 2 animations
 - dynamic (simple) soundtrack
 - highest possible lighting fidelity
 
@@ -121,6 +130,11 @@ ignored issues:
 - alliases can spawn clipped into each other (fixed when nav becomes active)
 - if alka releases a symbol at the door and enters it before it closes, game still ends
 
+importing character animations:
+- refer to devloglogan for majority of process until entering godot, then
+  1) copy tracks and paste into new animation player within actual scene, using same names (data
+	 should be within scene now, not imported glb; renaming should work)
+
 ##################################################################################################
 
 SOURCES
@@ -150,5 +164,7 @@ NOTABLE CHALLENGES
   disabled center-y and set the y offsets in the gridmap mesh of the floor tiles, undoing all
   that and just manually moving the gridmap down solved this issue (at one point i even tried
   manually adding all several thousand floor tile meshes manually and the editor started lagging)
+- this is my first time animating a character rig (bones), it was actually very straightforward
+  and somewhat fun to do; getting the animation to work within godot was very straightforward too
 
 ##################################################################################################
