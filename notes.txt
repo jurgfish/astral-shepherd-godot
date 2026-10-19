@@ -11,9 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- anims (SAT/MON)
-  - idle OK
-  - run OK
 - sound (MON)
   - audio on alka approach allias:
 	- within detection
