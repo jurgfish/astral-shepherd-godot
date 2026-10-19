@@ -6,7 +6,7 @@ extends Node
 
 signal status_update(status)
 
-var _status: int = States.STATUS.STARTUP
+var _status: States.STATUS = States.STATUS.STARTUP
 var _world: Node3D = null
 var _load_hud: Control = null
 var _game_hud: Control = null
@@ -48,7 +48,7 @@ func initialize() -> void:
 
 # SCHEDULING
 
-func set_status(status: int) -> void:
+func set_status(status: States.STATUS) -> void:
 	if _status == status:
 		return
 	if _status == States.STATUS.SHUTDOWN:
@@ -64,6 +64,9 @@ func set_status(status: int) -> void:
 			print("GOODBYE WORLD\n")
 
 	emit_signal("status_update", status)
+
+func get_status() -> States.STATUS:
+	return _status
 
 func wait_for_status(req_status: int) -> void:
 	while(_status < req_status):

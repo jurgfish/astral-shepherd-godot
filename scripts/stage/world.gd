@@ -6,6 +6,7 @@ extends Node3D
 
 @export var _load_hud: Control
 @export var _city: Node3D
+@export var _user: Node3D
 
 ##################################################################################################
 
@@ -23,7 +24,9 @@ func _start() -> void:
 		_load_hud.play_epigraph()
 	else:
 		_load_hud.hide_curtain()
+
 	await Service.wait_for_status(States.STATUS.INTRO)
+	_user.set_accepting_input(true)
 	await Service.wait_for_status(States.STATUS.RUNNING)
 	_city.begin_routine()
 

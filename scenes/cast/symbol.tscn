@@ -15,7 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cldkkyclo2u8u" path="res://meshes/symbol/symbol_hexagon.tres" id="12_in45d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
-radius = 0.15
+radius = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_irjfk"]
 radius = 10.0

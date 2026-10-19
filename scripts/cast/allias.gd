@@ -23,6 +23,8 @@ var _updated_rot: float = 0.0
 var _curr_rot: float = 0.0
 var _symbol_captured: bool = false
 var _chasing: bool = false
+var _visor_open: bool = false
+var _req_visor: bool = false
 
 @export var _neck: Marker3D
 @export var _nav_arm: Marker3D
@@ -38,10 +40,17 @@ var _chasing: bool = false
 ##################################################################################################
 
 func open_visor(flag: bool) -> void:
-	if flag:
+	_req_visor = flag
+	if _anim_effects.is_playing():
+		await _anim_effects.animation_finished
+	if not _visor_open and _req_visor:
 		_anim_effects.play("open_visor")
-	else:
+		await _anim_effects.animation_finished
+		_visor_open = true
+	elif _visor_open and not _req_visor:
 		_anim_effects.play_backwards("open_visor")
+		await _anim_effects.animation_finished
+		_visor_open = false
 
 func set_location(pos: Vector3) -> void:
 	global_transform.origin = pos

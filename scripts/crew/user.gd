@@ -14,7 +14,7 @@ const DISTANCE_FADE_MAX: float = 40.0
 var _invert_look: Vector2 = Vector2.ONE
 var _in_look: Vector2 = Vector2.ZERO
 var _look_sy: float = 1.8
-var _accepting_input: bool = true
+var _accepting_input: bool = false
 
 @export var _alka: Player
 @export var _pause_hud: Control
@@ -97,14 +97,21 @@ func set_vsync(enabled: bool, states_flag: bool = true) -> void:
 		States.user.vsync = enabled
 		if States.DEBUG_MODE & States.DEBUG.USER:
 			print("VSYNC SET: %s" % enabled)
-	# TODO: replace with VSYNC_ADAPTIVE when POP_OS updates
 	var vsync_mode := DisplayServer.VSYNC_ENABLED if enabled else DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(vsync_mode)
 
 ##################################################################################################
 
+func set_accepting_input(flag: bool) -> void:
+	if Service.get_status() < States.STATUS.INTRO:
+		_accepting_input = false
+		return
+	_accepting_input = flag
+
 func pause(flag: bool) -> void:
-	_accepting_input = !flag
+	set_accepting_input(!flag)
+	if Service.get_status() <= States.STATUS.INTRO:
+		_accepting_input = false
 	if flag:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:

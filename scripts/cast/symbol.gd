@@ -7,7 +7,7 @@ signal delivery(status, data)
 const PARTICLES_SPARKLES = preload("uid://bhmsmjcv4dtup")
 const IDLE_R: float = 1.8
 const CAPTURE_R: float = 8.8
-const APPROACH_S: Vector3 = Vector3(0.0, 0.0, 1.1)
+const APPROACH_S: Vector3 = Vector3(0.0, 0.0, 0.9)
 const FLOAT_S: float = 0.8
 const SKY_HEIGHT: float = 5.0
 const SKY_MAX: float = 8.0

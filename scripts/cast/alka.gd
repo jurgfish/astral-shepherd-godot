@@ -64,8 +64,6 @@ func _count_allias_capturing(increment: bool, body: Node3D) -> void:
 		_allias_capturing.push_back(body)
 		_flicker_headlamps(true)
 	else:
-		if body.is_dormant():
-			return
 		_allias_capturing.erase(body)
 
 	_allias_capturing = _prune_allias_list(_allias_capturing)
@@ -81,8 +79,6 @@ func _count_allias_captured(increment: bool, body: Node3D) -> void:
 		if _timer_release.time_left == 0.0:
 			_timer_release.start(RELEASE_PERIOD)
 	else:
-		if body.is_dormant():
-			return
 		_allias_captured.erase(body)
 
 	_allias_captured = _prune_allias_list(_allias_captured)
