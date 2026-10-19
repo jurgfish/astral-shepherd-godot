@@ -24,7 +24,6 @@ first:
 	  - ambient audio final level
 
 issues:
-- allias head rotation is off (doesn't respect angle of neck; might be ok?)
 
 next:
 

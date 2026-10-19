@@ -22,6 +22,7 @@ var _curr_rot: float = 0.0
 var _symbol_captured: bool = false
 var _chasing: bool = false
 
+@export var _neck: Marker3D
 @export var _nav_arm: Marker3D
 @export var _nav: NavigationAgent3D
 @export var _target_tracker: Marker3D
@@ -117,7 +118,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _target_look != null:
-		_target_tracker.look_at(_target_look.get_target(), Vector3.UP, true)
+		_target_tracker.look_at(_target_look.get_target(), _neck.global_basis.y, true)
 
 	if abs(_target_tracker.rotation.y - _suit.rotation.y) < HEAD_ROT_LIMIT:
 		_head.rotation = lerp(_head.rotation, _target_tracker.rotation, LERP_H * delta)

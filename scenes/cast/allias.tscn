@@ -53,11 +53,8 @@ bind/6/bone = -1
 bind/6/pose = Transform3D(7.35964e-08, 0.9656158, 0.25997347, -2.3724498e-07, -0.2599735, 0.96561587, 1.0000051, 4.9119234e-07, 1.3224405e-07, -0.09656142, 0.025997275, 0.15000074)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
-radius = 0.2529297
+radius = 0.5078125
 height = 2.114502
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1fkov"]
-size = Vector3(0.50201416, 0.802124, 0.24951172)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xw2wu"]
 radius = 10.0
@@ -100,6 +97,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_gwv8s"]
 resource_name = "RESET"
+length = 0.001
 step = 0.1
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -254,8 +252,9 @@ _data = {
 &"idle": SubResource("Animation_0k8oh")
 }
 
-[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_nav_arm", "_nav", "_target_tracker", "_head", "_head_happy", "_helmet", "_suit", "_anim_effects") groups=["nav"]]
+[node name="allias" type="CharacterBody3D" unique_id=351245521 node_paths=PackedStringArray("_neck", "_nav_arm", "_nav", "_target_tracker", "_head", "_head_happy", "_helmet", "_suit", "_anim_effects") groups=["nav"]]
 script = ExtResource("1_nim83")
+_neck = NodePath("armature/skeleton/neck_base/neck")
 _nav_arm = NodePath("nav_arm")
 _nav = NodePath("nav_arm/navigator")
 _target_tracker = NodePath("armature/skeleton/neck_base/neck/target_tracker")
@@ -446,12 +445,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 [node name="navigator" type="NavigationAgent3D" parent="nav_arm" unique_id=1330671105]
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1163996762]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0545654, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0545654, 0.0688053)
 shape = SubResource("CapsuleShape3D_xw2wu")
-
-[node name="collision_shape_3d_2" type="CollisionShape3D" parent="." unique_id=617447447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1552734e-05, 1.203186, -0.37524414)
-shape = SubResource("BoxShape3D_1fkov")
 
 [node name="area_detect" type="Area3D" parent="." unique_id=2105440756]
 
