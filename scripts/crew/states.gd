@@ -31,7 +31,7 @@ var DEBUG_MODE: int = (
 
 const GAME_NAME: String = "astral shepherd"
 const GAME_AUTHOR: String = "jurgfish"
-const GAME_VERSION: String = "0.2.0"
+const GAME_VERSION: String = "1.0.0"
 const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 19 }
 
 var session_counter: int = 1

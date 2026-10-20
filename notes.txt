@@ -11,15 +11,12 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- audio fade in on start
 
 issues:
 
 next:
 
 release:
-- put epilepsy warning
-- poster
 
 garnish:
 
@@ -30,25 +27,25 @@ TASK CORE
 important:
 - monster models are within astronaut suits OK
   - tie to "from the stars" theme and overarching Alka & Allias lore OK
-- collectible models are various symbols, not just stars
+- collectible models are various symbols, not just stars OK
   - color coded, but distinguished shapes (color-blind friendly) OK
   - tie to "strange signs" community prompt OK
-- monsters warn the player through body language and sound design
+- monsters warn the player through body language and sound design PARTIAL
   - not actually dangerous to the player OK
   - give the player direction of objective OK
   - tie to "ignoring the warnings" community prompt OK
 	- expected that players chase collectibles and ignore monster cues on first playthrough OK
-- focus on ambient design to trigger a sense of horror
-  - heavy focus on audio
+- focus on ambient design to trigger a sense of horror OK
+  - heavy focus on audio OK
   - subdued emphasis on unnerving monster model design NO
 	- let animation shine through; do not outdo audio PARTIAL
 	- monster models will only be illuminated by player's headlamps OK
 
 submission:
-- 10/19/26 deadline
+- 10/19/26 deadline OK
 - tagged #chicaghoul2026 OK
-- fill out google form
-  - link to itch page
+- fill out google form OK
+  - link to itch page OK
 - requires 10/25/26 live presence
 
 completed:
