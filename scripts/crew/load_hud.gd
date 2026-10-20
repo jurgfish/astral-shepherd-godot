@@ -57,6 +57,7 @@ func _hide_ending() -> void:
 	_ending_shown = false
 	set_process_input(false)
 
+	emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC_FADE)
 	if _anim.is_playing() and _tip_shown:
 		await _anim.animation_finished
 	if _tip_shown:
@@ -95,6 +96,7 @@ func play_lose(alka_captures: int, allias_captures: int) -> void:
 
 func play_win() -> void:
 	_anim.play("win_reveal")
+	emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "bedtime")
 
 func pause(flag: bool) -> void:
 	if _epigraph_shown or _ending_shown:

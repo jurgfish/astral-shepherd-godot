@@ -185,7 +185,9 @@ func _request_world(id: String, data: Array) -> void:
 		push_warning("SERVICE REQUEST INVALID: WORLD %s, %s" % [id, data])
 
 func _request_city(id: String, data: Array) -> void:
-	if len(data) > 1:
+	if data[0] == States.CITY.MUSIC_FADE:
+			_user.fade_out_volume()
+	elif len(data) > 1:
 		if data[0] == States.CITY.MUSIC:
 			_city.play_music(data[1])
 	else:

@@ -11,6 +11,8 @@ const BASE_SY: float = 1.8
 const MAX_SY: float = 5.0
 const DISTANCE_FADE_MIN: float = 50.0
 const DISTANCE_FADE_MAX: float = 40.0
+const VOL_FADE_IN_TIME: float = 4.0
+const VOL_FADE_OUT_TIME: float = 0.8
 var _invert_look: Vector2 = Vector2.ONE
 var _in_look: Vector2 = Vector2.ZERO
 var _look_sy: float = 1.8
@@ -28,6 +30,19 @@ func _convert_lerp(low: float, base: float, high: float, req: float) -> float:
 		return lerp(base, high, req - BASE_SETTING)
 	else:
 		return base
+
+func _set_tweener_volume(volume: float) -> void:
+	var master_idx: int = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(master_idx, linear_to_db(volume))
+
+func _fade_in_volume() -> void:
+	var _tween: Tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	_tween.tween_method(_set_tweener_volume, 0.0, 1.0, VOL_FADE_IN_TIME)
+
+func fade_out_volume() -> void:
+	var _tween: Tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	_tween.tween_method(_set_tweener_volume, 1.0, 0.0, VOL_FADE_OUT_TIME)
+	print("FADEOUT")
 
 ##################################################################################################
 
@@ -65,7 +80,13 @@ func set_volume(value: float, states_flag: bool = true) -> void:
 		States.user.volume = value
 		if States.DEBUG_MODE & States.DEBUG.USER:
 			print("VOLUME SET: %s" % value)
-	# TODO: volume controls
+
+	var master_idx: int = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(master_idx, linear_to_db(value))
+	if value == 0:
+		AudioServer.set_bus_mute(master_idx, true)
+	elif AudioServer.is_bus_mute(master_idx):
+		AudioServer.set_bus_mute(master_idx, false)
 
 func set_frame_rate(rate: int, states_flag: bool = true) -> void:
 	if states_flag:
@@ -118,6 +139,7 @@ func pause(flag: bool) -> void:
 ##################################################################################################
 
 func _ready() -> void:
+	_set_tweener_volume(0.0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	connect("request", Callable(Service, "_on_service_request"))
 
@@ -128,6 +150,8 @@ func _ready() -> void:
 	set_frame_rate(States.user.frame_rate, false)
 	set_fullscreen(States.user.fullscreen, false)
 	set_vsync(States.user.fullscreen, false)
+
+	_fade_in_volume()
 
 	# kept at 0.0 in the editor so material always visible; set once on load and never again
 	RenderingServer.global_shader_parameter_set("distance_fade_min", DISTANCE_FADE_MIN)
