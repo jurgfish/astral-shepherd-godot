@@ -27,7 +27,7 @@ var _speed: float = 0.0
 var _captured_symbols: Array = []
 
 # delivery
-const RELEASE_PERIOD: float = 0.8
+const RELEASE_PERIOD: float = 2.0
 var _allias_capturing: Array = []
 var _allias_captured: Array = []
 
@@ -36,6 +36,7 @@ var _allias_captured: Array = []
 @export var _headlamps: Marker3D
 @export var _anim_effects: AnimationPlayer
 @export var _timer_release: Timer
+@export var _effect_player: AudioStreamPlayer
 
 ##################################################################################################
 
@@ -134,6 +135,7 @@ func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> Array:
 		else:
 			_captured_symbols.erase(symbol)
 			erased = symbol
+		_effect_player.play()
 
 	if States.DEBUG_MODE & States.DEBUG.DELIVERY:
 		prints("ALKA SYMBOLS (RELEASE):", _captured_symbols)

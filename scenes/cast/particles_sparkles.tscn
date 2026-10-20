@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bwxhq81mm1sgy" path="res://meshes/symbol/sparkle.tres" id="1_4xif4"]
 [ext_resource type="Script" uid="uid://cmwur5signhv" path="res://scripts/cast/particles_sparkles.gd" id="2_80kxq"]
+[ext_resource type="AudioStream" uid="uid://m5r1nxyntxe6" path="res://audio/sfx/capture.wav" id="3_8vljk"]
 
 [sub_resource type="Curve" id="Curve_6udq5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.74864864, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,7 +23,7 @@ damping_min = 0.1
 damping_max = 0.2
 scale_curve = SubResource("CurveTexture_q8ihs")
 
-[node name="particles_sparkles" type="GPUParticles3D" unique_id=76971072]
+[node name="particles_sparkles" type="GPUParticles3D" unique_id=76971072 node_paths=PackedStringArray("_effect_player")]
 cast_shadow = 0
 emitting = false
 amount = 18
@@ -32,3 +33,8 @@ explosiveness = 0.98
 process_material = SubResource("ParticleProcessMaterial_xw2wu")
 draw_pass_1 = ExtResource("1_4xif4")
 script = ExtResource("2_80kxq")
+_effect_player = NodePath("effect_player")
+
+[node name="effect_player" type="AudioStreamPlayer3D" parent="." unique_id=1154789232]
+stream = ExtResource("3_8vljk")
+bus = &"SFX"

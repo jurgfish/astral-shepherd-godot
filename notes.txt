@@ -11,14 +11,6 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
-- sound (MON)
-  - audio on alka approach allias:
-	- within detection
-	  - raise ambient audio
-	- within capture
-	  - ambient audio next level
-	- within collect
-	  - ambient audio final level
 
 issues:
 

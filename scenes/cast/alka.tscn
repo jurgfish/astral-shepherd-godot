@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://by4fqvbkmbdhl"]
 
 [ext_resource type="Script" uid="uid://durc6s7k46kjh" path="res://scripts/cast/alka.gd" id="1_rrvil"]
+[ext_resource type="AudioStream" uid="uid://c2qa4sa0vdcdx" path="res://audio/sfx/release.wav" id="2_oja85"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xw2wu"]
 radius = 0.25
@@ -9,7 +10,7 @@ radius = 0.25
 radius = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fsvqc"]
-radius = 0.4
+radius = 0.8
 height = 2.5
 
 [sub_resource type="Animation" id="Animation_rrvil"]
@@ -135,13 +136,14 @@ _data = {
 &"flicker_headlamps_capturing": SubResource("Animation_x7mpy")
 }
 
-[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps", "_anim_effects", "_timer_release") groups=["nav"]]
+[node name="alka" type="CharacterBody3D" unique_id=1628352519 node_paths=PackedStringArray("_head", "_body", "_headlamps", "_anim_effects", "_timer_release", "_effect_player") groups=["nav"]]
 script = ExtResource("1_rrvil")
 _head = NodePath("head")
 _body = NodePath("body")
 _headlamps = NodePath("body/headlamps")
 _anim_effects = NodePath("anim_effects")
 _timer_release = NodePath("timer_release")
+_effect_player = NodePath("effect_player")
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=1047630779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -189,6 +191,10 @@ shape = SubResource("CapsuleShape3D_fsvqc")
 libraries/ = SubResource("AnimationLibrary_06njs")
 
 [node name="timer_release" type="Timer" parent="." unique_id=1778195425]
+
+[node name="effect_player" type="AudioStreamPlayer" parent="." unique_id=522729991]
+stream = ExtResource("2_oja85")
+bus = &"SFX"
 
 [connection signal="body_entered" from="area_capturing" to="." method="_on_area_capturing_body_entered"]
 [connection signal="body_exited" from="area_capturing" to="." method="_on_area_capturing_body_exited"]
