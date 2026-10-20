@@ -7,8 +7,9 @@ extends Node
 ##################################################################################################
 
 enum STATUS { STARTUP, READY, INTRO, RUNNING, COOLDOWN, SHUTDOWN }
-enum REQUEST { WORLD }
+enum REQUEST { WORLD, CITY }
 enum WORLD { PAUSE, UNPAUSE, RELOAD, QUIT }
+enum CITY { MUSIC }
 enum SYMBOL {
 	NULL, STAR, MOON, TRI, CIRCLE, FLOWER, PROP, PLUS, ASTRAL, DIAMOND, APOSTROPHE, THEREFORE,
 	HEXAGON
@@ -21,9 +22,9 @@ enum DEBUG {
 }
 
 var DEBUG_MODE: int = (
-	DEBUG.ENABLED #^ DEBUG.SERVICE
+	DEBUG.ENABLED ^ DEBUG.SERVICE
 	#^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.SKIP_EPIGRAPH ^ DEBUG.LIGHTS_ON
-	^ DEBUG.DELIVERY #^ DEBUG.CUSTOM_SPAWN_COUNT
+	#^ DEBUG.DELIVERY #^ DEBUG.CUSTOM_SPAWN_COUNT
 )
 
 ##################################################################################################

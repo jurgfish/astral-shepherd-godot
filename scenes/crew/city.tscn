@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cajdi2yuy2ejf" path="res://scenes/cast/spawner_symbol.tscn" id="2_rqxma"]
 [ext_resource type="PackedScene" uid="uid://cmfasptb04smw" path="res://scenes/cast/spawner_allias.tscn" id="3_movw8"]
 [ext_resource type="PackedScene" uid="uid://dqhv1ht3kldcr" path="res://scenes/crew/exit.tscn" id="6_2jj31"]
+[ext_resource type="AudioStream" uid="uid://cobqilios712k" path="res://audio/ambient/ghosts.ogg" id="7_2mw6o"]
+[ext_resource type="AudioStream" uid="uid://6432k211s0jh" path="res://audio/ambient/clusterslip.ogg" id="8_gn2m6"]
+[ext_resource type="AudioStream" uid="uid://r3jolo4n4q4n" path="res://audio/ambient/konjobeam.ogg" id="9_ge8h8"]
+[ext_resource type="AudioStream" uid="uid://c0ldbwk6hfdea" path="res://audio/ambient/bedtime.ogg" id="10_hhkfm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_bih7l"]
 vertices = PackedVector3Array(-99.5, 0.5, -99.5, -99.5, 0.5, 99.5, 99.5, 0.5, 99.5, 99.5, 0.5, -99.5)
@@ -22,8 +26,32 @@ glow_enabled = true
 glow_levels/6 = 0.5
 glow_bloom = 0.5
 
-[node name="city" type="Node3D" unique_id=1258476902 node_paths=PackedStringArray("_spawner_symbol", "_spawner_allias", "_exits") groups=["nav"]]
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_xw2wu"]
+clip_count = 4
+clip_0/name = &"ghosts"
+clip_0/stream = ExtResource("7_2mw6o")
+clip_0/auto_advance = 0
+clip_1/name = &"clusterslip"
+clip_1/stream = ExtResource("8_gn2m6")
+clip_1/auto_advance = 0
+clip_2/name = &"konjobeam"
+clip_2/stream = ExtResource("9_ge8h8")
+clip_2/auto_advance = 0
+clip_3/name = &"bedtime"
+clip_3/stream = ExtResource("10_hhkfm")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 3.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 0
+}
+}
+
+[node name="city" type="Node3D" unique_id=1258476902 node_paths=PackedStringArray("_music_player", "_spawner_symbol", "_spawner_allias", "_exits") groups=["nav"]]
 script = ExtResource("1_movw8")
+_music_player = NodePath("music_player")
 _spawner_symbol = NodePath("spawner_symbol")
 _spawner_allias = NodePath("spawner_allias")
 _exits = NodePath("exits")
@@ -34,6 +62,11 @@ navigation_mesh = SubResource("NavigationMesh_bih7l")
 [node name="env" type="WorldEnvironment" parent="." unique_id=231952191]
 environment = SubResource("Environment_2jj31")
 script = ExtResource("2_oacpt")
+
+[node name="music_player" type="AudioStreamPlayer" parent="." unique_id=389883239]
+stream = SubResource("AudioStreamInteractive_xw2wu")
+autoplay = true
+bus = &"Music"
 
 [node name="city_floor" parent="." unique_id=2025584823 instance=ExtResource("1_bih7l")]
 

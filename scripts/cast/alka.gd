@@ -4,6 +4,7 @@ class_name Player
 extends CharacterBody3D
 
 signal delivery(status, data)
+signal request(id, status, data)
 
 # look
 const MIN_PITCH: float = -1.2
@@ -63,12 +64,14 @@ func _count_allias_capturing(increment: bool, body: Node3D) -> void:
 			return
 		_allias_capturing.push_back(body)
 		_flicker_headlamps(true)
+		emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "clusterslip")
 	else:
 		_allias_capturing.erase(body)
 
 	_allias_capturing = _prune_allias_list(_allias_capturing)
 	if _allias_capturing.is_empty():
 		_flicker_headlamps(false)
+		emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "ghosts")
 
 func _count_allias_captured(increment: bool, body: Node3D) -> void:
 	if increment:
@@ -76,6 +79,7 @@ func _count_allias_captured(increment: bool, body: Node3D) -> void:
 			return
 		_allias_captured.push_back(body)
 		_flicker_headlamps(true, true)
+		emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "konjobeam")
 		if _timer_release.time_left == 0.0:
 			_timer_release.start(RELEASE_PERIOD)
 	else:
@@ -85,8 +89,10 @@ func _count_allias_captured(increment: bool, body: Node3D) -> void:
 	if _allias_captured.is_empty():
 		if _allias_capturing.is_empty():
 			_flicker_headlamps(false)
+			emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "ghosts")
 		else:
 			_flicker_headlamps(true, false)
+			emit_signal("request", name, States.REQUEST.CITY, States.CITY.MUSIC, "clusterslip")
 		_timer_release.stop()
 
 ##################################################################################################
@@ -138,6 +144,7 @@ func release_symbol(symbol: States.SYMBOL = States.SYMBOL.NULL) -> Array:
 
 func _ready() -> void:
 	connect("delivery", Callable(Service, "_on_delivery_request"))
+	connect("request", Callable(Service, "_on_service_request"))
 
 func _process(delta: float) -> void:
 	_head.rotation.x = _look_dir.y # pitch

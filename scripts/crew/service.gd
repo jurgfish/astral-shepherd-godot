@@ -184,6 +184,13 @@ func _request_world(id: String, data: Array) -> void:
 	else:
 		push_warning("SERVICE REQUEST INVALID: WORLD %s, %s" % [id, data])
 
+func _request_city(id: String, data: Array) -> void:
+	if len(data) > 1:
+		if data[0] == States.CITY.MUSIC:
+			_city.play_music(data[1])
+	else:
+		push_warning("SERVICE REQUEST INVALID: CITY %s, %s" % [id, data])
+
 ##################################################################################################
 
 # INCOMING SIGNAL REQUESTS
@@ -215,6 +222,8 @@ func _on_service_request(id: String, status: int, ...data: Array) -> void:
 
 	if status == States.REQUEST.WORLD:
 		_request_world(id, data)
+	elif status == States.REQUEST.CITY:
+		_request_city(id, data)
 	else:
 		push_warning("SERVICE REQUEST INVALID: %s, %s, %s" % [id, status, data])
 

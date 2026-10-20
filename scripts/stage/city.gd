@@ -10,6 +10,7 @@ const ALKA_SYMBOL_SPAWN_LOC: Vector3 = Vector3(0.0, 5.0, 25.0)
 var _spawn_count: int = States.ALLIAS_SYMBOLS.size()
 
 @export var _alka: CharacterBody3D
+@export var _music_player: AudioStreamPlayer
 @export var _spawner_symbol: Node3D
 @export var _spawner_allias: Node3D
 @export var _exits: Node3D
@@ -24,6 +25,12 @@ func open_exits(flag: bool) -> void:
 
 func get_spawn_count() -> int:
 	return _spawn_count
+
+func play_music(play_id: String) -> void:
+	if not _music_player["parameters/switch_to_clip"] == play_id:
+		_music_player["parameters/switch_to_clip"] = play_id
+	if not _music_player.playing:
+		_music_player.playing = true
 
 ##################################################################################################
 
