@@ -22,16 +22,16 @@ enum DEBUG {
 }
 
 var DEBUG_MODE: int = (
-	DEBUG.ENABLED ^ DEBUG.SERVICE
+	DEBUG.ENABLED #^ DEBUG.SERVICE
 	#^ DEBUG.SKIP_LOAD_SPLASH ^ DEBUG.SKIP_EPIGRAPH ^ DEBUG.LIGHTS_ON
-	#^ DEBUG.DELIVERY #^ DEBUG.CUSTOM_SPAWN_COUNT
+	^ DEBUG.DELIVERY #^ DEBUG.CUSTOM_SPAWN_COUNT
 )
 
 ##################################################################################################
 
 const GAME_NAME: String = "astral shepherd"
 const GAME_AUTHOR: String = "jurgfish"
-const GAME_VERSION: String = "0.1.4"
+const GAME_VERSION: String = "0.2.0"
 const VERSION_DATE: Dictionary = { "year": 2026, "month": 10, "day": 19 }
 
 var session_counter: int = 1

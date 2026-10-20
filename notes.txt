@@ -11,6 +11,7 @@ core game notes (current/postponed tasks, game organization, etc.)
 TASK QUEUE >>>
 
 first:
+- audio fade in on start
 
 issues:
 
@@ -71,8 +72,8 @@ personal goals:
 	more colorful and oddly cozy than i anticipated due to using the same color atlas material
 	i'm using in IOM
   - didn't have time to make more than 2 animations
-- dynamic (simple) soundtrack
-- highest possible lighting fidelity
+- dynamic (simple) soundtrack OK
+- highest possible lighting fidelity OK
 
 developer goals:
 - prevent hard links between systems (use signal patterns) OK
@@ -153,5 +154,8 @@ NOTABLE CHALLENGES
   manually adding all several thousand floor tile meshes manually and the editor started lagging)
 - this is my first time animating a character rig (bones), it was actually very straightforward
   and somewhat fun to do; getting the animation to work within godot was very straightforward too
+- getting the game to even run (basic first person and system mechanics) took much longer than
+  anticipated, i was hoping to spend half of the week animating and working on audio but all the
+  time for art got compressed into 2 days; darkened the game to hide how simple the art really is
 
 ##################################################################################################
